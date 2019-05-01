@@ -2,7 +2,6 @@
 
 	class Cidade{
 
-		private $idCidade;
 		private $nome;
 		private $idEstado;
 

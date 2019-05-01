@@ -2,7 +2,6 @@
 
 	class Item{
 
-		private $idItem;
 		private $idSetor;
 		private $matricula;
 		private $modelo;

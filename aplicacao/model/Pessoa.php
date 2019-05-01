@@ -2,7 +2,6 @@
 
 	class Pessoa{
 
-		private $idPessoa;
 		private $nome;
 		private $CPF;
 		private $telefone;

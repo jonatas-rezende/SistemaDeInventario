@@ -2,7 +2,6 @@
 
 	class Setor{
 
-		private $idSetor;
 		private $idCoordenador;
 		private $ramalTelefonico;
 		private $nome;

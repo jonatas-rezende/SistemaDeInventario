@@ -2,7 +2,6 @@
 
 	class Cargo{
 
-		private $idCargo;
 		private $descricao;
 
 	}

@@ -2,7 +2,6 @@
 
 	class Coordenador extends Pessoa{
 
-		private $idCoordenador;
 		private $status;
 
 	}

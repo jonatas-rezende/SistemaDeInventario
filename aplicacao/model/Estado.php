@@ -2,7 +2,6 @@
 
 	class Estado{
 
-		private $idEstado;
 		private $nome;
 
 	}

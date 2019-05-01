@@ -2,7 +2,6 @@
 
 	class Funcionario extends Pessoa{
 
-		private $idFuncionario;
 		private $idCargo;
 		private $horario;
 		private $status;
