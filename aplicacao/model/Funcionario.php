@@ -1,7 +1,10 @@
 <?php 
 
+	require_once 'Pessoa.php';
+
 	class Funcionario extends Pessoa{
 
+		private $idPessoa;
 		private $idCargo;
 		private $horario;
 		private $status;

@@ -10,7 +10,7 @@
 		private $dataAquisicao;
 		private $valorAquisicao;
 		private $vidaUtil;
-		private $descricao_estado;
+		private $descricaoEstado;
 		private $status;
 
 	    public function __get($atributo) {
