@@ -13,22 +13,25 @@
 
         public function inserir() {
 
-            $sql = 'INSERT INTO cidades (nome, estados_id_estado) VALUES (? ?)';    
+            $sql = 'INSERT INTO cidades (nome, estados_id_estado) VALUES (?,?)';    
             $stmt = $this->conexao->prepare($sql);
             $stmt->bindValue(1, $this->cidade->__get('nome'));
             $stmt->bindValue(2, $this->cidade->__get('idEstado'));
-            $stmt->execute();
+            return $stmt->execute();
         }
 
         public function listar() {
-            $sql = 'SELECT * FROM cidades';
+            $sql = 'SELECT id_cidade, c.nome, e.nome as estado 
+                    FROM cidades c 
+                    INNER JOIN estados e 
+                    ON c.id_estado = e.id_estado';
             $stmt = $this->conexao->prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
         public function editar() {
-            $sql = "UPDATE cidades SET nome = ?, estados_id_estado = ? WHERE id_cidade = ?";
+            $sql = "UPDATE cidades SET nome = ?, id_estado = ? WHERE id_cidade = ?";
             $stmt = $this->conexao->prepare($sql);
             $stmt->bindValue(1, $this->cidade->__get('nome'));
             $stmt->bindValue(2, $this->cidade->__get('idEstado'));
@@ -40,7 +43,7 @@
             $sql = 'DELETE FROM cidades WHERE id_cidade = ?';
             $stmt = $this->conexao->prepare($sql);
             $stmt->bindValue(1, $this->cidade->__get('id_cidade'));
-            $stmt->execute();
+            return $stmt->execute();
         }
 
 	}
