@@ -13,39 +13,64 @@
 
         public function inserir() {
 
-            $sql = 'INSERT INTO cidades (nome, estados_id_estado) VALUES (?,?)';    
-            $stmt = $this->conexao->prepare($sql);
-            $stmt->bindValue(1, $this->cidade->__get('nome'));
-            $stmt->bindValue(2, $this->cidade->__get('idEstado'));
-            return $stmt->execute();
+            try {
+
+                $sql = 'INSERT INTO cidades (nome, estados_id_estado) VALUES (?,?)';    
+                $stmt = $this->conexao->prepare($sql);
+                $stmt->bindValue(1, $this->cidade->__get('nome'));
+                $stmt->bindValue(2, $this->cidade->__get('idEstado'));
+                return $stmt->execute();
+
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
         }
 
         public function listar() {
-            $sql = 'SELECT id_cidade, c.nome, e.nome as estado 
-                    FROM cidades c 
-                    INNER JOIN estados e 
-                    ON c.id_estado = e.id_estado';
-            $stmt = $this->conexao->prepare($sql);
-            $stmt->execute();
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            try {
+
+                $sql = 'SELECT id_cidade, c.nome, e.nome as estado 
+                        FROM cidades c 
+                        INNER JOIN estados e 
+                        ON c.id_estado = e.id_estado';
+                $stmt = $this->conexao->prepare($sql);
+                $stmt->execute();
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
         }
 
         public function editar() {
-            $sql = "UPDATE cidades SET nome = ?, id_estado = ? WHERE id_cidade = ?";
-            $stmt = $this->conexao->prepare($sql);
-            $stmt->bindValue(1, $this->cidade->__get('nome'));
-            $stmt->bindValue(2, $this->cidade->__get('idEstado'));
-            $stmt->bindValue(3, $this->cidade->__get('id_cidade'));
-            return $stmt->execute();
+
+            try {
+
+                $sql = "UPDATE cidades SET nome = ?, id_estado = ? WHERE id_cidade = ?";
+                $stmt = $this->conexao->prepare($sql);
+                $stmt->bindValue(1, $this->cidade->__get('nome'));
+                $stmt->bindValue(2, $this->cidade->__get('idEstado'));
+                $stmt->bindValue(3, $this->cidade->__get('id_cidade'));
+                return $stmt->execute();
+
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
         }
         
         public function deletar() {
-            $sql = 'DELETE FROM cidades WHERE id_cidade = ?';
-            $stmt = $this->conexao->prepare($sql);
-            $stmt->bindValue(1, $this->cidade->__get('id_cidade'));
-            return $stmt->execute();
+
+            try {
+
+                $sql = 'DELETE FROM cidades WHERE id_cidade = ?';
+                $stmt = $this->conexao->prepare($sql);
+                $stmt->bindValue(1, $this->cidade->__get('id_cidade'));
+                return $stmt->execute();
+
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
         }
-
 	}
-
  ?>
