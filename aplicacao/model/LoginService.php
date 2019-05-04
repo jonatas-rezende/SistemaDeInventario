@@ -18,10 +18,10 @@ function VerificarLoginCoordenador($cpf, $senha){
 
     if ($row == 1){
         $_SESSION['cpf'] = $cpf;
-        header('Location: index.php');
+        header('Location: ../view/login.php');
         exit();
     } else{
-        header('Location: ok.php');
+        header('Location: ../index.php');
         exit();
     }
 
