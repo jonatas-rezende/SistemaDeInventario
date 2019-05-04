@@ -31,14 +31,14 @@
                 </header>
                 <div class="auth-content">
                     <p class="text-center">Entre para Continuar</p>
-                    <form id="login-form" action="/index.html" method="GET" novalidate="novalidate">
+                    <form id="login-form" action="../model/LoginService.php" method="POST" novalidate="novalidate">
                         <div class="form-group">
                             <label for="txt_cpf">CPF</label>
-                            <input type="email" class="form-control underlined" name="txt_cpf" id="txt_cpf"
+                            <input type="text" class="form-control underlined" name="cpf" id="txt_cpf"
                                 placeholder="000.000.000-00" required=""> </div>
                         <div class="form-group">
                             <label for="txt_senha">Senha</label>
-                            <input type="txt_senha" class="form-control underlined" name="txt_senha" id="txt_senha"
+                            <input type="password" class="form-control underlined" name="senha" id="txt_senha"
                                 placeholder="Senha" required=""> </div>
                         <div class="form-group">
                           
