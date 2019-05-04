@@ -53,14 +53,7 @@
                               </div>
                               <form role="form" class="row" id="formulario" name="formulario" method="POST">
 
-                                <div class="form-group col-6">
-                                   <label class="control-label">Item</label>
-                                   <select class="form-control boxed" id="funcionarios" name="funcioanrios" >
-                                     <option>Selecione</option>
-                                     <option>Modelo</option>
-                                     <option>PC</option>
-                                   </select>
-                                </div>
+
                                  </fieldset>
 
 
@@ -72,9 +65,8 @@
                                  --->
                                <div class="col-11" align="end">
 
-                              
 
-                                <input type="submit" id="consultar" name="consultar"  class="btn btn-primary" value="Consultar">
+
 
 
                               </div>
@@ -83,7 +75,7 @@
                                           <div class="card-block">
                                               <div class="card-title-block">
 
-                                                  <h3 class="title">Setor </h3>
+                                                  <h3 class="title">Item </h3>
                                               </div>
 
                                               <section class="example">

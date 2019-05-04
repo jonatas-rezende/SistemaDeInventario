@@ -11,7 +11,7 @@
       <link rel="stylesheet" href="../assets/css/vendor.css">
       <link rel="stylesheet" id="theme-style" href="../assets/css/app-green.css">
       <link rel="stylesheet" id="theme-style" href="../assets/css/app.css">
-   
+
    </head>
    <body>
        <div class="main-wrapper">
@@ -34,7 +34,7 @@
 
                        <?php include 'menu_lateral.php'; ?>
                    </div>
-                
+
                </aside>
                <div class="sidebar-overlay" id="sidebar-overlay"></div>
                <div class="sidebar-mobile-menu-handle" id="sidebar-mobile-menu-handle"></div>
@@ -101,10 +101,10 @@
                                                           <thead>
                                                               <tr>
                                                                   <th>#</th>
-                                                                  <th>SETOR</th>
-                                                                  <th>RAMAL</th>
-                                                                  <th>COORDENADOR</th> 
-                                                                  <th>AÇÃO</th>
+                                                                  <th>Setor</th>
+                                                                  <th>Ramal</th>
+                                                                  <th>Coordenador</th>
+                                                                  <th>Ação</th>
                                                               </tr>
                                                           </thead>
 

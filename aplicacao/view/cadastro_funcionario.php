@@ -134,22 +134,23 @@
                                                           <thead>
                                                               <tr>
                                                                 <th>#</th>
-                                                                <th>NOME</th>
-                                                                <th>CPF</th>
-                                                                <th>TELEFONE</th>
-                                                                <th>EMAIL</th>
-                                                                <th>CIDADE</th>
-                                                                <th>ACAO</th>
+                                                                <th>Nome</th>
+                                                                <th>Telefone</th>
+                                                                <th>Setor</th>
+                                                                <th>Cargo</th>
+                                                                <th>Horario</th>
+                                                                <th>Ação</th>
                                                               </tr>
                                                           </thead>
 
                                                           <tbody>
                                                           <td>1</td>
                                                                 <td>Ana Maria</td>
-                                                                <td>999.999.999-99</td>
+
                                                                 <td>(62) 3307-2512</td>
-                                                                <td>anamaria@email.com</td>
-                                                                <td>Ceres</td>
+                                                                  <td>TI</td>
+                                                                <td>Suporte</td>
+                                                                <td>07-12 e 13-16 </td>
                                                                 <td><button type="button" class="btn btn-success">Editar</button>
                                                                     <button type="button" class="btn btn-danger">Excluir</button>
                                                                 </td>

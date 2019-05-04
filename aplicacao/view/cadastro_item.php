@@ -62,11 +62,11 @@
                                     <input type="text" id="modelo" name="modelo" required="required" class="form-control boxed" placeholder="">
 
                                  </div>
-                                 <div class="form-group col-3">
+                                 <div class="form-group col-2">
                                     <label class="control-label">Quantidade: </label>
                                     <input type="text" id="quantidade" name="quantidade" class="form-control boxed">
                                  </div>
-                                 <div class="form-group col-5">
+                                 <div class="form-group col-4">
                                     <label class="control-label">Localização: </label>
                                     <input type="text" id="localização" name="localização" class="form-control boxed">
                                  </div>
@@ -80,9 +80,9 @@
                                  </div>
 
                                  <div class="form-group col-">
-                                    <label class="control-label">Status:</label>
+                                    <label class="control-label">Situação:</label>
                                     <select class="form-control boxed" id="sexo" name="sexo" >
-                                      <option>Status</option>
+                                      <option>Situação</option>
                                       <option>Emprestado</option>
                                       <option>Não está Emprestado</option>
                                     </select>
@@ -92,7 +92,7 @@
                                     <label class="control-label">Valor de Aquisição R$: </label>
                                     <input type="text" id="valorAquisicao" name="valorAquisicao" class="form-control boxed">
                                  </div>
-                                 <div class="form-group col-9">
+                                 <div class="form-group col-8">
                                     <label class="control-label">Descrição: </label>
                                     <input type="text" id="descricao" name="descricao" class="form-control boxed">
                                  </div>

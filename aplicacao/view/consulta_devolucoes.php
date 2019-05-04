@@ -53,14 +53,7 @@
                               </div>
                               <form role="form" class="row" id="formulario" name="formulario" method="POST">
 
-                                <div class="form-group col-6">
-                                   <label class="control-label">Item</label>
-                                   <select class="form-control boxed" id="funcionarios" name="funcioanrios" >
-                                     <option>Selecione</option>
-                                     <option>Devolucao</option>
-                                     <option>Devolucao</option>
-                                   </select>
-                                </div>
+
                                  </fieldset>
 
 
@@ -70,19 +63,13 @@
                                     <img class="image-container" src="https://index.tnwcdn.com/images/9794fd32b7b694d7720d2e655049051b78604f09.jpg" ></img>
                                  </div>
                                  --->
-                               <div class="col-11" align="end">
 
-
-                                <input type="submit" id="consultar" name="consultar"  class="btn btn-primary" value="Consultar">
-
-
-                              </div>
                               <div class="col-md-12">
                                       <div class="card">
                                           <div class="card-block">
                                               <div class="card-title-block">
 
-                                                  <h3 class="title">Emprestimo </h3>
+                                                  <h3 class="title">Devolução </h3>
                                               </div>
 
                                               <section class="example">
