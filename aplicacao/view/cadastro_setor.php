@@ -8,21 +8,10 @@
       <meta name="description" content="">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="apple-touch-icon" href="apple-touch-icon.png">
-      <link rel="stylesheet" href="../css/vendor.css">
-      <!-- Theme initialization -->
-      <script>
-          var themeSettings = (localStorage.getItem('themeSettings')) ? JSON.parse(localStorage.getItem('themeSettings')) :
-          {};
-          var themeName = themeSettings.themeName || '';
-          if (themeName)
-          {
-              document.write('<link rel="stylesheet" id="theme-style" href="../css/app-' + themeName + '.css">');
-          }
-          else
-          {
-              document.write('<link rel="stylesheet" id="theme-style" href="../css/app.css">');
-          }
-      </script>
+      <link rel="stylesheet" href="../assets/css/vendor.css">
+      <link rel="stylesheet" id="theme-style" href="../assets/css/app-green.css">
+      <link rel="stylesheet" id="theme-style" href="../assets/css/app.css">
+   
    </head>
    <body>
        <div class="main-wrapper">
@@ -45,103 +34,7 @@
 
                        <?php include 'menu_lateral.php'; ?>
                    </div>
-                   <footer class="sidebar-footer">
-                       <ul class="sidebar-menu metismenu" id="customize-menu">
-                           <li>
-                               <ul>
-                                   <li class="customize">
-                                       <div class="customize-item">
-                                           <div class="row customize-header">
-                                               <div class="col-4">
-                                               </div>
-                                               <div class="col-4">
-                                                   <label class="title">fixed</label>
-                                               </div>
-                                               <div class="col-4">
-                                                   <label class="title">static</label>
-                                               </div>
-                                           </div>
-                                           <div class="row">
-                                               <div class="col-4">
-                                                   <label class="title">Sidebar:</label>
-                                               </div>
-                                               <div class="col-4">
-                                                   <label>
-                                                       <input class="radio" type="radio" name="sidebarPosition" value="sidebar-fixed">
-                                                       <span></span>
-                                                   </label>
-                                               </div>
-                                               <div class="col-4">
-                                                   <label>
-                                                       <input class="radio" type="radio" name="sidebarPosition" value="">
-                                                       <span></span>
-                                                   </label>
-                                               </div>
-                                           </div>
-                                           <div class="row">
-                                               <div class="col-4">
-                                                   <label class="title">Header:</label>
-                                               </div>
-                                               <div class="col-4">
-                                                   <label>
-                                                       <input class="radio" type="radio" name="headerPosition" value="header-fixed">
-                                                       <span></span>
-                                                   </label>
-                                               </div>
-                                               <div class="col-4">
-                                                   <label>
-                                                       <input class="radio" type="radio" name="headerPosition" value="">
-                                                       <span></span>
-                                                   </label>
-                                               </div>
-                                           </div>
-                                           <div class="row">
-                                               <div class="col-4">
-                                                   <label class="title">Footer:</label>
-                                               </div>
-                                               <div class="col-4">
-                                                   <label>
-                                                       <input class="radio" type="radio" name="footerPosition" value="footer-fixed">
-                                                       <span></span>
-                                                   </label>
-                                               </div>
-                                               <div class="col-4">
-                                                   <label>
-                                                       <input class="radio" type="radio" name="footerPosition" value="">
-                                                       <span></span>
-                                                   </label>
-                                               </div>
-                                           </div>
-                                       </div>
-                                       <div class="customize-item">
-                                           <ul class="customize-colors">
-                                               <li>
-                                                   <span class="color-item color-red" data-theme="red"></span>
-                                               </li>
-                                               <li>
-                                                   <span class="color-item color-orange" data-theme="orange"></span>
-                                               </li>
-                                               <li>
-                                                   <span class="color-item color-green active" data-theme=""></span>
-                                               </li>
-                                               <li>
-                                                   <span class="color-item color-seagreen" data-theme="seagreen"></span>
-                                               </li>
-                                               <li>
-                                                   <span class="color-item color-blue" data-theme="blue"></span>
-                                               </li>
-                                               <li>
-                                                   <span class="color-item color-purple" data-theme="purple"></span>
-                                               </li>
-                                           </ul>
-                                       </div>
-                                   </li>
-                               </ul>
-                               <a href="">
-                                   <i class="fa fa-cog"></i> Customize </a>
-                           </li>
-                       </ul>
-                   </footer>
+                
                </aside>
                <div class="sidebar-overlay" id="sidebar-overlay"></div>
                <div class="sidebar-mobile-menu-handle" id="sidebar-mobile-menu-handle"></div>
@@ -248,7 +141,7 @@
                        <div class="color-secondary"></div>
                    </div>
                </div>
-               <script src="js/vendor.js"></script>
-               <script src="js/app.js"></script>
+               <script src="../assets/js/vendor.js"></script>
+               <script src="../assets/js/app.js"></script>
              </body>
 </html>
