@@ -11,7 +11,7 @@
       <link rel="stylesheet" href="../assets/css/vendor.css">
       <link rel="stylesheet" id="theme-style" href="../assets/css/app-green.css">
       <link rel="stylesheet" id="theme-style" href="../assets/css/app.css">
-   
+
    </head>
    <body>
        <div class="main-wrapper">
@@ -34,7 +34,7 @@
 
                        <?php include 'menu_lateral.php'; ?>
                    </div>
-                  
+
                </aside>
                <div class="sidebar-overlay" id="sidebar-overlay"></div>
                <div class="sidebar-mobile-menu-handle" id="sidebar-mobile-menu-handle"></div>
@@ -60,7 +60,7 @@
                                  <div class="form-group col-2">
                                     <label class="control-label">CPF: </label>
                                     <input type="text" id="cpf" name="cpf" required="required" class="form-control boxed" placeholder="">
-                                    
+
                                  </div>
 
                                  <div class="form-group col-4">
@@ -96,6 +96,14 @@
                                    <label class="control-label">Cidade: </label>
                                    <input type="text" id="cidade" name="cidade"  class="form-control boxed">
                                 </div>
+                                <div class="form-group col-4">
+                                  <label class="control-label">Cargo: </label>
+                                  <input type="text" id="cargo" name="cargo"  class="form-control boxed">
+                               </div>
+                               <div class="form-group col-2">
+                                 <label class="control-label">Horario: </label>
+                                 <input type="text" id="horario" name="Horario"  class="form-control boxed">
+                              </div>
                                  </fieldset>
 
 
@@ -125,7 +133,7 @@
                                                       <table class="table table-striped table-bordered table-hover table-overflow">
                                                           <thead>
                                                               <tr>
-                                                                <th>#</th> 
+                                                                <th>#</th>
                                                                 <th>NOME</th>
                                                                 <th>CPF</th>
                                                                 <th>TELEFONE</th>
