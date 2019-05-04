@@ -10,7 +10,7 @@
       <link rel="stylesheet" href="../assets/css/vendor.css">
       <link rel="stylesheet" id="theme-style" href="../assets/css/app-green.css">
       <link rel="stylesheet" id="theme-style" href="../assets/css/app.css">
-   
+
    </head>
    <body>
        <div class="main-wrapper">
@@ -33,7 +33,7 @@
 
                        <?php include 'menu_lateral.php'; ?>
                    </div>
-                
+
                </aside>
                <div class="sidebar-overlay" id="sidebar-overlay"></div>
                <div class="sidebar-mobile-menu-handle" id="sidebar-mobile-menu-handle"></div>
@@ -102,17 +102,16 @@
                                                           <thead>
                                                               <tr>
                                                                   <th>#</th>
-                                                                  <th>NOME</th>
-                                                                  <th>SENHA</th>
-                                                                  <th>TIPO</th> 
-                                                                  <th>AÇÃO</th>
+                                                                  <th>Nome</th>
+                                                                  <th>Tipo</th>
+                                                                  <th>Ação</th>
                                                               </tr>
                                                           </thead>
 
                                                           <tbody>
                                                                   <td>1</td>
                                                                   <td>Ana Maria</td>
-                                                                  <td>a8c9d98f0e327135ccad</td>
+
                                                                   <td>Administrador</td>
                                                                   <td><button type="button" class="btn btn-success">Editar</button>
                                                                        <button type="button" class="btn btn-danger">Excluir</button>

@@ -53,14 +53,7 @@
                               </div>
                               <form role="form" class="row" id="formulario" name="formulario" method="POST">
 
-                                <div class="form-group col-6">
-                                   <label class="control-label">Funcionário:</label>
-                                   <select class="form-control boxed" id="funcionarios" name="funcioanrios" >
-                                     <option>Nome</option>
-                                     <option>Nome Funcionário</option>
-                                     <option>Pedro</option>
-                                   </select>
-                                </div>
+                                
                                  </fieldset>
 
 
@@ -72,9 +65,8 @@
                                  --->
                                <div class="col-11" align="end">
 
-                                
 
-                                <input type="submit" id="consultar" name="consultar"  class="btn btn-primary" value="Consultar">
+
 
 
                               </div>

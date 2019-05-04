@@ -120,7 +120,7 @@
                                       <div class="card">
                                           <div class="card-block">
                                               <div class="card-title-block">
-                                                  <h3 class="title"> Clientes cadastrados</h3>
+                                                  <h3 class="title"> Coordenador Cadastrado</h3>
                                               </div>
 
                                               <section class="example">
@@ -130,12 +130,12 @@
                                                           <thead>
                                                               <tr>
                                                                 <th>#</th>
-                                                                <th>NOME</th>
+                                                                <th>Nome</th>
                                                                 <th>CPF</th>
-                                                                <th>TELEFONE</th>
-                                                                <th>EMAIL</th>
-                                                                <th>CIDADE</th>
-                                                                <th>ACAO</th>
+                                                                <th>Telefone</th>
+                                                                <th>Email</th>
+                                                                <th>Cidade</th>
+                                                                <th>Ação</th>
                                                               </tr>
                                                           </thead>
 
