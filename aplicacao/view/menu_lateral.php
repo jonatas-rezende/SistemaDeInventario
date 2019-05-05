@@ -104,8 +104,14 @@
             </ul>
         </li>
         <li>
+            <a href="sobre.php">
+            <i class="fa fa-file-text-o"></i> Sobre </a>
+        </li>
+        <li>
             <a href="#">
             <i class="fa fa-power-off icon"></i> Sair </a>
         </li>
+
+
     </ul>
 </nav>
