@@ -63,13 +63,16 @@
                                     <img class="image-container" src="https://index.tnwcdn.com/images/9794fd32b7b694d7720d2e655049051b78604f09.jpg" ></img>
                                  </div>
                                  --->
-                               
+
                               <div class="col-md-12">
                                       <div class="card">
                                           <div class="card-block">
                                               <div class="card-title-block">
 
-                                                  <h3 class="title"> Coordenador </h3>
+                                                <div class="form-group col-4">
+                                                   <label class="control-label">Buscar: </label>
+                                                   <input type="search" id="buscar" name="buscar" class="form-control boxed" autofocus>
+                                                </div>
                                               </div>
 
                                               <section class="example">

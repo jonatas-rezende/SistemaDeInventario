@@ -96,12 +96,18 @@
                                    <label class="control-label">Cidade: </label>
                                    <input type="text" id="cidade" name="cidade"  class="form-control boxed">
                                 </div>
+
                                 <div class="form-group col-4">
-                                  <label class="control-label">Cargo: </label>
-                                  <input type="text" id="cargo" name="cargo"  class="form-control boxed">
-                               </div>
-                               <div class="form-group col-2">
-                                 <label class="control-label">Horario: </label>
+                                   <label class="control-label">Cargo:</label>
+                                   <select class="form-control boxed" id="cargo" name="cargo"  >
+                                     <option>Selecione</option>
+                                     <option>Auxiliar</option>
+                                     <option>Suporte</option><br><br>
+                                   </select>
+                                </div>
+
+                               <div class="form-group col-6">
+                                 <label class="control-label">Horário de atendimento: </label>
                                  <input type="text" id="horario" name="Horario"  class="form-control boxed">
                               </div>
                                  </fieldset>
@@ -114,17 +120,15 @@
                                  </div>
                                  --->
                                <div class="col-11" align="end">
-
-                                <input type="reset" class="btn btn-success" value="Novo"/>
-
-                                <input type="submit" id="salvar" name="salvar"  class="btn btn-primary" value="Salvar">
-
-                              </div>
+                                 <input type="submit" id="salvar" name="salvar"  class="btn btn-primary" value="Salvar">
+                                 <input type="reset" class="btn btn-success" value="Novo"/>
+                               </div>
+                              
                               <div class="col-md-12">
                                       <div class="card">
                                           <div class="card-block">
                                               <div class="card-title-block">
-                                                  <h3 class="title"> Clientes cadastrados</h3>
+                                                  <h3 class="title"> Funcionários cadastrados</h3>
                                               </div>
 
                                               <section class="example">
@@ -138,7 +142,7 @@
                                                                 <th>Telefone</th>
                                                                 <th>Setor</th>
                                                                 <th>Cargo</th>
-                                                                <th>Horario</th>
+                                                                <th>Horário</th>
                                                                 <th>Ação</th>
                                                               </tr>
                                                           </thead>
@@ -146,11 +150,10 @@
                                                           <tbody>
                                                           <td>1</td>
                                                                 <td>Ana Maria</td>
-
                                                                 <td>(62) 3307-2512</td>
-                                                                  <td>TI</td>
+                                                                <td>TI</td>
                                                                 <td>Suporte</td>
-                                                                <td>07-12 e 13-16 </td>
+                                                                <td>07:00 às 11:00 e 13:00 às 17:00 </td>
                                                                 <td><button type="button" class="btn btn-success">Editar</button>
                                                                     <button type="button" class="btn btn-danger">Excluir</button>
                                                                 </td>

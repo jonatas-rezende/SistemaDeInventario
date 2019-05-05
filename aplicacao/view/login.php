@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="pt-br">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title> ModularAdmin - Free Dashboard Theme | HTML Version </title>
+    <title> Sistema de Inventário </title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="stylesheet" href="../assets/css/vendor.css">
     <link rel="stylesheet" id="theme-style" href="../assets/css/app-green.css">
     <link rel="stylesheet" id="theme-style" href="../assets/css/app.css">
-   
+
 </head>
 
 <body class="loaded">
@@ -30,7 +30,7 @@
                     </h1>
                 </header>
                 <div class="auth-content">
-                    <p class="text-center">Entre para Continuar</p>
+                    <p class="text-center">Identifique-se para entrar!</p>
                     <form id="login-form" action="../model/LoginService.php" method="POST" novalidate="novalidate">
                         <div class="form-group">
                             <label for="txt_cpf">CPF</label>
@@ -41,15 +41,15 @@
                             <input type="password" class="form-control underlined" name="senha" id="txt_senha"
                                 placeholder="Senha" required=""> </div>
                         <div class="form-group">
-                          
+
                         <div class="form-group">
                             <button type="submit" class="btn btn-block btn-primary">Entrar</button>
                         </div>
-                       
+
                     </form>
                 </div>
             </div>
-           
+
         </div>
     </div>
     <!-- Reference block for JS -->
@@ -60,7 +60,7 @@
             <div class="color-secondary"></div>
         </div>
     </div>
-  
+
     <script src="../assets/js/vendor.js"></script>
     <script src="../assets/js/app.js"></script>
 

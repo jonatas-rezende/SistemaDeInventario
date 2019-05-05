@@ -74,7 +74,10 @@
                                           <div class="card-block">
                                               <div class="card-title-block">
 
-                                                  <h3 class="title">Setor </h3>
+                                                <div class="form-group col-4">
+                                                   <label class="control-label">Buscar: </label>
+                                                   <input type="search" id="buscar" name="buscar" class="form-control boxed" autofocus>
+                                                </div>
                                               </div>
 
                                               <section class="example">

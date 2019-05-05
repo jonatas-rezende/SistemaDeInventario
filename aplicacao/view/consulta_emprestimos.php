@@ -47,7 +47,7 @@
                         <div class="col-md-12">
                            <div class="row card card-block sameheight-item">
                               <div class="title-block">
-                                 <h2 class="title"> Consultar Emprestimo </h2>
+                                 <h2 class="title"> Consultar Empréstimo </h2>
 
                                  <hr>
                               </div>
@@ -72,10 +72,10 @@
                               <div class="col-md-12">
                                       <div class="card">
                                           <div class="card-block">
-                                              <div class="card-title-block">
-
-                                                  <h3 class="title">Emprestimo </h3>
-                                              </div>
+                                            <div class="form-group col-4">
+                                               <label class="control-label">Buscar: </label>
+                                               <input type="search" id="buscar" name="buscar" class="form-control boxed" autofocus>
+                                            </div>
 
                                               <section class="example">
                                                   <div class="table-responsive" style="display: block;
@@ -85,7 +85,7 @@
                                                               <tr>
                                                                 <th>#</th>
                                                                 <th>Modelo</th>
-                                                                <th>Data Emprestimo</th>
+                                                                <th>Data Empréstimo</th>
                                                                 <th>Data de Devolução</th>
 
                                                               </tr>

@@ -51,7 +51,7 @@
                               </div>
                               <form role="form" class="row" id="formulario" name="formulario" method="POST">
 
-                                 <div class="form-group col-3">
+                                 <div class="form-group col-6">
                                     <label class="control-label">Nome: </label>
                                     <input type="text" id="nome" name="nome" required="required" class="form-control boxed" autofocus>
                                  </div>
@@ -61,7 +61,7 @@
                                     <input type="password" id="senha" name="senha" required="required" class="form-control boxed">
                                  </div>
 
-                                 <div class="form-group col-4">
+                                 <div class="form-group col-3">
                                     <label class="control-label">Tipo:</label>
                                     <select class="form-control boxed" id="sexo" name="sexo" >
                                       <option>Selecione</option>
@@ -79,13 +79,10 @@
                                     <img class="image-container" src="https://index.tnwcdn.com/images/9794fd32b7b694d7720d2e655049051b78604f09.jpg" ></img>
                                  </div>
                                  --->
-                               <div class="col-11" align="end">
-
-                                <input type="reset" class="btn btn-success" value="Novo"/>
-
-                                <input type="submit" id="salvar" name="salvar"  class="btn btn-primary" value="Salvar">
-
-                              </div>
+                                 <div class="col-11" align="end">
+                                   <input type="submit" id="salvar" name="salvar"  class="btn btn-primary" value="Salvar">
+                                   <input type="reset" class="btn btn-success" value="Novo"/>
+                                 </div>
                               <br>
                               <br>
                               <div class="col-md-12">

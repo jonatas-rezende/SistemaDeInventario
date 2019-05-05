@@ -109,13 +109,11 @@
                                     <img class="image-container" src="https://index.tnwcdn.com/images/9794fd32b7b694d7720d2e655049051b78604f09.jpg" ></img>
                                  </div>
                                  --->
-                               <div class="col-11" align="end">
-
-                                <input type="reset" class="btn btn-success" value="Novo"/>
-
-                                <input type="submit" id="salvar" name="salvar"  class="btn btn-primary" value="Salvar">
-
-                              </div>
+                                 <div class="col-11" align="end">
+                                   <input type="submit" id="salvar" name="salvar"  class="btn btn-primary" value="Salvar">
+                                   <input type="reset" class="btn btn-success" value="Novo"/>
+                                 </div>
+                                 
                               <div class="col-md-12">
                                       <div class="card">
                                           <div class="card-block">

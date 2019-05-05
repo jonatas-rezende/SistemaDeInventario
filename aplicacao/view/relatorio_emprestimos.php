@@ -47,7 +47,7 @@
                         <div class="col-md-12">
                            <div class="row card card-block sameheight-item">
                               <div class="title-block">
-                                 <h2 class="title"> Relátorio de Emprestimos </h2>
+                                 <h2 class="title"> Relátorio de Empréstimos </h2>
 
                                  <hr>
                               </div>
@@ -65,8 +65,33 @@
                                  --->
                                <div class="col-11" align="end">
 
-                                <input type="submit" id="emprestimos" name="emprestimos"  class="btn btn-danger" value="Relatorio de Emprestimos">
+<!-- Button trigger modal -->
+ <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+   Visualizar Relatório de Empréstimos
+ </button>
 
+ <!-- Modal -->
+ <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal-dialog" role="document">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h5 class="modal-title" id="exampleModalLabel">Relatório de Empréstimos</h5>
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+         </button>
+       </div>
+       <div class="modal-body">
+         aqui vai a parada do Relatório para imprimir em .pdf
+       </div>
+       <div class="modal-footer">
+         <button type="button" class="btn btn-primary">Imprimir</button>
+         <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+
+       </div>
+     </div>
+   </div>
+ </div>
+<!--fim do modal -->
 
                               </div>
 

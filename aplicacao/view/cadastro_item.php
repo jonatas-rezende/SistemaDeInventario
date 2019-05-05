@@ -53,7 +53,7 @@
                               <form role="form" class="row" id="formulario" name="formulario" method="POST">
 
                                  <div class="form-group col-3">
-                                    <label class="control-label">Matricula: </label>
+                                    <label class="control-label">Matrícula: </label>
                                     <input type="text" id="matricula" name="matricula" required="required" class="form-control boxed" autofocus>
                                  </div>
 
@@ -62,7 +62,7 @@
                                     <input type="text" id="modelo" name="modelo" required="required" class="form-control boxed" placeholder="">
 
                                  </div>
-                                 <div class="form-group col-2">
+                                 <div class="form-group col-3">
                                     <label class="control-label">Quantidade: </label>
                                     <input type="text" id="quantidade" name="quantidade" class="form-control boxed">
                                  </div>
@@ -72,27 +72,27 @@
                                  </div>
                                  <div class="form-group col-2">
                                     <label class="control-label">Data Aquisição: </label>
-                                    <input type="text" id="dataAquisicao" name="dataAquisicao" class="form-control boxed">
+                                    <input type="date" id="dataAquisicao" name="dataAquisicao" class="form-control boxed">
                                  </div>
-                                 <div class="form-group col-2">
-                                    <label class="control-label">Vida Util: </label>
+                                 <div class="form-group col-3">
+                                    <label class="control-label">Vida útil: </label>
                                     <input type="text" id="vidaUtil" name="vidaUtil" class="form-control boxed">
                                  </div>
 
-                                 <div class="form-group col-">
+                                 <div class="form-group col-3">
                                     <label class="control-label">Situação:</label>
                                     <select class="form-control boxed" id="sexo" name="sexo" >
                                       <option>Situação</option>
+                                      <option>Disponível</option>
                                       <option>Emprestado</option>
-                                      <option>Não está Emprestado</option>
                                     </select>
                                  </div>
 
                                  <div class="form-group col-3">
-                                    <label class="control-label">Valor de Aquisição R$: </label>
+                                    <label class="control-label">Valor de Aquisição (R$): </label>
                                     <input type="text" id="valorAquisicao" name="valorAquisicao" class="form-control boxed">
                                  </div>
-                                 <div class="form-group col-8">
+                                 <div class="form-group col-9">
                                     <label class="control-label">Descrição: </label>
                                     <input type="text" id="descricao" name="descricao" class="form-control boxed">
                                  </div>
@@ -107,13 +107,11 @@
                                     <img class="image-container" src="https://index.tnwcdn.com/images/9794fd32b7b694d7720d2e655049051b78604f09.jpg" ></img>
                                  </div>
                                  --->
-                               <div class="col-11" align="end">
+                                 <div class="col-11" align="end">
+                                   <input type="submit" id="salvar" name="salvar"  class="btn btn-primary" value="Salvar">
+                                   <input type="reset" class="btn btn-success" value="Novo"/>
+                                 </div>
 
-                                <input type="reset" class="btn btn-success" value="Novo"/>
-
-                                <input type="submit" id="salvar" name="salvar"  class="btn btn-primary" value="Salvar">
-
-                              </div>
                               <div class="col-md-12">
                                       <div class="card">
                                           <div class="card-block">

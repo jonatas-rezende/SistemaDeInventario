@@ -39,13 +39,13 @@
                   <a href="consulta_setor.php"> Setor </a>
               </li>
                 <li>
-                    <a href="consulta_funcionario.php"> Funcionarios </a>
+                    <a href="consulta_funcionario.php"> Funcionário </a>
                 </li>
                 <li>
                     <a href="consulta_item.php"> Item</a>
                 </li>
                 <li>
-                    <a href="consulta_emprestimos.php"> Emprestimos </a>
+                    <a href="consulta_emprestimos.php"> Empréstimos </a>
                 </li>
                 <li>
                     <a href="consulta_devolucoes.php"> Devoluções </a>
@@ -59,13 +59,13 @@
             </a>
             <ul class="sidebar-nav">
             <li>
-                    <a href="relatorio_emprestimos.php"> Relatorio de Emprestimos </a>
+                    <a href="relatorio_emprestimos.php"> Relatório de Empréstimos </a>
                 </li>
                 <li>
-                    <a href="relatorio_devolucoes.php"> Relatorio de Devoluções </a>
+                    <a href="relatorio_devolucoes.php"> Relatório de Devoluções </a>
                 </li>
                 <li>
-                    <a href="relatorio_estoque.php"> Relatorio de Estoque </a>
+                    <a href="relatorio_estoque.php"> Relatório de Estoque </a>
                 </li>
 
             </ul>
@@ -77,7 +77,7 @@
             </a>
             <ul class="sidebar-nav">
             <li>
-                    <a href="cadastro_emprestimo.php"> Realizar Emprestimo </a>
+                    <a href="cadastro_emprestimo.php"> Realizar Empréstimo </a>
                 </li>
             </ul>
         </li>
@@ -87,7 +87,7 @@
             </a>
             <ul class="sidebar-nav">
             <li>
-                  <a href="realizar_devolucao.php"> Realizar Devolucao </a>
+                  <a href="realizar_devolucao.php"> Realizar Devolução </a>
                 </li>
             </ul>
         </li>
@@ -100,7 +100,7 @@
                     <a href="gerar_multa.php"> Gerar Multa </a>
                 </li>
                 <li>
-                    
+
             </ul>
         </li>
         <li>
