@@ -26,30 +26,30 @@
                             <span class="l l3"></span>
                             <span class="l l4"></span>
                             <span class="l l5"></span>
-                        </div> Sistema de Inventário
+                        </div> ModularAdmin
                     </h1>
                 </header>
                 <div class="auth-content">
-                    <p class="text-center">Identifique-se para entrar!</p>
-                    <form id="login-form" action="../model/LoginService.php" method="POST" novalidate="novalidate">
+                    <p class="text-center">LOGIN TO CONTINUE</p>
+                    <form id="login-form" action="/index.html" method="GET" novalidate="novalidate">
                         <div class="form-group">
-                            <label for="txt_cpf">CPF</label>
-                            <input type="text" class="form-control underlined" name="cpf" id="txt_cpf"
-                                placeholder="000.000.000-00" required=""> </div>
+                            <label for="username">CPF</label>
+                            <input type="email" class="form-control underlined" name="cpf" id="cpf"
+                                placeholder="cpf" required=""> </div>
                         <div class="form-group">
-                            <label for="txt_senha">Senha</label>
-                            <input type="password" class="form-control underlined" name="senha" id="txt_senha"
-                                placeholder="Senha" required=""> </div>
+                            <label for="password">Senha</label>
+                            <input type="password" class="form-control underlined" name="senha" id="senha"
+                                placeholder="Digite sua senha" required=""> </div>
                         <div class="form-group">
-
+                            <a href="reset.html" class="forgot-btn pull-right">Esqueceu a senha?</a>
+                        </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-block btn-primary">Entrar</button>
+                            <button type="submit" class="btn btn-block btn-primary">Login</button>
                         </div>
 
                     </form>
                 </div>
             </div>
-
         </div>
     </div>
     <!-- Reference block for JS -->
