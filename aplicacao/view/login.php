@@ -26,12 +26,12 @@
                             <span class="l l3"></span>
                             <span class="l l4"></span>
                             <span class="l l5"></span>
-                        </div> ModularAdmin
+                        </div> Sistema de Inventário
                     </h1>
                 </header>
                 <div class="auth-content">
-                    <p class="text-center">LOGIN TO CONTINUE</p>
-                    <form id="login-form" action="/index.html" method="GET" novalidate="novalidate">
+                    <p class="text-center">ENTRE PARA CONTINUAR</p>
+                    <form id="login-form" action="../controller/CoordenadorController.php" method="POST" novalidate="novalidate">
                         <div class="form-group">
                             <label for="username">CPF</label>
                             <input type="email" class="form-control underlined" name="cpf" id="cpf"
@@ -44,7 +44,7 @@
                             <a href="reset.html" class="forgot-btn pull-right">Esqueceu a senha?</a>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-block btn-primary">Login</button>
+                            <button type="submit" id="entrar" name="entrar" class="btn btn-block btn-primary">Login</button>
                         </div>
 
                     </form>
