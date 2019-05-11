@@ -62,12 +62,9 @@
                                    </select>
                                 </div>
 
-                                <div class="form-group col-6">
-                                   <label class="control-label">Requerente: </label>
-                                   <input type="text" id="requerente" name="requerente" class="form-control boxed" required>
-                                </div>
 
-                                <div class="form-group col-3">
+
+                                <div class="form-group col-6">
                                    <label class="control-label">Itens:</label>
                                    <select class="form-control boxed" id="itens" name="itens" required >
                                      <option>Selecione</option>
@@ -76,10 +73,7 @@
                                    </select>
                                 </div>
 
-                                <div class="form-group col-3">
-                                   <label class="control-label">Quantidade: </label>
-                                   <input type="number" id="quantidade" name="quantidade" class="form-control boxed" required>
-                                </div>
+
 
                                  <div class="form-group col-3">
                                     <label class="control-label">Data de Empréstimo: </label>
@@ -93,8 +87,9 @@
                                  </div>
                                  <div class="form-group col-12">
                                     <label class="control-label">Observação: </label>
-                                    <input type="text" id="quantidade" name="quantidade" class="form-control boxed" required>
+                                    <input type="text" id="Observação" name="observação" class="form-control boxed" required>
                                  </div>
+
                                  </fieldset>
 
 
@@ -107,8 +102,10 @@
                                <div class="col-11" align="end">
                                  <input type="submit" id="salvar" name="salvar"  class="btn btn-primary" value="Salvar">
                                  <input type="reset" class="btn btn-success" value="Novo"/>
+                                 <input type="button" class="btn btn-warning"" value="Mais"/>
 
-                                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">
+
+                                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal">
                                   Imprimir
                                 </button>
 

@@ -52,7 +52,7 @@
                                  <hr>
                               </div>
                               <form role="form" class="row" id="formulario" name="formulario" method="POST">
-                                
+
 
                                 <div class="col-md-2">
 
@@ -75,11 +75,9 @@
 
                                 </div>
                                 <div class="col-md-2">
-                                  <img src="luana.jpg" class=" img-thumbnail rounded-circle img-fluid" >
+                                  <img src="luana.jpg" class=" img-thumbnail rounded-circle img-fluid"  >
                                   <label>Luana Queiros </label>
-
                                 </div>
-
                                  </fieldset>
 
 
