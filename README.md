@@ -4,5 +4,5 @@
 
 
 ### Autores
-| [<img src="https://avatars.githubusercontent.com/brunoqualhato?s=115"><br><sub>Bruno Qualhato</sub>](https://github.com/brunoqualhato) |[<img src="https://avatars.githubusercontent.com/brunogeovane?s=115"><br><sub>Bruno Geovane</sub>](https://github.com/brunogeovane) | [<img src="https://avatars.githubusercontent.com/Gilson060698?s=115"><br><sub>Gilson Soares</sub>](https://github.com/Gilson060698) | [<img src="https://avatars.githubusercontent.com/jonatas-rezende?s=115"><br><sub>Jonatas Rezende</sub>](https://github.com/jonatas-rezende) | [<img src="https://avatars.githubusercontent.com/LuanaQ?s=115"><br><sub>Luana Queiros</sub>](https://github.com/LuanaQ)
+| [<img src="https://avatars0.githubusercontent.com/u/28969764?s=460&v=4"><br><sub>Bruno Geovane</sub>](https://github.com/brunogeovane) |[<img src="https://avatars1.githubusercontent.com/u/42013717?s=460&v=4"><br><sub>Gustavo Faquim</sub>](https://github.com/faquimgustavo) | [<img src="https://avatars1.githubusercontent.com/u/49327140?s=460&v=4"><br><sub>Ricardo Takayuki</sub>](https://github.com/ricardotakayuki) 
 |:-:|:-:|:-:|:-:|:-:
