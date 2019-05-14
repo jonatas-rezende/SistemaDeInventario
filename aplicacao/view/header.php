@@ -75,7 +75,7 @@
                         <i class="fa fa-user icon"></i> Perfil </a>
                     <a class="dropdown-item" href="#">
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="login.html">
+                    <a class="dropdown-item" href="login.php">
                         <i class="fa fa-power-off icon"></i> Sair </a>
                 </div>
             </li>
