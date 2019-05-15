@@ -136,7 +136,7 @@ public function inserir() {
             $stmt->bindValue(':cpf',$this->coordenador['cpf']);
             $stmt->bindValue(':senha',md5($this->coordenador['senha']));
             $stmt->execute();
-            return $stmt->rowCount();
+            return $stmt->fetch(PDO::FETCH_OBJ);
 
         } catch (PDOException $e) {
             echo $e->getMessage();
