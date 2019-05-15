@@ -11,7 +11,7 @@ if(isset($_POST['entrar'])){ //verifica se o botao de logar foi submetido
 
 	$oLoginService = new Coordenador($banco,$formulario_login);
 	$dados = $oLoginService->login();
-	if (count($dados) > '1'){
+	if (count($dados)){ //corrigir isso depois
 		$_SESSION['dados_usuario'] = $dados;
 		header('Location: ../view/index.php');
 	//	exit();
