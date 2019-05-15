@@ -4,10 +4,10 @@ class DB {
 	static function getInstance(){
 		if(!isset(self::$instance))	{
 			try{
-				self::$instance = new PDO("mysql:host=localhost;dbname=sistema_inventario", 'root', "123456789");
+				self::$instance = new PDO("mysql:host=localhost;dbname=sistema_inventario", 'root', "1");
 				self::$instance->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 				self::$instance->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
-				verificaSessao();
+			//	verificaSessao();
 			} catch (PDOException $e){
 				echo $e->getMessage();
 			}
