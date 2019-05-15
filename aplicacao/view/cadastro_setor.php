@@ -50,7 +50,14 @@
                                  <h2 class="title"> Cadastro de Setor</h2>
                                  <hr>
                               </div>
-                              <form role="form" class="row" id="formulario" name="formulario" method="POST">
+                              <?php if (isset($_GET['salvo'])) {
+                                  echo <<<EOT
+                                        <div class='alert alert-success' role='alert'>
+                                                 Salvo com Sucesso!!
+                                                   </div>
+EOT;
+                              }?>
+                              <form role="form" class="row" id="formulario" name="formulario" method="POST" action="../controller/SetorController.php">
 
                                  <div class="form-group col-6">
                                     <label class="control-label">Setor: </label>
@@ -64,11 +71,12 @@
 
                                  <div class="form-group col-4">
                                     <label class="control-label">Coordenador:</label>
-                                    <select class="form-control boxed" id="sexo" name="sexo" >
-                                      <option>Selecione</option>
-                                      <option>Ana</option>
-                                      <option>Bob</option>
-                                      <option>Pedro</option>
+                                    <select class="form-control boxed" id="coordenador" name="coordenador" >
+                                      <?php require_once '../controller/SetorController.php';?>
+                                      <option value="">Selecione</option>
+                                      <?php foreach (listaDeCoordenadores() as $lista){?>
+                                      <option value="<?=$lista->id_coordenador ?>"><?=$lista->nome ?></option>
+                                     <?php }?>
                                     </select>
                                  </div>
                                  </fieldset>
@@ -106,14 +114,17 @@
                                                           </thead>
 
                                                           <tbody>
-                                                                  <td>1</td>
-                                                                  <td>Núcleo de T.I</td>
-                                                                  <td>1234</td>
-                                                                  <td>José da Silva</td>
+                                                          <?php foreach (listarSetores() as $setores) {?>
+                                                                  <td><?= $setores->nome ?></td>
+                                                                  <td><?= $setores->nome ?></td>
+                                                                  <td><?= $setores->ramal_telefonico ?></td>
+                                                                  <td><?= $setores->coordenador ?></td>
                                                                   <td><button type="button" class="btn btn-success">Editar</button>
                                                                        <button type="button" class="btn btn-danger">Excluir</button>
                                                                   </td>
+                                                                 
                                                           </tbody>
+                                                           <?php }?>
                                                       </table>
                                                   </div>
                                               </section>
