@@ -108,7 +108,7 @@
             <i class="fa fa-file-text-o"></i> Sobre </a>
         </li>
         <li>
-            <a href="#">
+            <a href="../controller/logout.php">
             <i class="fa fa-power-off icon"></i> Sair </a>
         </li>
 
