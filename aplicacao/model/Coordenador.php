@@ -62,16 +62,10 @@ public function inserir() {
 
             try {
 
-                $sql = 'SELECT p.nome, p.CPF, p.telefone, p.email, p.sexo, p.endereco, ci.nome AS cidade, 
-                e.nome AS estado, status, senha
-                FROM coordenadores co
-                INNER JOIN pessoas p ON co.id_pessoa = p.id_pessoa
-                INNER JOIN cidades ci ON p.id_cidade = ci.id_cidade
-                INNER JOIN estados e ON ci.id_estado = e.id_estado
-                WHERE status <> 0';
+                $sql = 'SELECT * from pessoas INNER JOIN coordenadores on pessoas.id_pessoa = coordenadores.id_pessoa';
                 $stmt = $this->conexao->prepare($sql);
                 $stmt->execute();
-                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+                return $stmt->fetchAll(PDO::FETCH_OBJ);
 
             } catch (PDOException $e) {
                 echo $e->getMessage();
