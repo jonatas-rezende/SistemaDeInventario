@@ -1,5 +1,5 @@
 <?php 
-
+require_once '../controller/DB.php';
 	class Setor{
 
         private $conexao;
@@ -17,8 +17,8 @@
             $this->$atributo = $valor;
         }
 
-        public function __construct(Conexao $conexao, Setor $setor) {
-            $this->conexao = $conexao->conectar();
+        public function __construct($conexao,$setor) {
+            $this->conexao = $conexao;
             $this->setor = $setor;
         }
 
