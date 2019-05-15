@@ -1,46 +1,47 @@
 <?php 
 
-	require_once 'Pessoa.php';
+require_once 'Pessoa.php';
+require_once '../controller/DB.php';
 
-	class Coordenador extends Pessoa{
+class Coordenador extends Pessoa{
 
-		private $conexao;
-		private $coordenador;
+  private $conexao;
+  private $coordenador;
 
-		private $idPessoa;
-		private $status;
-		private $senha;
+  private $idPessoa;
+  private $status;
+  private $senha;
 
-		public function __get($atributo) {
-		    return $this->$atributo;
-		}
+  public function __get($atributo) {
+      return $this->$atributo;
+  }
 
-		public function __set($atributo, $valor) {
-		    $this->$atributo = $valor;
-		}
+  public function __set($atributo, $valor) {
+      $this->$atributo = $valor;
+  }
 
-	    public function __construct(Conexao $conexao, $coordenador) {
-            $this->conexao = $conexao->conectar();
-            $this->coordenador = $coordenador;
-        }
+  public function __construct($conexao, $coordenador) {
+    $this->conexao = $conexao;
+    $this->coordenador = $coordenador;
+}
 
-        public function inserir() {
+public function inserir() {
 
-            try {
+    try {
 
-                $sql = 'INSERT INTO pessoas (nome, CPF, telefone, email, sexo, endereco, id_cidade) 
-                        VALUES (?,?,?,?,?,?,?)';
-                $stmt = $this->conexao->prepare($sql);
-                $stmt->bindValue(1, $this->coordenador['nome']);
-                $stmt->bindValue(2, $this->coordenador['CPF']);
-                $stmt->bindValue(3, $this->coordenador['telefone']);
-                $stmt->bindValue(4, $this->coordenador['email']);
-                $stmt->bindValue(5, $this->coordenador['sexo']);
-                $stmt->bindValue(6, $this->coordenador['endereco']);
-                $stmt->bindValue(7, $this->coordenador['id_cidade']);
-                $stmt->execute();
+        $sql = 'INSERT INTO pessoas (nome, CPF, telefone, email, sexo, endereco, id_cidade) 
+        VALUES (?,?,?,?,?,?,?)';
+        $stmt = $this->conexao->prepare($sql);
+        $stmt->bindValue(1, $this->coordenador['nome']);
+        $stmt->bindValue(2, $this->coordenador['CPF']);
+        $stmt->bindValue(3, $this->coordenador['telefone']);
+        $stmt->bindValue(4, $this->coordenador['email']);
+        $stmt->bindValue(5, $this->coordenador['sexo']);
+        $stmt->bindValue(6, $this->coordenador['endereco']);
+        $stmt->bindValue(7, $this->coordenador['id_cidade']);
+        $stmt->execute();
 
-                $sql1 = 'INSERT INTO coordenadores (id_coordenador, id_pessoa, status, senha) VALUES (?,?,?,?)';  
+        $sql1 = 'INSERT INTO coordenadores (id_coordenador, id_pessoa, status, senha) VALUES (?,?,?,?)';  
 
                 $status = 1; //como está sendo cadastrado, já será ativado
 
@@ -62,12 +63,12 @@
             try {
 
                 $sql = 'SELECT p.nome, p.CPF, p.telefone, p.email, p.sexo, p.endereco, ci.nome AS cidade, 
-                               e.nome AS estado, status, senha
-                        FROM coordenadores co
-                        INNER JOIN pessoas p ON co.id_pessoa = p.id_pessoa
-                        INNER JOIN cidades ci ON p.id_cidade = ci.id_cidade
-                        INNER JOIN estados e ON ci.id_estado = e.id_estado
-                        WHERE status <> 0';
+                e.nome AS estado, status, senha
+                FROM coordenadores co
+                INNER JOIN pessoas p ON co.id_pessoa = p.id_pessoa
+                INNER JOIN cidades ci ON p.id_cidade = ci.id_cidade
+                INNER JOIN estados e ON ci.id_estado = e.id_estado
+                WHERE status <> 0';
                 $stmt = $this->conexao->prepare($sql);
                 $stmt->execute();
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -82,8 +83,8 @@
             try {
 
                 $sql = 'UPDATE pessoas 
-                        SET nome = ?, CPF = ?, telefone = ?, email = ?, sexo = ?, endereco = ?, id_cidade = ?
-                        WHERE id_pessoa = ?';
+                SET nome = ?, CPF = ?, telefone = ?, email = ?, sexo = ?, endereco = ?, id_cidade = ?
+                WHERE id_pessoa = ?';
                 $stmt = $this->conexao->prepare($sql);
                 $stmt->bindValue(1, $this->coordenador['nome']);
                 $stmt->bindValue(2, $this->coordenador['CPF']);
@@ -96,8 +97,8 @@
                 $stmt->execute();
 
                 $sql1 = 'UPDATE coordenadores 
-                        SET status = ?, senha = ?
-                        WHERE id_coordenador = ?';
+                SET status = ?, senha = ?
+                WHERE id_coordenador = ?';
                 $stmt1 = $this->conexao->prepare($sql);
                 $stmt1->bindValue(1, $this->coordenador['status']);
                 $stmt1->bindValue(2, $this->coordenador['senha']);
@@ -120,12 +121,31 @@
                 $sql = 'UPDATE coordenadores SET status = ? WHERE id_coordenador = ?';
                 $stmt = $this->conexao->prepare($sql);
                 $stmt->bindValue(1, $status);
-                $stmt->bindValue(2, $this->coordenador['id_coordenador']);
+                $stmt->bindValue(2, $this->coordenador['id_coordenado']);
                 return $stmt->execute();
 
             } catch (PDOException $e) {
                 echo $e->getMessage();
             }
         }        
-	}
- ?>
+
+        function login(){
+           try {
+            $sql = "select * from pessoas INNER JOIN coordenadores ON coordenadores.senha = :senha and pessoas.cpf = :cpf";
+            $stmt = $this->conexao->prepare($sql);
+            $stmt->bindValue(':cpf',$this->coordenador['cpf']);
+            $stmt->bindValue(':senha',md5($this->coordenador['senha']));
+            $stmt->execute();
+            return $stmt->rowCount();
+
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+
+
+
+    }
+}
+
+
+?>

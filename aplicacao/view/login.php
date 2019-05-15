@@ -31,10 +31,10 @@
                 </header>
                 <div class="auth-content">
                     <p class="text-center">ENTRE PARA CONTINUAR</p>
-                    <form id="login-form" action="../controller/CoordenadorController.php" method="POST" novalidate="novalidate">
+                    <form id="login" action="../controller/CoordenadorController.php" method="POST" novalidate="novalidate">
                         <div class="form-group">
                             <label for="username">CPF</label>
-                            <input type="email" class="form-control underlined" name="cpf" id="cpf"
+                            <input type="text" class="form-control underlined" name="cpf" id="cpf"
                                 placeholder="cpf" required=""> </div>
                         <div class="form-group">
                             <label for="password">Senha</label>
