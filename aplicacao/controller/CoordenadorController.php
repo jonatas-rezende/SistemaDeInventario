@@ -10,9 +10,9 @@ if(isset($_POST['entrar'])){ //verifica se o botao de logar foi submetido
 	$banco = DB::getInstance();
 
 	$oLoginService = new Coordenador($banco,$formulario_login);
-
-	if ($oLoginService->login() == '1'){
-		$_SESSION['dados_usuario'] = $formulario_login;
+	$dados = $oLoginService->login();
+	if (count($dados) > '1'){
+		$_SESSION['dados_usuario'] = $dados;
 		header('Location: ../view/index.php');
 	//	exit();
 	} else{
