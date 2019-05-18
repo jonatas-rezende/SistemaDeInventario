@@ -21,11 +21,12 @@ if (isset($_POST['salvar'])) {
    }
 }
 
-function listaDeCoordenadores() {
-    $listagem = new Coordenador(DB::getInstance(), array());
-    return $listagem->listar();
-}
 
+
+function listaDeCoordenadores() {
+    $oCoordenador = new Coordenador(DB::getInstance(), null);
+    return $oCoordenador->listar();
+}
 function listarSetores() {
     $setores = new Setor(DB::getInstance(), array());
     return  $setores->listar();
