@@ -16,8 +16,8 @@
             $this->$atributo = $valor;
         }       
 
-        public function __construct(Conexao $conexao, $cidade) {
-            $this->conexao = $conexao->conectar();
+        public function __construct($conexao, $cidade) {
+            $this->conexao = $conexao;
             $this->cidade = $cidade;
         }
 
@@ -75,7 +75,7 @@
 
                 $sql = 'DELETE FROM cidades WHERE id_cidade = ?';
                 $stmt = $this->conexao->prepare($sql);
-                $stmt->bindValue(1, $this->cidade['id_cidade');
+                $stmt->bindValue(1, $this->cidade['id_cidade']);
                 return $stmt->execute();
 
             } catch (PDOException $e) {
