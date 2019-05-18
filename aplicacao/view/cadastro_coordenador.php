@@ -43,14 +43,18 @@
                   <section class="section">
 
                      <div class="row">
-
+  							<?php if (isset($_GET['salvo'])) {?>                     
+                                        <div class='alert alert-success' role='alert'>
+                                                 Salvo com Sucesso!!
+                                                   </div>
+                            <?php }?>
                         <div class="col-md-12">
                            <div class="row card card-block sameheight-item">
                               <div class="title-block">
                                  <h2 class="title"> Cadastro de Coordenador </h2>
                                  <hr>
                               </div>
-                              <form role="form" class="row" id="formulario" name="formulario" method="POST">
+                              <form role="form" class="row" id="formulario" name="formulario" method="POST" action="../controller/CoordenadorController.php">
 
                                  <div class="form-group col-6">
                                     <label class="control-label">Nome: </label>
@@ -76,9 +80,9 @@
                                  <div class="form-group col-2">
                                     <label class="control-label">Sexo:</label>
                                     <select class="form-control boxed" id="sexo" name="sexo" >
-                                      <option>Selecione</option>
-                                      <option>Masculino</option>
-                                      <option>Feminino</option>
+                                      <option value="">Selecione</option>
+                                      <option value="M">Masculino</option>
+                                      <option value="F">Feminino</option>
                                     </select>
                                  </div>
 
@@ -91,10 +95,16 @@
                                     <label class="control-label">Email:</label>
                                     <input type="email" id="email" name="email" class="form-control boxed">
                                  </div>
-
+									
+									<?php require_once '../controller/CoordenadorController.php';?>
                                  <div class="form-group col-6">
                                    <label class="control-label">Cidade: </label>
-                                   <input type="text" id="cidade" name="cidade"  class="form-control boxed">
+                                 	<select class="form-control boxed" name="cidade" id="cidade">
+                                 		<option value="">Selecione</option>
+                                 		<?php foreach (listaCidades() as $cidades){?>
+                                 		<option id="<?= $cidades->id_cidade; ?>" value="<?= $cidades->id_cidade; ?>"><?= $cidades->nome;?></option>
+                                 		<?php }?>
+                                 	</select>
                                 </div>
                                 <div class="form-group col-3">
                                   <label class="control-label">Senha: </label>
@@ -113,6 +123,7 @@
                                    <input type="submit" id="salvar" name="salvar"  class="btn btn-primary" value="Salvar">
                                    <input type="reset" class="btn btn-success" value="Novo"/>
                                  </div>
+                                 <?php if (listaCoordenadres() != null) {?>
                                  
                               <div class="col-md-12">
                                       <div class="card">
@@ -137,25 +148,27 @@
                                                               </tr>
                                                           </thead>
 
+														<?php foreach (listaCoordenadres() as $coordenadores){?>	
                                                           <tbody>
-                                                          <td>1</td>
-                                                                <td>Ana Maria</td>
-                                                                <td>999.999.999-99</td>
-                                                                <td>(62) 3307-2512</td>
-                                                                <td>anamaria@email.com</td>
-                                                                <td>Ceres</td>
+                                                          		<td><?= $coordenadores->id_pessoa;?></td>
+                                                                <td><?= $coordenadores->nome;?></td>
+                                                                <td><?= $coordenadores->CPF;?></td>
+                                                                <td><?= $coordenadores->telefone;?></td>
+                                                                <td><?= $coordenadores->email;?></td>
+                                                                <td><?= $coordenadores->id_cidade;?></td>
                                                                 <td><button type="button" class="btn btn-success">Editar</button>
                                                                     <button type="button" class="btn btn-danger">Excluir</button>
                                                                 </td>
                                                           </tbody>
+                                                        	<?php }?>
                                                       </table>
                                                   </div>
                                               </section>
                                           </div>
                                       </div>
                                   </div>
+                                  <?php }?>
                               </form>
-
                            </div>
                         </div>
                      </div>
