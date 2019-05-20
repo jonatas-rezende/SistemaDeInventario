@@ -44,7 +44,7 @@
 
                      <div class="row">
 
-                        <div class="col-md-12">
+                <div class="col-md-12">
                            <div class="row card card-block sameheight-item">
                               <div class="title-block">
                                  <h2 class="title"> Cadastro de Setor</h2>
@@ -120,7 +120,7 @@ EOT;
                                                                   <td><?= $setores->ramal_telefonico ?></td>
                                                                   <td><?= $setores->coordenador ?></td>
                                                                   <td><button type="button" class="btn btn-success">Editar</button>
-                                                                       <button type="button" class="btn btn-danger">Excluir</button>
+                                                                  <button type="botton" class="btn btn-danger" name="idsetor" value="<?php echo $setores->id_setor ?>">Apagar</button>
                                                                   </td>
                                                                  
                                                           </tbody>

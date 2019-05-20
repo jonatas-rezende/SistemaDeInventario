@@ -21,6 +21,12 @@ if (isset($_POST['salvar'])) {
    }
 }
 
+if (isset($_POST['idsetor'])) {
+   
+    $delete = new Setor();
+    $delete->deletar($_POST['idsetor']);
+    header("Location: ../view/cadastro_setor.php");
+   }
 
 
 function listaDeCoordenadores() {
@@ -31,5 +37,7 @@ function listarSetores() {
     $setores = new Setor(DB::getInstance(), array());
     return  $setores->listar();
 }
+
+
 
 ?>

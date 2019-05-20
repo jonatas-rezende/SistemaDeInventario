@@ -1,6 +1,6 @@
 <?php 
 require_once '../controller/DB.php';
-	class Setor{
+	class Setor {
 
         private $conexao;
         private $setor;
@@ -17,7 +17,7 @@ require_once '../controller/DB.php';
             $this->$atributo = $valor;
         }
 
-        public function __construct($conexao,$setor) {
+       public function __construct($conexao,$setor) {
             $this->conexao = $conexao;
             $this->setor = $setor;
         }
@@ -73,14 +73,13 @@ require_once '../controller/DB.php';
             }
         }
         
-        public function deletar() {
-
-            try {
-
-                $sql = 'DELETE FROM setores WHERE id_setor = ?';
-                $stmt = $this->conexao->prepare($sql);
-                $stmt->bindValue(1, $this->setor['id_setor']);
-                return $stmt->execute();
+        public function deletar($idsetor) {
+            
+            try {  
+                $sql = "delete from setores where id_setor = :idsetor";
+                $stmt = DB::prepare($sql);
+                $stmt->bindParam(':idsetor', $idsetor);
+                $stmt->execute();	
 
             } catch (PDOException $e) {
                 echo $e->getMessage();
