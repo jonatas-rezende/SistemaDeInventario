@@ -62,7 +62,7 @@ public function inserir() {
 
             try {
 
-                $sql = 'SELECT p.nome, p.CPF, p.telefone, p.email, p.sexo, p.endereco, ci.nome AS cidade, 
+                $sql = 'SELECT p.id_pessoa, p.nome, p.CPF, p.telefone, p.email, p.sexo, p.endereco, ci.nome AS cidade, 
                 e.nome AS estado, status, senha
                 FROM coordenadores co
                 INNER JOIN pessoas p ON co.id_pessoa = p.id_pessoa
