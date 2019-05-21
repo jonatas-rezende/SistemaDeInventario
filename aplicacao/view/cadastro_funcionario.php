@@ -57,13 +57,13 @@
                                     <input type="text" id="nome" name="nome" required="required" class="form-control boxed" autofocus>
                                  </div>
 
-                                 <div class="form-group col-2">
+                                 <div class="form-group col-3">
                                     <label class="control-label">CPF: </label>
                                     <input type="text" id="cpf" name="cpf" required="required" class="form-control boxed" placeholder="">
 
                                  </div>
 
-                                 <div class="form-group col-4">
+                                 <div class="form-group col-3">
                                     <label class="control-label">Telefone: </label>
                                     <input type="text" id="telefone" name="telefone" class="form-control boxed">
                                  </div>
@@ -87,12 +87,8 @@
                                     <input type="text" id="endereco" name="endereco" class="form-control boxed">
                                  </div>
 
-                                 <div class="form-group col-6">
-                                    <label class="control-label">Email:</label>
-                                    <input type="email" id="email" name="email" class="form-control boxed">
-                                 </div>
-
-                                 <div class="form-group col-6">
+                                 
+                                 <div class="form-group col-5">
                                    <label class="control-label">Cidade: </label>
                                    <input type="text" id="cidade" name="cidade"  class="form-control boxed">
                                 </div>
@@ -106,7 +102,7 @@
                                    </select>
                                 </div>
 
-                               <div class="form-group col-6">
+                               <div class="form-group col-3">
                                  <label class="control-label">Horário de atendimento: </label>
                                  <input type="text" id="horario" name="Horario"  class="form-control boxed">
                               </div>

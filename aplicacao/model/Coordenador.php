@@ -123,7 +123,7 @@ public function inserir() {
             }
         }        
 
-        function login(){
+        public function login(){
            try {
             $sql = "select * from pessoas INNER JOIN coordenadores ON coordenadores.senha = :senha and pessoas.cpf = :cpf";
             $stmt = $this->conexao->prepare($sql);
@@ -134,6 +134,7 @@ public function inserir() {
 
         } catch (PDOException $e) {
             echo $e->getMessage();
+            echo $e->getLine();
         }
 
 

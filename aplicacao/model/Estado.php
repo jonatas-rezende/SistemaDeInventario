@@ -15,8 +15,8 @@
 	        $this->$atributo = $valor;
 	    }
 
-	    public function __construct(Conexao $conexao, $estado) {
-            $this->conexao = $conexao->conectar();
+	    public function __construct($conexao, $estado) {
+            $this->conexao = $conexao;
             $this->estado = $estado;
         }
 

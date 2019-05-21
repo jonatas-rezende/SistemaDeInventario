@@ -9,9 +9,9 @@ if(isset($_POST['entrar'])){ //verifica se o botao de logar foi submetido
         'cpf' => $_POST['cpf'], //adiciono no array o cpf
         'senha'=> $_POST['senha']//seguido pela senha
     );
-	$banco = DB::getInstance();
+	
 
-	$oLoginService = new Coordenador($banco,$formulario_login);
+	$oLoginService = new Coordenador(DB::getInstance(),$formulario_login);
 	$dados = $oLoginService->login();// chama o metodo do login
 	if ($dados != null){ //verifica se não está nulo
 	    session_start();//inicia a sessão
@@ -53,6 +53,5 @@ function listaCoordenadres() {
     $oCoordenador = new Coordenador(DB::getInstance(), null);
     return $oCoordenador->listar();
 }
-
 
 ?>
