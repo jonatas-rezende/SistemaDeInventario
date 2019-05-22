@@ -156,8 +156,8 @@ class Coordenador extends Pessoa{
             INNER JOIN cidades ci ON p.id_cidade = ci.id_cidade
             INNER JOIN estados e ON ci.id_estado = e.id_estado
             WHERE id_coordenador = ?';
-            $stmt->bindValue(1, $this->coordenador['id_coordenador']);
             $stmt = $this->conexao->prepare($sql);
+            $stmt->bindValue(1, $this->coordenador['id_coordenador']);
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);
 

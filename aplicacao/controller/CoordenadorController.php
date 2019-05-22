@@ -44,6 +44,15 @@ if (isset($_POST['salvar'])) {
     }
 }
 
+if(isset($_POST['excluir_registro'])){
+    $oCoordenador = new Coordenador(DB::getInstance(), array("id_coordenador" => $_POST['id_exclusao']));
+   if($oCoordenador->deletar()){
+    header("Location: ../view/cadastro_coordenador.php?excluir=true");
+}else{
+    //eita
+}
+}
+
 function listaCidades(){
     $oCidade = new Cidade(DB::getInstance(), null);
     return $oCidade->listar();

@@ -1,4 +1,5 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html class="no-js" lang="pt-br">
 
 <head>
@@ -47,6 +48,10 @@
                         <?php if (isset($_GET['salvo'])) {?>
                         <div class='alert alert-success' role='alert'>
                             Salvo com Sucesso!!
+                        </div>
+                        <?php } else if(isset($_GET['excluir'])){?>
+                        <div class='alert alert-success' role='alert'>
+                            Registro Excluido !!
                         </div>
                         <?php }?>
                         <div class="col-md-12">
@@ -144,7 +149,7 @@
                                                             class="table table-striped table-bordered table-hover table-overflow">
                                                             <thead>
                                                                 <tr>
-                                                                    <th>#</th>
+
                                                                     <th>Nome</th>
                                                                     <th>CPF</th>
                                                                     <th>Telefone</th>
@@ -156,18 +161,22 @@
 
                                                             <?php foreach (listaCoordenadres() as $coordenadores){?>
                                                             <tbody>
-                                                                <td><?= $coordenadores->id_pessoa;?></td>
-                                                                <td><?= $coordenadores->nome;?></td>
-                                                                <td><?= $coordenadores->CPF;?></td>
-                                                                <td><?= $coordenadores->telefone;?></td>
-                                                                <td><?= $coordenadores->email;?></td>
-                                                                <td><?= $coordenadores->cidade;?></td>
-                                                                <td><button type="button" class="btn btn-success"
-                                                                        data-toggle="modal"
-                                                                        data-target="#modal_atualizar">Editar</button>
-                                                                    <button type="button" id="btn_excluir" name="btn_excluir"
-                                                                        class="btn btn-danger" data-idparaexclusao="<?= $coordenadores->id_pessoa;?>" data-toggle="modal" data-target="#modal_excluir">Excluir</button>
-                                                                </td>
+                                                                <tr data-id="<?= $coordenadores->id_pessoa;?>">
+                                                                    <td><?= $coordenadores->nome;?></td>
+                                                                    <td><?= $coordenadores->CPF;?></td>
+                                                                    <td><?= $coordenadores->telefone;?></td>
+                                                                    <td><?= $coordenadores->email;?></td>
+                                                                    <td><?= $coordenadores->cidade;?></td>
+                                                                    <td><button type="button" class="btn btn-success"
+                                                                            data-toggle="modal"
+                                                                            data-target="#modal_atualizar">Editar</button>
+                                                                        <button type="button" name="btn_excluir"
+                                                                            class="btn_excluir btn btn-danger"
+                                                                            data-toggle="modal"
+                                                                            data-target="#modal_excluir">Excluir</button>
+                                                                    </td>
+                                                                </tr>
+
                                                             </tbody>
                                                             <?php }?>
                                                         </table>
@@ -200,36 +209,36 @@
                 <!-- Modal body -->
                 <div class="modal-body">
                     <div class="col-12">
-                        <form role="form" class="row" id="formulario" name="formulario" method="POST"
+                        <form role="form" class="row" id="formulario_modal" name="formulario" method="POST"
                             action="../controller/CoordenadorController.php">
 
                             <div class="form-group col-6">
                                 <label class="control-label">Nome: </label>
-                                <input type="text" id="nome" name="nome" required="required" class="form-control boxed"
-                                    autofocus>
+                                <input type="text" id="nome_modal" name="nome_modal" required="required"
+                                    class="form-control boxed" autofocus>
                             </div>
 
                             <div class="form-group col-2">
                                 <label class="control-label">CPF: </label>
-                                <input type="text" id="cpf" name="cpf" required="required" class="form-control boxed"
-                                    placeholder="">
+                                <input type="text" id="cpf_modal" name="cpf_modal" required="required"
+                                    class="form-control boxed" placeholder="">
 
                             </div>
 
                             <div class="form-group col-4">
                                 <label class="control-label">Telefone: </label>
-                                <input type="text" id="telefone" name="telefone" class="form-control boxed">
+                                <input type="text" id="telefone_modal" name="telefone_modal" class="form-control boxed">
                             </div>
 
                             <div class="form-group col-4">
                                 <label class="control-label">E-mail: </label>
-                                <input type="email" pattern="[^ @]*@[^ @]*" id="email" name="email"
+                                <input type="email" pattern="[^ @]*@[^ @]*" id="email_modal" name="email_modal"
                                     class="form-control boxed">
                             </div>
 
                             <div class="form-group col-2">
                                 <label class="control-label">Sexo:</label>
-                                <select class="form-control boxed" id="sexo" name="sexo">
+                                <select class="form-control boxed" id="sexo_modal" name="sexo_modal">
                                     <option value="">Selecione</option>
                                     <option value="M">Masculino</option>
                                     <option value="F">Feminino</option>
@@ -238,14 +247,14 @@
 
                             <div class="form-group col-6">
                                 <label class="control-label">Endereço: </label>
-                                <input type="text" id="endereco" name="endereco" class="form-control boxed">
+                                <input type="text" id="endereco_modal" name="endereco_modal" class="form-control boxed">
                             </div>
 
 
 
                             <div class="form-group col-4">
                                 <label class="control-label">Cidade: </label>
-                                <select class="form-control boxed" name="cidade" id="cidade">
+                                <select class="form-control boxed" name="cidade_modal" id="cidade_modal">
                                     <option value="">Selecione</option>
                                     <?php foreach (listaCidades() as $cidades){?>
                                     <option id="<?= $cidades->id_cidade; ?>" value="<?= $cidades->id_cidade; ?>">
@@ -255,7 +264,7 @@
                             </div>
                             <div class="form-group col-4">
                                 <label class="control-label">Senha: </label>
-                                <input type="password" id="senha" name="senha" class="form-control boxed">
+                                <input type="password" id="senha_modal" name="senha_modal" class="form-control boxed">
                             </div>
                             </fieldset>
 
@@ -267,8 +276,9 @@
 </div>
 --->
                             <div class="col-11" align="end">
-                                <input type="submit" id="atualizar" name="atualizar" class="btn btn-primary" value="Atualizar">
-                             
+                                <input type="submit" id="atualizar_modal" name="atualizar_modal" class="btn btn-primary"
+                                    value="Atualizar">
+
                             </div>
                         </form>
                     </div>
@@ -283,26 +293,27 @@
         </div>
     </div>
 
-<!-- Modal -->
-<div class="modal fade" id="modal_excluir" tabindex="-1" role="dialog" aria-labelledby="modal_excluirLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="modal_excluirLabel">ATENÇÃO</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Deseja realmente excluir?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-        <button type="button" class="btn btn-danger" onclick="excluirComModal(this)">Excluir</button>
-      </div>
+    <!-- Modal -->
+    <div class="modal fade" id="modal_excluir" tabindex="-1" role="dialog" aria-labelledby="modal_excluirLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal_excluirLabel">ATENÇÃO</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Deseja realmente excluir?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-danger" onclick="excluir()">Excluir</button>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
     <!-- Reference block for JS -->
     <div class="ref" id="ref">
         <div class="color-primary"></div>
@@ -315,7 +326,25 @@
     <script src="../assets/js/app.js"></script>
 </body>
 <script>
-    
+var id = 0;
+$('.btn_excluir').click(function() {
+   id = $(this).parents('tr').data('id');
+});
 
+function excluir() {
+
+    $.ajax({
+        type: 'POST',
+        url: '../controller/CoordenadorController.php',
+        data: {
+            'excluir_registro': 'sim',
+            'id_exclusao': id // <-- the $ sign in the parameter name seems unusual, I would avoid it
+        },
+        success: function(msg) {
+          location.href = "../view/cadastro_coordenador.php?excluir=true";
+        }
+    });
+}
 </script>
+
 </html>
