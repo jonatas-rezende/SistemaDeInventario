@@ -4,6 +4,7 @@
 
 		private $conexao;
 		private $devolucao;
+        private $itens_devolucao;
 
 		private $idEmprestimo;
 		private $data;
@@ -17,9 +18,10 @@
 		    $this->$atributo = $valor;
 		}		
 
-		public function __construct(Conexao $conexao, $devolucao) {
-            $this->conexao = $conexao->conectar();
+		public function __construct($conexao, $devolucao, $itens_devolucao) {
+            $this->conexao = $conexao;
             $this->coordenador = $devolucao;
+            $this->itens_devolucao = $itens_devolucao;
         }
 
         public function inserir() {

@@ -91,7 +91,9 @@ EOT;
                                  <div class="col-11" align="end">
                                    <input type="submit" id="salvar" name="salvar"  class="btn btn-primary" value="Salvar">
                                    <input type="reset" class="btn btn-success" value="Novo"/>
-                                 </div>
+                                 </div></form>
+                                                               <form role="form" class="row" id="formulario2" name="formulario2" method="POST" action="../controller/SetorController.php">
+
                               <div class="col-md-12">
                                       <div class="card">
                                           <div class="card-block">
@@ -120,7 +122,30 @@ EOT;
                                                                   <td><?= $setores->ramal_telefonico ?></td>
                                                                   <td><?= $setores->coordenador ?></td>
                                                                   <td><button type="button" class="btn btn-success">Editar</button>
-                                                                  <button type="botton" class="btn btn-danger" name="idsetor" value="<?php echo $setores->id_setor ?>">Apagar</button>
+                                                                  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalExemplo">
+  Apagar
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="modalExemplo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Atenção</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Deseja realmente excluir?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        <button type="botton" class="btn btn-danger" name="idsetor" value="<?php echo $setores->id_setor ?>">Excluir</button>
+      </div>
+    </div>
+  </div>
+</div></tbody>
                                                                   </td>
                                                                  
                                                           </tbody>
