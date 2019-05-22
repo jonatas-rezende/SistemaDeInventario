@@ -62,7 +62,7 @@ class Coordenador extends Pessoa{
 
             try {
 
-                $sql = 'SELECT p.id_pessoa, p.nome, p.CPF, p.telefone, p.email, p.sexo, p.endereco, ci.nome AS cidade, 
+                $sql = 'SELECT p.id_pessoa, p.nome, p.CPF, p.telefone, p.email, p.sexo, p.endereco, ci.nome AS cidade,
                 e.nome AS estado, status, senha
                 FROM coordenadores co
                 INNER JOIN pessoas p ON co.id_pessoa = p.id_pessoa
@@ -99,7 +99,7 @@ class Coordenador extends Pessoa{
                 $sql1 = 'UPDATE coordenadores 
                 SET status = ?, senha = ?
                 WHERE id_coordenador = ?';
-                $stmt1 = $this->conexao->prepare($sql);
+                $stmt1 = $this->conexao->prepare($sql1);
                 $stmt1->bindValue(1, $this->coordenador['status']);
                 $stmt1->bindValue(2, $this->coordenador['senha']);
                 $stmt1->bindValue(3, $this->coordenador['id_coordenador']);
@@ -107,6 +107,7 @@ class Coordenador extends Pessoa{
 
             } catch (PDOException $e) {
                 echo $e->getMessage();
+                echo $e->getLine();
             }
         }
         
@@ -149,8 +150,8 @@ class Coordenador extends Pessoa{
 
         try {
 
-            $sql = 'SELECT p.id_pessoa, p.nome, p.CPF, p.telefone, p.email, p.sexo, p.endereco, ci.nome AS cidade, 
-            e.nome AS estado, status, senha
+            $sql = 'SELECT p.id_pessoa, p.nome, p.CPF, p.telefone, p.email, p.sexo, p.endereco, ci.id_cidade AS cidade,
+            e.nome AS estado, co.id_coordenador, status, senha
             FROM coordenadores co
             INNER JOIN pessoas p ON co.id_pessoa = p.id_pessoa
             INNER JOIN cidades ci ON p.id_cidade = ci.id_cidade

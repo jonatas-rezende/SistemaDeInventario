@@ -45,16 +45,20 @@
                 <section class="section">
 
                     <div class="row">
-                        <?php if (isset($_GET['salvo'])) {?>
-                        <div class='alert alert-success' role='alert'>
-                            Salvo com Sucesso!!
-                        </div>
-                        <?php } else if(isset($_GET['excluir'])){?>
-                        <div class='alert alert-success' role='alert'>
-                            Registro Excluido !!
-                        </div>
-                        <?php }?>
                         <div class="col-md-12">
+                            <?php if (isset($_GET['salvo'])) {?>
+                            <div class='alert alert-success' role='alert'>
+                                Salvo com Sucesso!!
+                            </div>
+                            <?php } else if(isset($_GET['excluir'])){?>
+                            <div class='alert alert-success' role='alert'>
+                                Registro Excluido !!
+                            </div>
+                            <?php } else if(isset($_GET['atualizar'])){?>
+                            <div class='alert alert-success' role='alert'>
+                                Registro Atualizado !!
+                            </div>
+                            <?php }?>
                             <div class="row card card-block sameheight-item">
                                 <div class="title-block">
                                     <h2 class="title"> Cadastro de Coordenador </h2>
@@ -167,16 +171,18 @@
                                                                     <td><?= $coordenadores->telefone;?></td>
                                                                     <td><?= $coordenadores->email;?></td>
                                                                     <td><?= $coordenadores->cidade;?></td>
-                                                                    <td><button type="button" class="btn btn-success"
+                                                                    <td><button type="button"
+                                                                            class="editar_coor btn btn-success"
                                                                             data-toggle="modal"
-                                                                            data-target="#modal_atualizar">Editar</button>
+                                                                            data-target="#modal_atualizar"
+                                                                            id="editar_coor"
+                                                                            name="editar_coor">Editar</button>
                                                                         <button type="button" name="btn_excluir"
                                                                             class="btn_excluir btn btn-danger"
                                                                             data-toggle="modal"
                                                                             data-target="#modal_excluir">Excluir</button>
                                                                     </td>
                                                                 </tr>
-
                                                             </tbody>
                                                             <?php }?>
                                                         </table>
@@ -187,6 +193,7 @@
                                     </div>
                                     <?php }?>
                                 </form>
+
                             </div>
                         </div>
                     </div>
@@ -209,36 +216,36 @@
                 <!-- Modal body -->
                 <div class="modal-body">
                     <div class="col-12">
-                        <form role="form" class="row" id="formulario_modal" name="formulario" method="POST"
+                        <form role="form" class="formulario_modal row" id="formulario_modal" required="true" name="formulario_modal" method="POST"
                             action="../controller/CoordenadorController.php">
 
                             <div class="form-group col-6">
                                 <label class="control-label">Nome: </label>
-                                <input type="text" id="nome_modal" name="nome_modal" required="required"
+                                <input type="text" id="nome_modal" name="nome_modal" required="true" required="required"
                                     class="form-control boxed" autofocus>
                             </div>
 
                             <div class="form-group col-2">
                                 <label class="control-label">CPF: </label>
-                                <input type="text" id="cpf_modal" name="cpf_modal" required="required"
+                                <input type="text" id="cpf_modal" required="true" name="cpf_modal" required="required"
                                     class="form-control boxed" placeholder="">
 
                             </div>
 
                             <div class="form-group col-4">
                                 <label class="control-label">Telefone: </label>
-                                <input type="text" id="telefone_modal" name="telefone_modal" class="form-control boxed">
+                                <input type="text" id="telefone_modal" required="true" name="telefone_modal" class="form-control boxed">
                             </div>
 
                             <div class="form-group col-4">
                                 <label class="control-label">E-mail: </label>
-                                <input type="email" pattern="[^ @]*@[^ @]*" id="email_modal" name="email_modal"
+                                <input type="email" pattern="[^ @]*@[^ @]*" required="true" id="email_modal" name="email_modal"
                                     class="form-control boxed">
                             </div>
 
                             <div class="form-group col-2">
                                 <label class="control-label">Sexo:</label>
-                                <select class="form-control boxed" id="sexo_modal" name="sexo_modal">
+                                <select class="form-control boxed" id="sexo_modal" required="true" name="sexo_modal">
                                     <option value="">Selecione</option>
                                     <option value="M">Masculino</option>
                                     <option value="F">Feminino</option>
@@ -247,14 +254,14 @@
 
                             <div class="form-group col-6">
                                 <label class="control-label">Endereço: </label>
-                                <input type="text" id="endereco_modal" name="endereco_modal" class="form-control boxed">
+                                <input type="text" id="endereco_modal" name="endereco_modal" required="true" class="form-control boxed">
                             </div>
 
 
 
                             <div class="form-group col-4">
                                 <label class="control-label">Cidade: </label>
-                                <select class="form-control boxed" name="cidade_modal" id="cidade_modal">
+                                <select class="form-control boxed" name="cidade_modal" required="true" id="cidade_modal">
                                     <option value="">Selecione</option>
                                     <?php foreach (listaCidades() as $cidades){?>
                                     <option id="<?= $cidades->id_cidade; ?>" value="<?= $cidades->id_cidade; ?>">
@@ -264,31 +271,31 @@
                             </div>
                             <div class="form-group col-4">
                                 <label class="control-label">Senha: </label>
-                                <input type="password" id="senha_modal" name="senha_modal" class="form-control boxed">
+                                <input type="password" id="senha_modal" name="senha_modal" required="true" class="form-control boxed">
                             </div>
                             </fieldset>
 
+                            <input type="hidden" name="id_pessoa" id="id_pessoa">
+                            <input type="hidden" name="id_coordenador" id="id_coordenador">
 
                             <!---
-<div class="form-group col-4">
-   <label class="control-label">Foto:</label>
-   <img class="image-container" src="https://index.tnwcdn.com/images/9794fd32b7b694d7720d2e655049051b78604f09.jpg" ></img>
-</div>
---->
-                            <div class="col-11" align="end">
-                                <input type="submit" id="atualizar_modal" name="atualizar_modal" class="btn btn-primary"
-                                    value="Atualizar">
-
+                            <div class="form-group col-4">
+                            <label class="control-label">Foto:</label>
+                            <img class="image-container" src="https://index.tnwcdn.com/images/9794fd32b7b694d7720d2e655049051b78604f09.jpg" ></img>
                             </div>
-                        </form>
+                            --->
+
+
                     </div>
                 </div>
 
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="atualizar_modal btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <input type="submit" id="atualizar_modal" name="atualizar_modal" class="btn btn-primary"
+                        value="Atualizar">
                 </div>
-
+                </form>
             </div>
         </div>
     </div>
@@ -326,22 +333,57 @@
     <script src="../assets/js/app.js"></script>
 </body>
 <script>
-var id = 0;
-$('.btn_excluir').click(function() {
-   id = $(this).parents('tr').data('id');
+//script para recuperar os dados do servidor e jogar os valores no modal
+$(document).ready(function() {
+    $('.editar_coor').on('click', function() {
+        var user_id = $(this).parents('tr').data('id');
+
+        $.ajax({
+            type: 'POST',
+            url: '../controller/CoordenadorController.php',
+            dataType: "json",
+            data: { //array associativo com os dados do post
+                'exibir_registro': 'sim',
+                'id_para_atualizar': user_id //
+            },
+            success: function(data) {
+                console.log(data);
+                $('#nome_modal').val(data.dados[0].nome);
+                $('#cpf_modal').val(data.dados[0].CPF);
+                $('#telefone_modal').val(data.dados[0].telefone);
+                $('#email_modal').val(data.dados[0].email);
+                $('#sexo_modal').val(data.dados[0].sexo);
+                $('#endereco_modal').val(data.dados[0].endereco);
+                $('#cidade_modal').val(data.dados[0].cidade);
+
+                $('#id_coordenador').val(data.dados[0].id_coordenador);
+                $('#id_pessoa').val(data.dados[0].id_pessoa);
+            },
+            error: function(data) {
+                console.log(data);
+            }
+        });
+    });
 });
 
+var id = 0; //variavel para receber o id selecionado;
+$('.btn_excluir').click(function() { // acao para reconhecer o click no botao;
+    id = $(this).parents('tr').data('id'); // pega o id do botao selecionado;
+});
+
+//funcao para excluir o regstro
 function excluir() {
 
-    $.ajax({
-        type: 'POST',
-        url: '../controller/CoordenadorController.php',
-        data: {
+    $.ajax({ // chamo o ajax
+        type: 'POST', // falo que a requisicao vai ser post
+        url: '../controller/CoordenadorController.php', // passso a localizacao do arquivo
+        data: { //array associativo com os dados do post
             'excluir_registro': 'sim',
-            'id_exclusao': id // <-- the $ sign in the parameter name seems unusual, I would avoid it
+            'id_exclusao': id //
         },
-        success: function(msg) {
-          location.href = "../view/cadastro_coordenador.php?excluir=true";
+        success: function(
+        msg) { //se deu certo, entra aqui passando o get para o true e recebendo o valor para exibir o alerta
+            location.href = "../view/cadastro_coordenador.php?excluir=true";
         }
     });
 }
