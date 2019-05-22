@@ -129,14 +129,9 @@ class Coordenador extends Pessoa{
             }
         }        
 
-<<<<<<< HEAD
-        public function login(){
-           try {
-=======
     function login(){
 
         try {
->>>>>>> 80c1e23864a04c5899b531f7ca7f981c7cfd88bc
             $sql = "select * from pessoas INNER JOIN coordenadores ON coordenadores.senha = :senha and pessoas.cpf = :cpf";
             $stmt = $this->conexao->prepare($sql);
             $stmt->bindValue(':cpf',$this->coordenador['cpf']);

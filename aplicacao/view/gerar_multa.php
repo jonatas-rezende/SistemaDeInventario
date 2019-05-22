@@ -117,6 +117,7 @@
                                                                 <th>Data da Devolução</th>
                                                                 <th>Observação</th>
                                                                 <th>Multa</th>
+                                                                <th> Ação </th>
                                                               </tr>
                                                           </thead>
 

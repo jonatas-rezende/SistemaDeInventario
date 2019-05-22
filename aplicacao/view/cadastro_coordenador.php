@@ -165,8 +165,8 @@
                                                                 <td><button type="button" class="btn btn-success"
                                                                         data-toggle="modal"
                                                                         data-target="#modal_atualizar">Editar</button>
-                                                                    <button type="button"
-                                                                        class="btn btn-danger" data-toggle="modal" data-target="#modal_excluir">Excluir</button>
+                                                                    <button type="button" id="btn_excluir" name="btn_excluir"
+                                                                        class="btn btn-danger" data-idparaexclusao="<?= $coordenadores->id_pessoa;?>" data-toggle="modal" data-target="#modal_excluir">Excluir</button>
                                                                 </td>
                                                             </tbody>
                                                             <?php }?>
@@ -267,8 +267,8 @@
 </div>
 --->
                             <div class="col-11" align="end">
-                                <input type="submit" id="salvar" name="salvar" class="btn btn-primary" value="Salvar">
-                                <input type="reset" class="btn btn-success" value="Novo" />
+                                <input type="submit" id="atualizar" name="atualizar" class="btn btn-primary" value="Atualizar">
+                             
                             </div>
                         </form>
                     </div>
@@ -298,7 +298,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-        <button type="button" class="btn btn-danger">Excluir</button>
+        <button type="button" class="btn btn-danger" onclick="excluirComModal(this)">Excluir</button>
       </div>
     </div>
   </div>
@@ -314,5 +314,8 @@
     <script src="../assets/js/vendor.js"></script>
     <script src="../assets/js/app.js"></script>
 </body>
+<script>
+    
 
+</script>
 </html>

@@ -112,6 +112,7 @@
                                                                 <th>#</th>
                                                                 <th>Data da Devolução</th>
                                                                 <th>Observação</th>
+                                                                <th> Ação </th>
                                                               </tr>
                                                           </thead>
 
