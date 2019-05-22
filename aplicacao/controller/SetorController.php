@@ -22,12 +22,11 @@ if (isset($_POST['salvar'])) {
 }
 
 if (isset($_POST['idsetor'])) {
-   
-    $delete = new Setor();
-    $delete->deletar($_POST['idsetor']);
+    $idsetor = $_POST['idsetor'];
+    $delete = new Setor(DB::getInstance(), $idsetor);
+    $delete->deletar($idsetor);
     header("Location: ../view/cadastro_setor.php");
    }
-
 
 function listaDeCoordenadores() {
     $oCoordenador = new Coordenador(DB::getInstance(), null);
