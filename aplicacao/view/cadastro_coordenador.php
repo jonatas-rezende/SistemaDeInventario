@@ -161,7 +161,7 @@
                                                                 <td><?= $coordenadores->CPF;?></td>
                                                                 <td><?= $coordenadores->telefone;?></td>
                                                                 <td><?= $coordenadores->email;?></td>
-                                                                <td><?= $coordenadores->id_cidade;?></td>
+                                                                <td><?= $coordenadores->cidade;?></td>
                                                                 <td><button type="button" class="btn btn-success"
                                                                         data-toggle="modal"
                                                                         data-target="#modal_atualizar">Editar</button>
