@@ -25,38 +25,38 @@ class Coordenador extends Pessoa{
     $this->coordenador = $coordenador;
 }
 
-public function inserir() {
+    public function inserir() {
 
-    try {
+        try {
 
-        $sql = 'INSERT INTO pessoas (nome, CPF, telefone, email, sexo, endereco, id_cidade) 
-        VALUES (?,?,?,?,?,?,?)';
-        $stmt = $this->conexao->prepare($sql);
-        $stmt->bindValue(1, $this->coordenador['nome']);
-        $stmt->bindValue(2, $this->coordenador['CPF']);
-        $stmt->bindValue(3, $this->coordenador['telefone']);
-        $stmt->bindValue(4, $this->coordenador['email']);
-        $stmt->bindValue(5, $this->coordenador['sexo']);
-        $stmt->bindValue(6, $this->coordenador['endereco']);
-        $stmt->bindValue(7, $this->coordenador['id_cidade']);
-        $stmt->execute();
+            $sql = 'INSERT INTO pessoas (nome, CPF, telefone, email, sexo, endereco, id_cidade) 
+            VALUES (?,?,?,?,?,?,?)';
+            $stmt = $this->conexao->prepare($sql);
+            $stmt->bindValue(1, $this->coordenador['nome']);
+            $stmt->bindValue(2, $this->coordenador['CPF']);
+            $stmt->bindValue(3, $this->coordenador['telefone']);
+            $stmt->bindValue(4, $this->coordenador['email']);
+            $stmt->bindValue(5, $this->coordenador['sexo']);
+            $stmt->bindValue(6, $this->coordenador['endereco']);
+            $stmt->bindValue(7, $this->coordenador['id_cidade']);
+            $stmt->execute();
 
-        $sql1 = 'INSERT INTO coordenadores (id_coordenador, id_pessoa, status, senha) VALUES (?,?,?,?)';  
+            $sql1 = 'INSERT INTO coordenadores (id_coordenador, id_pessoa, status, senha) VALUES (?,?,?,?)';  
 
-                $status = 1; //como está sendo cadastrado, já será ativado
+            $status = 1; //como está sendo cadastrado, já será ativado
 
-                $stmt1 = $this->conexao->prepare($sql1);
-                $stmt1->bindValue(1, $this->conexao->lastInsertId());
-                $stmt1->bindValue(2, $this->conexao->lastInsertId());
-                $stmt1->bindValue(3, $status);
-                $stmt1->bindValue(4, $this->coordenador['senha']); //a criptografia será feita ao enviar pra classe
+            $stmt1 = $this->conexao->prepare($sql1);
+            $stmt1->bindValue(1, $this->conexao->lastInsertId());
+            $stmt1->bindValue(2, $this->conexao->lastInsertId());
+            $stmt1->bindValue(3, $status);
+            $stmt1->bindValue(4, $this->coordenador['senha']); //a criptografia será feita ao enviar pra classe
 
-                return $stmt1->execute();
+            return $stmt1->execute();
 
             } catch (PDOException $e) {
                 echo $e->getMessage();
             }
-        }
+    }
 
         public function listar() {
 
@@ -121,7 +121,7 @@ public function inserir() {
                 $sql = 'UPDATE coordenadores SET status = ? WHERE id_coordenador = ?';
                 $stmt = $this->conexao->prepare($sql);
                 $stmt->bindValue(1, $status);
-                $stmt->bindValue(2, $this->coordenador['id_coordenado']);
+                $stmt->bindValue(2, $this->coordenador['id_coordenador']);
                 return $stmt->execute();
 
             } catch (PDOException $e) {
@@ -129,8 +129,9 @@ public function inserir() {
             }
         }        
 
-        function login(){
-           try {
+    function login(){
+
+        try {
             $sql = "select * from pessoas INNER JOIN coordenadores ON coordenadores.senha = :senha and pessoas.cpf = :cpf";
             $stmt = $this->conexao->prepare($sql);
             $stmt->bindValue(':cpf',$this->coordenador['cpf']);
@@ -141,11 +142,27 @@ public function inserir() {
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
+    }
 
+    public function listar_por_id() {
 
+        try {
 
+            $sql = 'SELECT p.id_pessoa, p.nome, p.CPF, p.telefone, p.email, p.sexo, p.endereco, ci.nome AS cidade, 
+            e.nome AS estado, status, senha
+            FROM coordenadores co
+            INNER JOIN pessoas p ON co.id_pessoa = p.id_pessoa
+            INNER JOIN cidades ci ON p.id_cidade = ci.id_cidade
+            INNER JOIN estados e ON ci.id_estado = e.id_estado
+            WHERE id_coordenador = ?';
+            $stmt->bindValue(1, $this->coordenador['id_coordenador']);
+            $stmt = $this->conexao->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
     }
 }
-
-
 ?>
