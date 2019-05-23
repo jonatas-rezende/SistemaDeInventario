@@ -28,7 +28,7 @@
                                    <span class="l l3"></span>
                                    <span class="l l4"></span>
                                    <span class="l l5"></span>
-                               </div> Sistema de Invetário
+                               </div> Sistema de Inventário
                            </div>
                        </div>
 

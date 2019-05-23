@@ -24,6 +24,8 @@
 
             try {
 
+                $status = 1; //já cadastra ativo.
+
                 $sql = 'INSERT INTO cargos (descricao, status) VALUES (?, ?)';    
                 $stmt = $this->conexao->prepare($sql);
                 $stmt->bindValue(1, $this->cargo['descricao']);
@@ -53,11 +55,10 @@
 
             try {
 
-                $sql = "UPDATE cargos SET descricao = ?, status = ? WHERE id_cargo = ?";
+                $sql = "UPDATE cargos SET descricao = ? WHERE id_cargo = ?";
                 $stmt = $this->conexao->prepare($sql);
                 $stmt->bindValue(1, $this->cargo['descricao']);
-                $stmt->bindValue(2, $this->cargo['status']);
-                $stmt->bindValue(3, $this->cargo['id_cargo']);
+                $stmt->bindValue(2, $this->cargo['id_cargo']);
                 return $stmt->execute();
 
             } catch (PDOException $e) {

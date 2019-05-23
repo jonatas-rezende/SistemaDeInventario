@@ -10,7 +10,7 @@
                 <i class="fa fa-th-large"></i> Cadastros <i class="fa arrow"></i>
             </a>
             <ul class="sidebar-nav">
-            	<?php if ($_SESSION['dados_usuario']->status =='0') {?>
+            	<?php if ($_SESSION['dados_usuario']->status =='2') {?>
                 <li>
                     <a href="cadastro_coordenador.php"> Coordenador </a>
                 </li>
@@ -24,11 +24,6 @@
                 <li>
                     <a href="cadastro_item.php"> Item </a>
                 </li>
-                 <?php if ($_SESSION['dados_usuario']->status =='0') {?>
-                <li>
-                    <a href="cadastro_usuario.php"> Usuário </a>
-                </li>
- 				<?php }?>
             </ul>
         </li>
         <li>
