@@ -104,7 +104,7 @@
 
                                <div class="form-group col-3">
                                  <label class="control-label">Horário de atendimento: </label>
-                                 <input type="text" id="horario" name="Horario"  class="form-control boxed">
+                                 <input type="text" id="horario" name="horario"  class="form-control boxed">
                               </div>
                                  </fieldset>
 

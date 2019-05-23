@@ -15,8 +15,8 @@
 	        $this->$atributo = $valor;
 	    }
 
-	    public function __construct(Conexao $conexao, $cargo) {
-            $this->conexao = $conexao->conectar();
+	    public function __construct($conexao, $cargo) {
+            $this->conexao = $conexao;
             $this->cargo = $cargo;
         }
 
@@ -24,10 +24,11 @@
 
             try {
 
-                $sql = 'INSERT INTO cargos (descricao) VALUES (?)';    
+                $sql = 'INSERT INTO cargos (descricao, status) VALUES (?, ?)';    
                 $stmt = $this->conexao->prepare($sql);
                 $stmt->bindValue(1, $this->cargo['descricao']);
-                $stmt->execute();
+                $stmt->bindValue(2, $this->cargo['status']);
+                return $stmt->execute();
 
             } catch (PDOException $e) {
                 echo $e->getMessage();
@@ -52,10 +53,11 @@
 
             try {
 
-                $sql = "UPDATE cargos SET descricao = ? WHERE id_cargo = ?";
+                $sql = "UPDATE cargos SET descricao = ?, status = ? WHERE id_cargo = ?";
                 $stmt = $this->conexao->prepare($sql);
                 $stmt->bindValue(1, $this->cargo['descricao']);
-                $stmt->bindValue(2, $this->cargo['id_cargo']);
+                $stmt->bindValue(2, $this->cargo['status']);
+                $stmt->bindValue(3, $this->cargo['id_cargo']);
                 return $stmt->execute();
 
             } catch (PDOException $e) {
@@ -67,9 +69,12 @@
 
             try {
 
-                $sql = 'DELETE FROM cargos WHERE id_cargo = ?';
+                $status = 0; // 0 significa excluido
+
+                $sql = 'UPDATE cargos SET status = ? WHERE id_cargo = ?';
                 $stmt = $this->conexao->prepare($sql);
-                $stmt->bindValue(1, $this->cargo['id_cargo']);
+                $stmt->bindValue(1, $status);
+                $stmt->bindValue(2, $this->cargo['id_cargo']);
                 $stmt->execute();
 
             } catch (PDOException $e) {

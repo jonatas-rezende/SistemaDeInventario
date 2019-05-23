@@ -1,5 +1,6 @@
 <?php 
 require_once '../controller/DB.php';
+
 	class Setor {
 
         private $conexao;
@@ -73,12 +74,16 @@ require_once '../controller/DB.php';
             }
         }
         
-        public function deletar($idsetor) {
+        public function deletar() {
             
             try {  
-                $sql = "delete from setores where id_setor = :idsetor";
+
+                $status = 0; //para cancelar o registro
+
+                $sql = "UPDATE setores SET status = :status WHERE id_setor = :idsetor";
                 $stmt = DB::prepare($sql);
-                $stmt->bindParam(':idsetor', $idsetor);
+                $stmt->bindParam(':status', $status);
+                $stmt->bindParam(':idsetor', $this->setor['id_setor']);
                 $stmt->execute();	
 
             } catch (PDOException $e) {
