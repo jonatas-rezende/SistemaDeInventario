@@ -5,7 +5,6 @@ require_once '../controller/DB.php';
 
         private $conexao;
         private $setor;
-
 		private $idCoordenador;
 		private $ramalTelefonico;
 		private $nome;
@@ -78,16 +77,15 @@ require_once '../controller/DB.php';
             }
         }
         
-        public function deletar() {
+        public function deletar($idsetor) {
             
             try {  
 
                 $status = 0; //para cancelar o registro
-
                 $sql = "UPDATE setores SET status = :status WHERE id_setor = :idsetor";
                 $stmt = DB::prepare($sql);
                 $stmt->bindParam(':status', $status);
-                $stmt->bindParam(':idsetor', $this->setor['id_setor']);
+                $stmt->bindParam(':idsetor', $idsetor);
                 $stmt->execute();	
 
             } catch (PDOException $e) {
