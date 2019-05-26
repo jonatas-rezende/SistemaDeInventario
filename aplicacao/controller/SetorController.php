@@ -31,18 +31,18 @@ if (isset($_POST['atualizar_modal'])) {
    }
 }
 
-if(isset($_POST['excluir_registro'])){
-    $oSetor = new Setor(DB::getInstance(), array("id_setor" => $_POST['id_exclusao']));
-   if($oSetor->deletar()){
-    header("Location: ../view/cadastro_setor.php?excluir=true");
-}
+//if(isset($_POST['excluir_registro'])){
+   // $oSetor = new Setor(DB::getInstance(), array("id_setor" => $_POST['id_exclusao']));
+  // if($oSetor->deletar()){
+  //  header("Location: ../view/cadastro_setor.php?excluir=true");
+//}
 
-/*if (isset($_POST['idsetor'])) {
+if (isset($_POST['idsetor'])) {
     $idsetor = $_POST['idsetor'];
     $delete = new Setor(DB::getInstance(), $idsetor);
     $delete->deletar($idsetor);
     header("Location: ../view/cadastro_setor.php");
-   }*/
+   }
 
 function listaDeCoordenadores() {
     $oCoordenador = new Coordenador(DB::getInstance(), null);
