@@ -51,5 +51,4 @@ function listaFuncionarios() {
     return $oFuncionario->listar();
 }
 
-
 ?>

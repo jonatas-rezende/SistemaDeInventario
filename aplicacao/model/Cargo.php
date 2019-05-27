@@ -25,10 +25,13 @@ require_once '../controller/DB.php';
 
             try {
 
-                $sql = 'INSERT INTO cargos (descricao) VALUES (?)';    
+                $status = 1; //já cadastra ativo.
+
+                $sql = 'INSERT INTO cargos (descricao, status) VALUES (?, ?)';    
                 $stmt = $this->conexao->prepare($sql);
                 $stmt->bindValue(1, $this->cargo['descricao']);
-                $stmt->execute();
+                $stmt->bindValue(2, $this->cargo['status']);
+                return $stmt->execute();
 
             } catch (PDOException $e) {
                 echo $e->getMessage();
@@ -68,9 +71,12 @@ require_once '../controller/DB.php';
 
             try {
 
-                $sql = 'DELETE FROM cargos WHERE id_cargo = ?';
+                $status = 0; // 0 significa excluido
+
+                $sql = 'UPDATE cargos SET status = ? WHERE id_cargo = ?';
                 $stmt = $this->conexao->prepare($sql);
-                $stmt->bindValue(1, $this->cargo['id_cargo']);
+                $stmt->bindValue(1, $status);
+                $stmt->bindValue(2, $this->cargo['id_cargo']);
                 $stmt->execute();
 
             } catch (PDOException $e) {

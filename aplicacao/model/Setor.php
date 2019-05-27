@@ -1,10 +1,10 @@
 <?php 
 require_once '../controller/DB.php';
+
 	class Setor {
 
         private $conexao;
         private $setor;
-
 		private $idCoordenador;
 		private $ramalTelefonico;
 		private $nome;
@@ -26,11 +26,15 @@ require_once '../controller/DB.php';
 
             try {
 
-                $sql = 'INSERT INTO setores (id_coordenador, ramal_telefonico, nome) VALUES (?,?,?)';    
+                $status = 1; //já cadastra ativo.
+
+                $sql = 'INSERT INTO setores (id_coordenador, ramal_telefonico, nome, status) 
+                        VALUES (?,?,?,?)';    
                 $stmt = $this->conexao->prepare($sql);
                 $stmt->bindValue(1, $this->setor['id_coordenador']);
                 $stmt->bindValue(2, $this->setor['ramal_telefonico']);
                 $stmt->bindValue(3, $this->setor['nome']);
+                $stmt->bindValue(4, $this->setor['status']);
                 return $stmt->execute();
 
             } catch (PDOException $e) {
@@ -76,8 +80,11 @@ require_once '../controller/DB.php';
         public function deletar($idsetor) {
             
             try {  
-                $sql = "delete from setores where id_setor = :idsetor";
+
+                $status = 0; //para cancelar o registro
+                $sql = "UPDATE setores SET status = :status WHERE id_setor = :idsetor";
                 $stmt = DB::prepare($sql);
+                $stmt->bindParam(':status', $status);
                 $stmt->bindParam(':idsetor', $idsetor);
                 $stmt->execute();	
 
