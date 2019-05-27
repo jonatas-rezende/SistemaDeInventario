@@ -50,5 +50,10 @@ function listaFuncionarios() {
     $oFuncionario = new Funcionario(DB::getInstance(), null);
     return $oFuncionario->listar();
 }
+function deletarFuncionarios() {
+    $oFuncionario = new Funcionario(DB::getInstance(), null);
+    return $oFuncionario->excluir();
+}
+
 
 ?>
