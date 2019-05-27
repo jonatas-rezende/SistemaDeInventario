@@ -1,9 +1,10 @@
 <?php 
-
+require_once '../controller/DB.php';
 	class Cargo{
 
 		private $conexao;
-		private $cargo;
+        private $cargo;
+        
 
 		private $descricao;
 
@@ -15,8 +16,8 @@
 	        $this->$atributo = $valor;
 	    }
 
-	    public function __construct(Conexao $conexao, $cargo) {
-            $this->conexao = $conexao->conectar();
+	    public function __construct($conexao, $cargo) {
+            $this->conexao = $conexao;
             $this->cargo = $cargo;
         }
 

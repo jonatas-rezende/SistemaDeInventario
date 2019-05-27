@@ -28,29 +28,43 @@
                                    <span class="l l3"></span>
                                    <span class="l l4"></span>
                                    <span class="l l5"></span>
-                               </div> Inventário
-                           </div>
-                       </div>
+                                   </div> Inventário
+                        </div>
+                    </div>
 
-                       <?php include 'menu_lateral.php'; ?>
-                   </div>
+                    <?php include 'menu_lateral.php'; ?>
+                </div>
 
-               </aside>
-               <div class="sidebar-overlay" id="sidebar-overlay"></div>
-               <div class="sidebar-mobile-menu-handle" id="sidebar-mobile-menu-handle"></div>
-               <div class="mobile-menu-handle"></div>
-               <article class="content forms-page">
-                  <section class="section">
+            </aside>
+            <div class="sidebar-overlay" id="sidebar-overlay"></div>
+            <div class="sidebar-mobile-menu-handle" id="sidebar-mobile-menu-handle"></div>
+            <div class="mobile-menu-handle"></div>
+            <article class="content forms-page">
+                <section class="section">
 
-                     <div class="row">
-
+                    <div class="row">
                         <div class="col-md-12">
-                           <div class="row card card-block sameheight-item">
-                              <div class="title-block">
-                                 <h2 class="title"> Cadastro de Funcionário </h2>
-                                 <hr>
-                              </div>
-                              <form role="form" class="row" id="formulario" name="formulario" method="POST">
+                            <?php if (isset($_GET['salvo'])) {?>
+                            <div class='alert alert-success' role='alert'>
+                                Salvo com Sucesso!!
+                            </div>
+                            <?php } else if(isset($_GET['excluir'])){?>
+                            <div class='alert alert-success' role='alert'>
+                                Registro Excluido !!
+                            </div>
+                            <?php } else if(isset($_GET['atualizar'])){?>
+                            <div class='alert alert-success' role='alert'>
+                                Registro Atualizado !!
+                            </div>
+                            <?php }?>
+                            <div class="row card card-block sameheight-item">
+                                <div class="title-block">
+                                    <h2 class="title"> Cadastro de Funcionário </h2>
+                                    <hr>
+                                </div>
+                                <?php require_once '../controller/FuncionarioController.php';?>
+                                <form role="form" class="row" id="formulario" name="formulario" method="POST"
+                                    action="../controller/FuncionarioController.php">
 
                                  <div class="form-group col-6">
                                     <label class="control-label">Nome: </label>
@@ -88,25 +102,47 @@
                                  </div>
 
                                  
-                                 <div class="form-group col-5">
-                                   <label class="control-label">Cidade: </label>
-                                   <input type="text" id="cidade" name="cidade"  class="form-control boxed">
-                                </div>
+                                 <div class="form-group col-4">
+                                        <label class="control-label">Cidade: </label>
+                                        <select class="form-control boxed" name="cidade" id="cidade">
+                                            <option value="">Selecione</option>
+                                            <?php foreach (listaCidades() as $cidades){?>
+                                            <option id="<?= $cidades->id_cidade; ?>"
+                                                value="<?= $cidades->id_cidade; ?>"><?= $cidades->nome;?></option>
+                                            <?php }?>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-4">
+                                        <label class="control-label">Setor: </label>
+                                        <select class="form-control boxed" name="setor" id="setor">
+                                            <option value="">Selecione</option>
+                                            <?php foreach (listaSetores() as $setores){?>
+                                            <option id="<?= $setores->id_setor; ?>"
+                                                value="<?= $setores->id_setor; ?>"><?= $setores->nome;?></option>
+                                            <?php }?>
+                                        </select>
+                                    </div>
+
 
                                 <div class="form-group col-4">
                                    <label class="control-label">Cargo:</label>
                                    <select class="form-control boxed" id="cargo" name="cargo"  >
                                      <option>Selecione</option>
-                                     <option>Auxiliar</option>
-                                     <option>Suporte</option><br><br>
+                                     <?php foreach (listaCargos()as $cargos){?>
+                                            <option id="<?= $cargos->id_cargo ?>"
+                                                value="<?= $cargos->id_cargo; ?>"><?= $cargos->descricao;?></option>
+                                            <?php }?>
                                    </select>
                                 </div>
 
                                <div class="form-group col-3">
-                                 <label class="control-label">Horário de atendimento: </label>
+                                 <label class="control-label">Horário que trabalha: </label>
                                  <input type="text" id="horario" name="Horario"  class="form-control boxed">
                               </div>
                                  </fieldset>
+
+                                 <input type="hidden" name="id_pessoa" id="id_pessoa">
+                            <input type="hidden" name="id_funcionario" id="id_funcionario">
 
 
                                   <!---
@@ -119,7 +155,8 @@
                                  <input type="submit" id="salvar" name="salvar"  class="btn btn-primary" value="Salvar">
                                  <input type="reset" class="btn btn-success" value="Novo"/>
                                </div>
-                              
+                               
+                               <?php if (listaFuncionarios() != null) {?>
                               <div class="col-md-12">
                                       <div class="card">
                                           <div class="card-block">
@@ -135,31 +172,49 @@
                                                               <tr>
                                                                 <th>#</th>
                                                                 <th>Nome</th>
+                                                                <th>CPF</th>
                                                                 <th>Telefone</th>
-                                                                <th>Setor</th>
+                                                                <th>Email</th>
+                                                                <th>Cidade</th>
                                                                 <th>Cargo</th>
-                                                                <th>Horário</th>
+                                                                <th>Horario</th>
                                                                 <th>Ação</th>
                                                               </tr>
                                                           </thead>
 
-                                                          <tbody>
-                                                          <td>1</td>
-                                                                <td>Ana Maria</td>
-                                                                <td>(62) 3307-2512</td>
-                                                                <td>TI</td>
-                                                                <td>Suporte</td>
-                                                                <td>07:00 às 11:00 e 13:00 às 17:00 </td>
-                                                                <td><button type="button" class="btn btn-success">Editar</button>
-                                                                    <button type="button" class="btn btn-danger">Excluir</button>
-                                                                </td>
-                                                          </tbody>
+                                                          <?php foreach (listaFuncionarios() as $funcionarios){?>
+                                                            <tbody>
+                                                                <tr data-id="<?= $funcionarios->id_pessoa;?>">
+                                                                    <td><?= $funcionarios->nome;?></td>
+                                                                    <td><?= $funcionarios->CPF;?></td>
+                                                                    <td><?= $funcionarios->telefone;?></td>
+                                                                    <td><?= $funcionarios->email;?></td>
+                                                                    <td><?= $funcionarios->cidade;?></td>
+    
+                                                                    <td><?= $funcionarios->setor;?></td>
+                                                                    <td><?= $funcionarios->cargo;?></td>
+                                                                    <td><?= $funcionarios->horario;?></td>
+                                                                    <td><button type="button"
+                                                                            class="editar_coor btn btn-success"
+                                                                            data-toggle="modal"
+                                                                            data-target="#modal_atualizar"
+                                                                            id="editar_coor"
+                                                                            name="editar_coor">Editar</button>
+                                                                        <button type="button" name="btn_excluir"
+                                                                            class="btn_excluir btn btn-danger"
+                                                                            data-toggle="modal"
+                                                                            data-target="#modal_excluir">Excluir</button>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                            <?php }?>
                                                       </table>
                                                   </div>
                                               </section>
                                           </div>
                                       </div>
                                   </div>
+                                  <?php }?>
                               </form>
 
                            </div>
@@ -170,15 +225,216 @@
              </div>
              </div>
              <?php include 'footer.php'; ?>
-               <!-- Reference block for JS -->
-               <div class="ref" id="ref">
-                   <div class="color-primary"></div>
-                   <div class="chart">
-                       <div class="color-primary"></div>
-                       <div class="color-secondary"></div>
-                   </div>
-               </div>
-               <script src="../assets/js/vendor.js"></script>
-               <script src="../assets/js/app.js"></script>
-             </body>
+              
+             <!-- The Modal -->
+    <div class="modal fade" id="modal_atualizar">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Atualizar Funcionário</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="col-12">
+                        <form role="form" class="formulario_modal row" id="formulario_modal" required="true" name="formulario_modal" method="POST"
+                            action="../controller/FuncionarioController.php">
+
+                            <div class="form-group col-6">
+                                <label class="control-label">Nome: </label>
+                                <input type="text" id="nome_modal" name="nome_modal" required="true" required="required"
+                                    class="form-control boxed" autofocus>
+                            </div>
+
+                            <div class="form-group col-2">
+                                <label class="control-label">CPF: </label>
+                                <input type="text" id="cpf_modal" required="true" name="cpf_modal" required="required"
+                                    class="form-control boxed" placeholder="">
+
+                            </div>
+
+                            <div class="form-group col-4">
+                                <label class="control-label">Telefone: </label>
+                                <input type="text" id="telefone_modal" required="true" name="telefone_modal" class="form-control boxed">
+                            </div>
+
+                            <div class="form-group col-4">
+                                <label class="control-label">E-mail: </label>
+                                <input type="email" pattern="[^ @]*@[^ @]*" required="true" id="email_modal" name="email_modal"
+                                    class="form-control boxed">
+                            </div>
+
+                            <div class="form-group col-2">
+                                <label class="control-label">Sexo:</label>
+                                <select class="form-control boxed" id="sexo_modal" required="true" name="sexo_modal">
+                                    <option value="">Selecione</option>
+                                    <option value="M">Masculino</option>
+                                    <option value="F">Feminino</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-6">
+                                <label class="control-label">Endereço: </label>
+                                <input type="text" id="endereco_modal" name="endereco_modal" required="true" class="form-control boxed">
+                            </div>
+
+                            <div class="form-group col-4">
+                                        <label class="control-label">Cidade: </label>
+                                        <select class="form-control boxed" name="cidade" id="cidade">
+                                            <option value="">Selecione</option>
+                                            <?php foreach (listaCidades() as $cidades){?>
+                                            <option id="<?= $cidades->id_cidade; ?>"
+                                                value="<?= $cidades->id_cidade; ?>"><?= $cidades->nome;?></option>
+                                            <?php }?>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group col-4">
+                                        <label class="control-label">Setor: </label>
+                                        <select class="form-control boxed" name="setor" id="setor">
+                                            <option value="">Selecione</option>
+                                            <?php foreach (listaSetores()as $setores){?>
+                                            <option id="<?= $setores->id_setor ?>"
+                                                value="<?= $setores->id_setor; ?>"><?= $setores->nome;?></option>
+                                            <?php }?>
+                                        </select>
+                                    </div>
+
+
+                                <div class="form-group col-4">
+                                   <label class="control-label">Cargo:</label>
+                                   <select class="form-control boxed" id="cargo" name="cargo"  >
+                                     <option>Selecione</option>
+                                     <?php foreach (listaCargos()as $cargos){?>
+                                            <option id="<?= $cargos->id_cargo ?>"
+                                                value="<?= $cargos->id_cargo; ?>"><?= $cargos->descricao;?></option>
+                                            <?php }?>
+                                   </select>
+                                </div>
+
+                               <div class="form-group col-3">
+                                 <label class="control-label">Horário de atendimento: </label>
+                                 <input type="text" id="horario" name="Horario"  class="form-control boxed">
+                              </div>
+                            </fieldset>
+
+                            <input type="hidden" name="id_pessoa" id="id_pessoa">
+                            <input type="hidden" name="id_funcionario" id="id_funcionario">
+
+                            <!---
+                            <div class="form-group col-4">
+                            <label class="control-label">Foto:</label>
+                            <img class="image-container" src="https://index.tnwcdn.com/images/9794fd32b7b694d7720d2e655049051b78604f09.jpg" ></img>
+                            </div>
+                            --->
+
+
+                    </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="atualizar_modal btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <input type="submit" id="atualizar_modal" name="atualizar_modal" class="btn btn-primary"
+                        value="Atualizar">
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modal_excluir" tabindex="-1" role="dialog" aria-labelledby="modal_excluirLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal_excluirLabel">ATENÇÃO</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Deseja realmente excluir?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-danger" onclick="excluir()">Excluir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Reference block for JS -->
+    <div class="ref" id="ref">
+        <div class="color-primary"></div>
+        <div class="chart">
+            <div class="color-primary"></div>
+            <div class="color-secondary"></div>
+        </div>
+    </div>
+    <script src="../assets/js/vendor.js"></script>
+    <script src="../assets/js/app.js"></script>
+</body>
+<script>
+//script para recuperar os dados do servidor e jogar os valores no modal
+$(document).ready(function() {
+    $('.editar_coor').on('click', function() {
+        var user_id = $(this).parents('tr').data('id');
+
+        $.ajax({
+            type: 'POST',
+            url: '../controller/FuncionarioController.php',
+            dataType: "json",
+            data: { //array associativo com os dados do post
+                'exibir_registro': 'sim',
+                'id_para_atualizar': user_id //
+            },
+            success: function(data) {
+                console.log(data);
+                $('#nome_modal').val(data.dados[0].nome);
+                $('#cpf_modal').val(data.dados[0].CPF);
+                $('#telefone_modal').val(data.dados[0].telefone);
+                $('#email_modal').val(data.dados[0].email);
+                $('#sexo_modal').val(data.dados[0].sexo);
+                $('#endereco_modal').val(data.dados[0].endereco);
+                $('#cidade_modal').val(data.dados[0].cidade);
+                $('#setor_modal').val(data.dados[0].setor;
+                $('#cargo_modal').val(data.dados[0].cargo);
+                
+                $('#id_funcionario').val(data.dados[0].id_funcionario);
+                $('#id_pessoa').val(data.dados[0].id_pessoa);
+            },
+            error: function(data) {
+                console.log(data);
+            }
+        });
+    });
+});
+
+var id = 0; //variavel para receber o id selecionado;
+$('.btn_excluir').click(function() { // acao para reconhecer o click no botao;
+    id = $(this).parents('tr').data('id'); // pega o id do botao selecionado;
+});
+
+//funcao para excluir o regstro
+function excluir() {
+
+    $.ajax({ // chamo o ajax
+        type: 'POST', // falo que a requisicao vai ser post
+        url: '../controller/FuncionarioController.php', // passso a localizacao do arquivo
+        data: { //array associativo com os dados do post
+            'excluir_registro': 'sim',
+            'id_exclusao': id //
+        },
+        success: function(
+        msg) { //se deu certo, entra aqui passando o get para o true e recebendo o valor para exibir o alerta
+            location.href = "../view/cadastro_funcionario.php?excluir=true";
+        }
+    });
+}
+</script>
+
 </html>

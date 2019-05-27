@@ -42,7 +42,7 @@ require_once '../controller/DB.php';
 
             try {
 
-                $sql = 'SELECT s.nome, ramal_telefonico, p.nome as coordenador 
+                $sql = 'SELECT s.id_setor, s.nome, ramal_telefonico, p.nome as coordenador 
                         FROM setores s 
                         INNER JOIN coordenadores c ON s.id_coordenador = c.id_coordenador
                         INNER JOIN pessoas p ON c.id_pessoa = p.id_pessoa';
