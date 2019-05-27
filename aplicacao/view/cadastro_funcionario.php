@@ -178,6 +178,7 @@
                                                                 <th>Cidade</th>
                                                                 <th>Cargo</th>
                                                                 <th>Horario</th>
+                                                                <th>Setor</th>
                                                                 <th>Ação</th>
                                                               </tr>
                                                           </thead>
