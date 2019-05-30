@@ -1,9 +1,10 @@
 <?php 
-
+require_once '../controller/DB.php';
 	class Cargo{
 
 		private $conexao;
-		private $cargo;
+        private $cargo;
+        
 
 		private $descricao;
 

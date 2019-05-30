@@ -21,8 +21,8 @@
 	        $this->$atributo = $valor;
 	    }	
 
-        public function __construct(Conexao $conexao, Funcionario $funcionario) {
-            $this->conexao = $conexao->conectar();
+        public function __construct( $conexao, $funcionario) {
+            $this->conexao = $conexao;
             $this->funcionario = $funcionario;
         }
 
@@ -67,7 +67,7 @@
             try {
 
                 $sql = 'SELECT p.nome, p.CPF, p.telefone, p.email, p.sexo, p.endereco, ci.nome AS cidade, 
-                               e.nome AS estado, ca.descricao AS cargo, s.nome AS setor
+                               e.nome AS estado, ca.descricao AS cargo, s.nome AS setor, f.horario
                         FROM funcionarios f
                         INNER JOIN pessoas p ON f.id_pessoa = p.id_pessoa
                         INNER JOIN cidades ci ON p.id_cidade = ci.id_cidade
