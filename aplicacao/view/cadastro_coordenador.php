@@ -365,7 +365,7 @@ $(document).ready(function() {
         });
     });
 });
-
+//dsdfsdf
 var id = 0; //variavel para receber o id selecionado;
 $('.btn_excluir').click(function() { // acao para reconhecer o click no botao;
     id = $(this).parents('tr').data('id'); // pega o id do botao selecionado;
