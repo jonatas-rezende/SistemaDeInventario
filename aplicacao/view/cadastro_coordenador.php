@@ -47,7 +47,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <?php if (isset($_GET['salvo'])) {?>
-                            <div class='alert alert-success' role='alert'>
+                            <div class='alert alert-success' id='alert-success' name='alert-success' role='alert'>
                                 Salvo com Sucesso!!
                             </div>
                             <?php } else if(isset($_GET['excluir'])){?>
@@ -333,6 +333,11 @@
     <script src="../assets/js/app.js"></script>
 </body>
 <script>
+
+//remove o alerta de sucesso
+$(".alert-success").fadeTo(2000, 500).slideUp(500, function(){
+    $(".alert-success").slideUp(500);
+});
 //script para recuperar os dados do servidor e jogar os valores no modal
 $(document).ready(function() {
     $('.editar_coor').on('click', function() {
@@ -384,6 +389,8 @@ function excluir() {
         success: function(
         msg) { //se deu certo, entra aqui passando o get para o true e recebendo o valor para exibir o alerta
             location.href = "../view/cadastro_coordenador.php?excluir=true";
+            //dispensa o alerta de sucesso
+
         }
     });
 }
