@@ -1,34 +1,36 @@
+<!DOCTYPE html>
 
-<!doctype html>
 <html class="no-js" lang="pt-br">
-   <head>
-      <meta charset="utf-8">
-      <meta http-equiv="x-ua-compatible" content="ie=edge">
-      <title> Sistema de Invetário </title>
-      <meta name="description" content="">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="apple-touch-icon" href="apple-touch-icon.png">
-      <link rel="stylesheet" href="../assets/css/vendor.css">
-      <link rel="stylesheet" id="theme-style" href="../assets/css/app-green.css">
-      <link rel="stylesheet" id="theme-style" href="../assets/css/app.css">
 
-   </head>
-   <body>
-       <div class="main-wrapper">
-           <div class="app" id="app">
-               <?php include 'header.php';?>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title> Sistema de Invetário </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="stylesheet" href="../assets/css/vendor.css">
+    <link rel="stylesheet" id="theme-style" href="../assets/css/app-green.css">
+    <link rel="stylesheet" id="theme-style" href="../assets/css/app.css">
 
-               <aside class="sidebar">
-                   <div class="sidebar-container">
-                       <div class="sidebar-header">
-                           <div class="brand">
-                               <div class="logo">
-                                   <span class="l l1"></span>
-                                   <span class="l l2"></span>
-                                   <span class="l l3"></span>
-                                   <span class="l l4"></span>
-                                   <span class="l l5"></span>
-                                   </div> Inventário
+</head>
+
+<body>
+    <div class="main-wrapper">
+        <div class="app" id="app">
+            <?php include 'header.php';?>
+
+            <aside class="sidebar">
+                <div class="sidebar-container">
+                    <div class="sidebar-header">
+                        <div class="brand">
+                            <div class="logo">
+                                <span class="l l1"></span>
+                                <span class="l l2"></span>
+                                <span class="l l3"></span>
+                                <span class="l l4"></span>
+                                <span class="l l5"></span>
+                            </div> Inventário
                         </div>
                     </div>
 
@@ -45,7 +47,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <?php if (isset($_GET['salvo'])) {?>
-                            <div class='alert alert-success' role='alert'>
+                            <div class='alert alert-success' id='alert-success' name='alert-success' role='alert'>
                                 Salvo com Sucesso!!
                             </div>
                             <?php } else if(isset($_GET['excluir'])){?>
@@ -59,14 +61,14 @@
                             <?php }?>
                             <div class="row card card-block sameheight-item">
                                 <div class="title-block">
-                                    <h2 class="title"> Cadastro de Funcionário </h2>
+                                    <h2 class="title"> Cadastro de Funcionario </h2>
                                     <hr>
                                 </div>
                                 <?php require_once '../controller/FuncionarioController.php';?>
                                 <form role="form" class="row" id="formulario" name="formulario" method="POST"
                                     action="../controller/FuncionarioController.php">
 
-                                 <div class="form-group col-6">
+                                    <div class="form-group col-6">
                                     <label class="control-label">Nome: </label>
                                     <input type="text" id="nome" name="nome" required="required" class="form-control boxed" autofocus>
                                  </div>
@@ -88,13 +90,13 @@
                                  </div>
 
                                  <div class="form-group col-2">
-                                    <label class="control-label">Sexo:</label>
-                                    <select class="form-control boxed" id="sexo" name="sexo" >
-                                      <option>Selecione</option>
-                                      <option>Masculino</option>
-                                      <option>Feminino</option>
-                                    </select>
-                                 </div>
+                                <label class="control-label">Sexo:</label>
+                                <select class="form-control boxed" id="sexo" required="true" name="sexo">
+                                    <option value="">Selecione</option>
+                                    <option value="M">Masculino</option>
+                                    <option value="F">Feminino</option>
+                                </select>
+                            </div>
 
                                  <div class="form-group col-5">
                                     <label class="control-label">Endereço: </label>
@@ -137,63 +139,56 @@
 
                                <div class="form-group col-3">
                                  <label class="control-label">Horário que trabalha: </label>
-                                 <input type="text" id="horario" name="Horario"  class="form-control boxed">
+                                 <input type="text" id="horario" name="horario"  class="form-control boxed">
                               </div>
                                  </fieldset>
 
-                                 <input type="hidden" name="id_pessoa" id="id_pessoa">
-                            <input type="hidden" name="id_funcionario" id="id_funcionario">
 
-
-                                  <!---
+                                    <!---
                                  <div class="form-group col-4">
                                     <label class="control-label">Foto:</label>
                                     <img class="image-container" src="https://index.tnwcdn.com/images/9794fd32b7b694d7720d2e655049051b78604f09.jpg" ></img>
                                  </div>
                                  --->
-                               <div class="col-11" align="end">
-                                 <input type="submit" id="salvar" name="salvar"  class="btn btn-primary" value="Salvar">
-                                 <input type="reset" class="btn btn-success" value="Novo"/>
-                               </div>
-                               
-                               <?php if (listaFuncionarios() != null) {?>
-                              <div class="col-md-12">
-                                      <div class="card">
-                                          <div class="card-block">
-                                              <div class="card-title-block">
-                                                  <h3 class="title"> Funcionários cadastrados</h3>
-                                              </div>
+                                    <div class="col-11" align="end">
+                                        <input type="submit" id="salvar" name="salvar" class="btn btn-primary"
+                                            value="Salvar">
+                                        <input type="reset" class="btn btn-success" value="Novo" />
+                                    </div>
+                                    <?php if (listaFuncionarios() != null) {?>
 
-                                              <section class="example">
-                                                  <div class="table-responsive" style="display: block;
+                                    <div class="col-md-12">
+                                        <div class="card">
+                                            <div class="card-block">
+                                                <div class="card-title-block">
+                                                    <h3 class="title"> Funcionarios Cadastrado</h3>
+                                                </div>
+
+                                                <section class="example">
+                                                    <div class="table-responsive"
+                                                        style="display: block;
                                                   max-height: 400px; overflow-y: auto; -ms-overflow-style: -ms-autohiding-scrollbar;">
-                                                      <table class="table table-striped table-bordered table-hover table-overflow">
-                                                          <thead>
-                                                              <tr>
-                                                                <th>#</th>
-                                                                <th>Nome</th>
-                                                                <th>CPF</th>
-                                                                <th>Telefone</th>
-                                                                <th>Email</th>
-                                                                <th>Cidade</th>
-                                                                <th>Cargo</th>
-                                                                <th>Horario</th>
-                                                                <th>Setor</th>
-                                                                <th>Ação</th>
-                                                              </tr>
-                                                          </thead>
+                                                        <table
+                                                            class="table table-striped table-bordered table-hover table-overflow">
+                                                            <thead>
+                                                                <tr>
 
-                                                          <?php foreach (listaFuncionarios() as $funcionarios){?>
+                                                                    <th>Nome</th>
+                                                                    <th>CPF</th>
+                                                                    <th>Cargo</th>
+                                                                    <th>Email</th>
+                                                                    <th>Horario</th>
+                                                                    <th>Ação</th>
+                                                                </tr>
+                                                            </thead>
+
+                                                            <?php foreach (listaFuncionarios() as $funcionarios){?>
                                                             <tbody>
                                                                 <tr data-id="<?= $funcionarios->id_pessoa;?>">
                                                                     <td><?= $funcionarios->nome;?></td>
                                                                     <td><?= $funcionarios->CPF;?></td>
-                                                                    <td><?= $funcionarios->telefone;?></td>
-                                                                    <td><?= $funcionarios->email;?></td>
-                                                                    <td><?= $funcionarios->cidade;?></td>
-    
-                                                                    <td><?= $funcionarios->setor;?></td>
                                                                     <td><?= $funcionarios->cargo;?></td>
+                                                                    <td><?= $funcionarios->email;?></td>
                                                                     <td><?= $funcionarios->horario;?></td>
                                                                     <td><button type="button"
                                                                             class="editar_coor btn btn-success"
@@ -209,36 +204,35 @@
                                                                 </tr>
                                                             </tbody>
                                                             <?php }?>
-                                                      </table>
-                                                  </div>
-                                              </section>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <?php }?>
-                              </form>
+                                                        </table>
+                                                    </div>
+                                                </section>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <?php }?>
+                                </form>
 
-                           </div>
+                            </div>
                         </div>
-                     </div>
-                  </section>
-               </article>
-             </div>
-             </div>
-             <?php include 'footer.php'; ?>
-              
-             <!-- The Modal -->
+                    </div>
+                </section>
+            </article>
+        </div>
+    </div>
+      
+    <?php include 'footer.php'; ?>
+    <!-- The Modal -->
     <div class="modal fade" id="modal_atualizar">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
 
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <h4 class="modal-title">Atualizar Funcionário</h4>
+                    <h4 class="modal-title">Atualizar Funcionario</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
-                <!-- Modal body -->
                 <div class="modal-body">
                     <div class="col-12">
                         <form role="form" class="formulario_modal row" id="formulario_modal" required="true" name="formulario_modal" method="POST"
@@ -250,14 +244,14 @@
                                     class="form-control boxed" autofocus>
                             </div>
 
-                            <div class="form-group col-3">
+                            <div class="form-group col-2">
                                 <label class="control-label">CPF: </label>
                                 <input type="text" id="cpf_modal" required="true" name="cpf_modal" required="required"
                                     class="form-control boxed" placeholder="">
 
                             </div>
 
-                            <div class="form-group col-3">
+                            <div class="form-group col-4">
                                 <label class="control-label">Telefone: </label>
                                 <input type="text" id="telefone_modal" required="true" name="telefone_modal" class="form-control boxed">
                             </div>
@@ -282,23 +276,24 @@
                                 <input type="text" id="endereco_modal" name="endereco_modal" required="true" class="form-control boxed">
                             </div>
 
-                            <div class="form-group col-4">
-                                        <label class="control-label">Cidade: </label>
-                                        <select class="form-control boxed" name="cidade" id="cidade">
-                                            <option value="">Selecione</option>
-                                            <?php foreach (listaCidades() as $cidades){?>
-                                            <option id="<?= $cidades->id_cidade; ?>"
-                                                value="<?= $cidades->id_cidade; ?>"><?= $cidades->nome;?></option>
-                                            <?php }?>
-                                        </select>
-                                    </div>
 
-                                    <div class="form-group col-4">
+
+                            <div class="form-group col-4">
+                                <label class="control-label">Cidade: </label>
+                                <select class="form-control boxed" name="cidade_modal" required="true" id="cidade_modal">
+                                    <option value="">Selecione</option>
+                                    <?php foreach (listaCidades() as $cidades){?>
+                                    <option id="<?= $cidades->id_cidade; ?>" value="<?= $cidades->id_cidade; ?>">
+                                        <?= $cidades->nome;?></option>
+                                    <?php }?>
+                                </select>
+                            </div>
+                            <div class="form-group col-3">
                                         <label class="control-label">Setor: </label>
-                                        <select class="form-control boxed" name="setor" id="setor">
+                                        <select class="form-control boxed" name="setor_modal" required="true" id="setor_modal">
                                             <option value="">Selecione</option>
-                                            <?php foreach (listaSetores()as $setores){?>
-                                            <option id="<?= $setores->id_setor ?>"
+                                            <?php foreach (listaSetores() as $setores){?>
+                                            <option id="<?= $setores->id_setor; ?>"
                                                 value="<?= $setores->id_setor; ?>"><?= $setores->nome;?></option>
                                             <?php }?>
                                         </select>
@@ -307,7 +302,7 @@
 
                                 <div class="form-group col-4">
                                    <label class="control-label">Cargo:</label>
-                                   <select class="form-control boxed" id="cargo" name="cargo"  >
+                                   <select class="form-control boxed" id="cargo_modal" name="cargo_modal" required="true"  >
                                      <option>Selecione</option>
                                      <?php foreach (listaCargos()as $cargos){?>
                                             <option id="<?= $cargos->id_cargo ?>"
@@ -317,9 +312,11 @@
                                 </div>
 
                                <div class="form-group col-3">
-                                 <label class="control-label">Horário de atendimento: </label>
-                                 <input type="text" id="horario" name="Horario"  class="form-control boxed">
+                                 <label class="control-label">Horário que trabalha: </label>
+                                 <input type="text" id="horario_modal" name="horario_modal" required="true" class="form-control boxed">
                               </div>
+                                 </fieldset>
+                            
                             </fieldset>
 
                             <input type="hidden" name="id_pessoa" id="id_pessoa">
@@ -346,6 +343,7 @@
             </div>
         </div>
     </div>
+
 
     <!-- Modal -->
     <div class="modal fade" id="modal_excluir" tabindex="-1" role="dialog" aria-labelledby="modal_excluirLabel"
@@ -380,6 +378,11 @@
     <script src="../assets/js/app.js"></script>
 </body>
 <script>
+
+//remove o alerta de sucesso
+$(".alert-success").fadeTo(2000, 500).slideUp(500, function(){
+    $(".alert-success").slideUp(500);
+});
 //script para recuperar os dados do servidor e jogar os valores no modal
 $(document).ready(function() {
     $('.editar_coor').on('click', function() {
@@ -402,9 +405,10 @@ $(document).ready(function() {
                 $('#sexo_modal').val(data.dados[0].sexo);
                 $('#endereco_modal').val(data.dados[0].endereco);
                 $('#cidade_modal').val(data.dados[0].cidade);
-                $('#setor_modal').val(data.dados[0].setor;
+                $('#setor_modal').val(data.dados[0].setor);
                 $('#cargo_modal').val(data.dados[0].cargo);
-                
+                $('#horario_modal').val(data.dados[0].horario);
+
                 $('#id_funcionario').val(data.dados[0].id_funcionario);
                 $('#id_pessoa').val(data.dados[0].id_pessoa);
             },
@@ -414,7 +418,7 @@ $(document).ready(function() {
         });
     });
 });
-
+//dsdfsdf
 var id = 0; //variavel para receber o id selecionado;
 $('.btn_excluir').click(function() { // acao para reconhecer o click no botao;
     id = $(this).parents('tr').data('id'); // pega o id do botao selecionado;
@@ -433,9 +437,15 @@ function excluir() {
         success: function(
         msg) { //se deu certo, entra aqui passando o get para o true e recebendo o valor para exibir o alerta
             location.href = "../view/cadastro_funcionario.php?excluir=true";
+            //dispensa o alerta de sucesso
+
         }
     });
 }
 </script>
 
 </html>
+
+
+
+

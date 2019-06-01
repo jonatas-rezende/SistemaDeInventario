@@ -52,15 +52,17 @@
 
                                     <hr>
                                 </div>
-                                <form role="form" class="row" id="formulario" name="formulario" method="POST">
+                                <?php require_once '../controller/EmprestimoController.php';?>
+
+                                <form role="form" class="row" id="formulario" name="formulario" method="POST" action="../controller/EmprestimoController.php">
 
                                     <div class="form-group col-6">
                                         <label class="control-label">Funcionário:</label>
-                                        <select class="form-control boxed" id="funcionarios" name="funcioanrios"
-                                            autofocus>
-                                            <option>Selecione</option>
-                                            <option>Ana</option>
-                                            <option>Pedro</option>
+                                        <select class="form-control boxed" id="funcionarios" name="funcioanrios" autofocus>
+                                            <option value="">Selecione</option>
+                                            <?php foreach(listarFuncionario() as $funcionarios){?>
+                                                <option value="<?= $funcionarios->id_pessoa?>"><?= $funcionarios->nome?></option>
+                                            <?php }?>
                                         </select>
                                     </div>
 

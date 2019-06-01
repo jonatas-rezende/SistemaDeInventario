@@ -85,7 +85,7 @@ function listaCidades(){
     return $oCidade->listar();
 }
 
-function listaCoordenadres() {
+function listaCoordenadores() {
     $oCoordenador = new Coordenador(DB::getInstance(), null);
     return $oCoordenador->listar();
 }

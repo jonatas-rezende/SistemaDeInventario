@@ -38,7 +38,7 @@
                         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
 
                 $situacao = 1; //conforme está sendo cadastrado já entra disponível
-                $status = 1 //conforme está sendo cadastrado já entra ativo
+                $status = 1; //conforme está sendo cadastrado já entra ativo
 
                 $stmt = $this->conexao->prepare($sql);
                 $stmt->bindValue(1, $this->item['id_setor']);

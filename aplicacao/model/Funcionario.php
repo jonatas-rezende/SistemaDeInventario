@@ -1,7 +1,6 @@
 <?php 
-
 	require_once 'Pessoa.php';
-
+    require_once '../controller/DB.php';
 	class Funcionario extends Pessoa{
 
         private $conexao;
@@ -21,7 +20,7 @@
 	        $this->$atributo = $valor;
 	    }	
 
-        public function __construct( $conexao, $funcionario) {
+        public function __construct($conexao, $funcionario) {
             $this->conexao = $conexao;
             $this->funcionario = $funcionario;
         }
@@ -31,7 +30,7 @@
             try {
 
                 $sql = 'INSERT INTO pessoas (nome, CPF, telefone, email, sexo, endereco, id_cidade) 
-                        VALUES (?,?,?,?,?,?,?)';
+                VALUES (?,?,?,?,?,?,?)';
                 $stmt = $this->conexao->prepare($sql);
                 $stmt->bindValue(1, $this->funcionario['nome']);
                 $stmt->bindValue(2, $this->funcionario['CPF']);
@@ -66,7 +65,7 @@
 
             try {
 
-                $sql = 'SELECT p.nome, p.CPF, p.telefone, p.email, p.sexo, p.endereco, ci.nome AS cidade, 
+                $sql = 'SELECT p.id_pessoa,p.nome, p.CPF, p.telefone, p.email, p.sexo, p.endereco, ci.nome AS cidade, 
                                e.nome AS estado, ca.descricao AS cargo, s.nome AS setor, f.horario
                         FROM funcionarios f
                         INNER JOIN pessoas p ON f.id_pessoa = p.id_pessoa
@@ -74,10 +73,11 @@
                         INNER JOIN estados e ON ci.id_estado = e.id_estado
                         INNER JOIN cargos ca ON f.id_cargo = ca.id_cargo
                         INNER JOIN setores s ON f.id_setor = s.id_setor
-                        WHERE status <> 0';
+                        WHERE f.status <> 0';
                 $stmt = $this->conexao->prepare($sql);
                 $stmt->execute();
                 return $stmt->fetchAll(PDO::FETCH_OBJ);
+                
 
             } catch (PDOException $e) {
                 echo $e->getMessage();
@@ -103,13 +103,13 @@
                 $stmt->execute();
 
                 $sql1 = 'UPDATE funcionarios
-                        SET id_cargo = ?, horario = ?, status = ?, id_setor = ?
+                        SET id_cargo = ?,id_setor = ?, horario = ?, status = ?
                         WHERE id_funcionario = ?';
-                $stmt1 = $this->conexao->prepare($sql);
+                $stmt1 = $this->conexao->prepare($sql1);
                 $stmt1->bindValue(1, $this->funcionario['id_cargo']);
-                $stmt1->bindValue(2, $this->funcionario['horario']);
-                $stmt1->bindValue(3, $this->funcionario['status']);
-                $stmt1->bindValue(4, $this->funcionario['id_setor']);
+                $stmt1->bindValue(2, $this->funcionario['id_setor']);
+                $stmt1->bindValue(3, $this->funcionario['horario']);
+                $stmt1->bindValue(4, $this->funcionario['status']);
                 $stmt1->bindValue(5, $this->funcionario['id_funcionario']);
                 return $stmt1->execute();
 
@@ -137,5 +137,26 @@
                 echo $e->getMessage();
             }
         }
-	}
- ?>
+
+        public function listar_por_id() {
+
+            try {
+    
+                $sql = 'SELECT p.id_pessoa, p.nome, p.CPF, p.telefone, p.email,p.sexo, p.endereco, ci.id_cidade AS cidade,
+                e.nome AS estado, f.id_funcionario, status, f.id_cargo As cargo, f.id_setor As setor, f.horario As horario
+                FROM funcionarios f
+                INNER JOIN pessoas p ON f.id_pessoa = p.id_pessoa
+                INNER JOIN cidades ci ON p.id_cidade = ci.id_cidade
+                INNER JOIN estados e ON ci.id_estado = e.id_estado
+                WHERE id_funcionario = ?';
+                $stmt = $this->conexao->prepare($sql);
+                $stmt->bindValue(1, $this->funcionario['id_funcionario']);
+                $stmt->execute();
+                return $stmt->fetchAll(PDO::FETCH_OBJ);
+    
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+        }
+    }
+    ?>

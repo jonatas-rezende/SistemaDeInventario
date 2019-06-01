@@ -108,9 +108,11 @@
                                  </div>
                                  --->
                                  <div class="col-11" align="end">
-                                   <input type="submit" id="salvar" name="salvar"  class="btn btn-primary" value="Salvar">
-                                   <input type="reset" class="btn btn-success" value="Novo"/>
-                                 </div>
+                                        <input type="submit" id="salvar" name="salvar" class="btn btn-primary"
+                                            value="Salvar">
+                                        <input type="reset" class="btn btn-success" value="Novo" />
+                                    </div>
+                                    <?php if (listaItens() != null) {?>
 
                               <div class="col-md-12">
                                       <div class="card">
@@ -130,41 +132,50 @@
                                                                 <th>Modelo</th>
                                                                 <th>Quantidade</th>
                                                                 <th>Localização</th>
-                                                                <th>Status</th>
-                                                                <th>Valor de Aquisição</th>
-                                                                <th>Descrição</th>
+                                                                
                                                                 <th>Ação</th>
                                                               </tr>
                                                           </thead>
 
-                                                          <tbody>
-                                                          <td>1</td>
-                                                                <td>A 1</td>
-                                                                <td>Notebook Acer Aspire 3 A315-53-32U4</td>
-                                                                <td>1</td>
-                                                                <td>Armario 1</td>
-                                                                <td>Emprestado</td>
-                                                                <td>R$ 1859</td>
-                                                                <td>Completo</td>
-                                                                <td><button type="button" class="btn btn-success">Editar</button>
-                                                                    <button type="button" class="btn btn-danger">Excluir</button>
-                                                                </td>
-                                                          </tbody>
-                                                      </table>
-                                                  </div>
-                                              </section>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </form>
+                                                         
+                                                          <?php foreach (listaItens() as $item){?>
+                                                            <tbody>
+                                                                <tr data-id="<?= $item->id_item;?>">
+                                                                    <td><?= $itens->Matricula;?></td>
+                                                                    <td><?= $itens->Modelo;?></td>
+                                                                    <td><?= $itens->Quantidade;?></td>
+                                                                    <td><?= $itens->Localização;?></td>
+                                                                  
+                                                                    <td><button type="button"
+                                                                            class="editar_coor btn btn-success"
+                                                                            data-toggle="modal"
+                                                                            data-target="#modal_atualizar"
+                                                                            id="editar_coor"
+                                                                            name="editar_coor">Editar</button>
+                                                                        <button type="button" name="btn_excluir"
+                                                                            class="btn_excluir btn btn-danger"
+                                                                            data-toggle="modal"
+                                                                            data-target="#modal_excluir">Excluir</button>
+                                                                            </td>
+                                                                </tr>
+                                                            </tbody>
+                                                            <?php }?>
+                                                        </table>
+                                                    </div>
+                                                </section>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <?php }?>
+                                </form>
 
-                           </div>
+                            </div>
                         </div>
-                     </div>
-                  </section>
-               </article>
-             </div>
-             </div>
+                    </div>
+                </section>
+            </article>
+        </div>
+    </div>
              <?php include 'footer.php'; ?>
                <!-- Reference block for JS -->
                <div class="ref" id="ref">

@@ -72,13 +72,17 @@
                                    <input type="text" id="dataEntrega" name="dataEntrega" required="required" class="form-control boxed" autofocus>
                                 </div>
                                 <div class="form-group col-3">
-                                   <label class="control-label">Data Entrega: </label>
-                                   <input type="text" id="dataEntrega" name="dataEntrega" required="required" class="form-control boxed" autofocus>
-                                </div>
-                                 <div class="form-group col-3">
-                                    <label class="control-label">Multa: </label>
-                                    <input type="text" id="dataEntrega" name="dataEntrega" required="required" class="form-control boxed" autofocus>
-                                 </div>
+                                        <label class="control-label">Data de Empréstimo: </label>
+                                        <input type="date" id="data" name="data" required="required"
+                                            class="form-control boxed">
+                                    </div>
+
+                                    <div class="form-group col-3">
+                                        <label class="control-label">Data de Devolução: </label>
+                                        <input type="date" id="datadevolucao" name="dataDevolucao" required="required"
+                                            class="form-control boxed" placeholder="">
+
+                                    </div>
 
                                  </fieldset>
 

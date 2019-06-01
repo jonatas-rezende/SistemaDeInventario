@@ -6,8 +6,6 @@ require '../model/Cargo.php';
 require '../model/Cidade.php';//classe responsavel por manipular todo registro das cidades
 
 
-
-//if para cadastro de funcionario
 if (isset($_POST['salvar'])) {
     $dadosFormularioFuncionario = array(
         'nome' =>$_POST['nome'],
@@ -19,10 +17,8 @@ if (isset($_POST['salvar'])) {
         'id_cidade' => $_POST['cidade'],
         'id_setor' => $_POST['setor'],
         'id_cargo' => $_POST['cargo'],
-        'horario' => Date('m-d-YYYY')
-        
-        
-    );
+        'horario' => $_POST['horario']
+         );
     $oFuncionario = new Funcionario(DB::getInstance(), $dadosFormularioFuncionario);
     if($oFuncionario->inserir()){
         header("Location: ../view/cadastro_funcionario.php?salvo=true");
@@ -30,6 +26,45 @@ if (isset($_POST['salvar'])) {
         //eita
     }
 }
+
+        //if para cadastro de funcionario
+if (isset($_POST['atualizar_modal'])) {
+    $dadosFormularioFuncionario = array(
+        'nome' =>$_POST['nome_modal'],
+        'CPF' => $_POST['cpf_modal'],
+        'telefone' => $_POST['telefone_modal'],
+        'email' => $_POST['email_modal'],
+        'sexo' => $_POST['sexo_modal'],
+        'endereco' => $_POST['endereco_modal'],
+        'id_cidade' => $_POST['cidade_modal'],
+        'id_setor' => $_POST['setor_modal'],
+        'id_cargo' => $_POST['cargo_modal'],
+        'horario' => $_POST['horario_modal'],
+        'id_pessoa'=> $_POST['id_pessoa'],
+        'id_funcionrio' => $_POST['id_funcionario'],
+        'status' => 1);
+        $oFuncionario = new Funcionario(DB::getInstance(), $dadosFormularioFuncionario);
+        if($oFuncionario->editar()){
+            header("Location: ../view/cadastro_funcionario.php?atualizar=true");
+        }else{
+            //eita
+        }
+    }
+            
+    if(isset($_POST['excluir_registro'])){
+        $oFuncionario = new Funcionario(DB::getInstance(), array("id_funcionario" => $_POST['id_exclusao']));
+       if($oFuncionario->deletar()){
+        header("Location: ../view/cadastro_funcionario.php?excluir=true");
+    }
+    
+    
+    }
+    if(isset($_POST['exibir_registro'])){
+        $oFuncionario = new Funcionario(DB::getInstance(),array('id_funcionario' =>$_POST['id_para_atualizar']));
+        $dados['dados'] = $oFuncionario->listar_por_id();
+        echo json_encode($dados);
+    
+    }
 
 function listaCidades(){
     $oCidade = new Cidade(DB::getInstance(), null);
@@ -50,10 +85,7 @@ function listaFuncionarios() {
     $oFuncionario = new Funcionario(DB::getInstance(), null);
     return $oFuncionario->listar();
 }
-function deletarFuncionarios() {
-    $oFuncionario = new Funcionario(DB::getInstance(), null);
-    return $oFuncionario->excluir();
-}
+
 
 
 ?>

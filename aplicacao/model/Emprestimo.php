@@ -22,7 +22,7 @@
 		public function __construct($conexao, $emprestimo, $itens_emprestimos) {
             $this->conexao = $conexao;
             $this->emprestimo = $emprestimo;
-            $this->itens_emprestimo = $itens_emprestimo;
+            $this->itens_emprestimo = $itens_emprestimos;
 
         }
 
@@ -39,9 +39,9 @@
                 $stmt->execute();
 
 
-                $lastId = $this->conexao->lastInsertId() //pegar o ultimo ID de cadastro emprestimos
+                $lastId = $this->conexao->lastInsertId(); //pegar o ultimo ID de cadastro emprestimos
 
-                foreach ($this->itens_emprestimos as $item) {
+                foreach($this->itens_emprestimo as $item) {
                     $sql1 = 'INSERT INTO itens_emprestimos (id_emprestimo, id_item) VALUES (?, ?)';    
                     $stmt1 = $this->conexao->prepare($sql1);
                     $stmt1->bindValue(1, $lastId);
