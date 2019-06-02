@@ -9,11 +9,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="../assets/css/vendor.css">
     <link rel="stylesheet" id="theme-style" href="../assets/css/app-green.css">
     <link rel="stylesheet" id="theme-style" href="../assets/css/app.css">
 
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
 
 </head>
 
@@ -75,11 +75,11 @@
 
                                                     <div class="form-group col-4">
                                                         <!-- <label class="control-label">Buscar: </label> -->
-                                                            <!-- <input type="search" id='buscar' name="buscar"
+                                                        <!-- <input type="search" id='buscar' name="buscar"
                                                                 class="form-control boxed buscar" autofocus> -->
                                                     </div>
                                                 </div>
-
+                                                <?php require_once '../controller/CoordenadorController.php'?>
                                                 <section class="example">
                                                     <div class="table-responsive"
                                                         style="display: block;
@@ -88,6 +88,8 @@
                                                             class="table table-striped table-bordered table-hover table-overflow dataTable">
                                                             <thead>
                                                                 <tr>
+                                                                    <!--Criar uma função para listar apenas esses campos ai--->
+                                                                    <!--Usei os mesmos dados para filtrar a tabela--->
                                                                     <th>#</th>
                                                                     <th>Nome</th>
                                                                     <th>Setor</th>
@@ -95,6 +97,17 @@
                                                                 </tr>
                                                             </thead>
 
+                                                            <?php foreach (listaCoordenadores() as $coordenadores){?>
+                                                            <tbody>
+                                                                <tr data-id="<?= $coordenadores->id_pessoa;?>">
+                                                                    <td><?= $coordenadores->nome;?></td>
+                                                                    <td><?= $coordenadores->CPF;?></td>
+                                                                    <td><?= $coordenadores->telefone;?></td>
+                                                                    <td><?= $coordenadores->telefone;?></td>
+
+                                                                </tr>
+                                                            </tbody>
+                                                            <?php }?>
 
                                                         </table>
                                                     </div>
@@ -123,47 +136,37 @@
 
 
     <script src="../assets/js/vendor.js"></script>
-
     <script src="../assets/js/app.js"></script>
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
     <script>
     $(document).ready(function() {
-
-        var resultados = [];
-
-        $.ajax({
-            type: 'POST',
-            url: '../controller/CoordenadorController.php',
-            dataType: "json",
-            data: { //array associativo com os dados do post
-                'filtrar': 'sim',
-            },
-            success: function(data) {
-                console.log('foi');
-                resultados = data;
-                console.log(resultados[0]);
-            },
-            error: function(data) {
-                console.log('erro');
-                console.log(data);
+        $('#tabela').DataTable({
+            "processing": true,
+            "language": {
+                "sEmptyTable": "Nenhum registro encontrado",
+                "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+                "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
+                "sInfoFiltered": "(Filtrados de _MAX_ registros)",
+                "sInfoPostFix": "",
+                "sInfoThousands": ".",
+                "sLengthMenu": "_MENU_ resultados por página",
+                "sLoadingRecords": "Carregando...",
+                "sProcessing": "Processando...",
+                "sZeroRecords": "Nenhum registro encontrado",
+                "sSearch": "Pesquisar",
+                "oPaginate": {
+                    "sNext": "Próximo",
+                    "sPrevious": "Anterior",
+                    "sFirst": "Primeiro",
+                    "sLast": "Último"
+                },
+                "oAria": {
+                    "sSortAscending": ": Ordenar colunas de forma ascendente",
+                    "sSortDescending": ": Ordenar colunas de forma descendente"
+                }
             }
         });
-
-        $('#tabela').DataTable({
-            ajax: resultados[0],
-           // data: resultados[0],
-            columns: [{
-                title: "id"
-            }, {
-                title: "nome"
-            }, {
-                title: "setor"
-            }, {
-                title: "ramal"
-            }]
-        });
-
     });
     </script>
 
