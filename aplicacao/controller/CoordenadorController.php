@@ -79,7 +79,7 @@ if(isset($_POST['exibir_registro'])){
     echo json_encode($dados);
 
 }
-//asdsd
+
 function listaCidades(){
     $oCidade = new Cidade(DB::getInstance(), null);
     return $oCidade->listar();
@@ -90,4 +90,9 @@ function listaCoordenadores() {
     return $oCoordenador->listar();
 }
 
+if(isset($_POST['filtrar'])){
+    $oCoordenador = new Coordenador(DB::getInstance(), null);
+    $dados['dados'] = $oCoordenador->listar();
+    echo json_encode($dados['dados']);
+}
 ?>

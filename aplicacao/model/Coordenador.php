@@ -71,7 +71,7 @@ class Coordenador extends Pessoa{
                 WHERE status <> 0';
                 $stmt = $this->conexao->prepare($sql);
                 $stmt->execute();
-                return $stmt->fetchAll(PDO::FETCH_OBJ);
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             } catch (PDOException $e) {
                 echo $e->getMessage();
