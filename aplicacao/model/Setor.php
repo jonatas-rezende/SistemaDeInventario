@@ -34,7 +34,7 @@ require_once '../controller/DB.php';
                 $stmt->bindValue(1, $this->setor['id_coordenador']);
                 $stmt->bindValue(2, $this->setor['ramal_telefonico']);
                 $stmt->bindValue(3, $this->setor['nome']);
-                $stmt->bindValue(4, $this->setor['status']);
+                $stmt->bindValue(4, $status);
                 return $stmt->execute();
 
             } catch (PDOException $e) {
@@ -46,10 +46,11 @@ require_once '../controller/DB.php';
 
             try {
 
-                $sql = 'SELECT s.id_setor, s.nome, ramal_telefonico, p.nome as coordenador 
+                $sql = 'SELECT p.id_pessoa, s.id_setor, s.nome, ramal_telefonico, p.nome as coordenador 
                         FROM setores s 
                         INNER JOIN coordenadores c ON s.id_coordenador = c.id_coordenador
-                        INNER JOIN pessoas p ON c.id_pessoa = p.id_pessoa';
+                        INNER JOIN pessoas p ON c.id_pessoa = p.id_pessoa
+                        WHERE s.status <> 0';
                 $stmt = $this->conexao->prepare($sql);
                 $stmt->execute();
                 return $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -77,20 +78,39 @@ require_once '../controller/DB.php';
             }
         }
         
-        public function deletar($idsetor) {
+        public function deletar() {
             
             try {  
 
                 $status = 0; //para cancelar o registro
-                $sql = "UPDATE setores SET status = :status WHERE id_setor = :idsetor";
+                $sql = "UPDATE setores SET status = ? WHERE id_setor = ?";
                 $stmt = DB::prepare($sql);
-                $stmt->bindParam(':status', $status);
-                $stmt->bindParam(':idsetor', $idsetor);
-                $stmt->execute();	
+                $stmt->bindParam(1, $status);
+                $stmt->bindParam(2,$this->setor['id_setor']);
+               return $stmt->execute();	
 
             } catch (PDOException $e) {
                 echo $e->getMessage();
             }
-        }        
+        }
+        
+        public function listar_por_id() {
+
+            try {
+
+                $sql = 'SELECT s.id_setor, c.id_coordenador, s.nome, ramal_telefonico
+                        FROM setores s 
+                        INNER JOIN coordenadores c ON s.id_coordenador = c.id_coordenador
+                        INNER JOIN pessoas p ON c.id_pessoa = p.id_pessoa
+                        WHERE s.id_setor = ?';
+                $stmt = $this->conexao->prepare($sql);
+                $stmt->bindParam(1,$this->setor['id_setor']);
+                $stmt->execute();
+                return $stmt->fetchAll(PDO::FETCH_OBJ);
+
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+        }
 	}
  ?>
