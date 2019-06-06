@@ -136,7 +136,7 @@
                                             value="Salvar">
                                         <input type="reset" class="btn btn-success" value="Novo" />
                                     </div>
-                                    <?php if (listaCoordenadres() != null) {?>
+                                    <?php if (listaCoordenadores() != null) {?>
 
                                     <div class="col-md-12">
                                         <div class="card">
@@ -163,7 +163,7 @@
                                                                 </tr>
                                                             </thead>
 
-                                                            <?php foreach (listaCoordenadres() as $coordenadores){?>
+                                                            <?php foreach (listaCoordenadores() as $coordenadores){?>
                                                             <tbody>
                                                                 <tr data-id="<?= $coordenadores->id_pessoa;?>">
                                                                     <td><?= $coordenadores->nome;?></td>
