@@ -4,7 +4,7 @@
    <head>
       <meta charset="utf-8">
       <meta http-equiv="x-ua-compatible" content="ie=edge">
-      <title> Sistema de Invetário </title>
+      <title> Sistema de Inventário </title>
       <meta name="description" content="">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -56,26 +56,26 @@
 
                                 <div class="col-md-2">
 
-                                  <img src="brunog.jpg" class=" img-thumbnail rounded-circle img-fluid"  >
+                                  <img src="../assets/img/brunog.jpg" class=" img-thumbnail rounded-circle img-fluid"  >
                                   <label>Bruno Geovane </label>
                                 </div>
                                 <div class="col-md-2">
-                                  <img src="bruno.jpg" class=" img-thumbnail rounded-circle img-fluid"  >
+                                  <img src="../assets/img/bruno.jpg" class=" img-thumbnail rounded-circle img-fluid"  >
                                   <label>Bruno Qualhato </label>
 
                                 </div>
                                 <div class="col-md-2">
-                                  <img src="gilson.jpg" class=" img-thumbnail rounded-circle img-fluid"  >
+                                  <img src="../assets/img/gilson.jpg" class=" img-thumbnail rounded-circle img-fluid"  >
                                   <label>Gilson Soares </label>
 
                                 </div>
                                 <div class="col-md-2">
-                                  <img src="jonatas.jpg" class=" img-thumbnail rounded-circle img-fluid"  >
-                                  <label>Jonatas Rezende </label>
+                                  <img src="../assets/img/jonatas.jpg" class=" img-thumbnail rounded-circle img-fluid"  >
+                                  <label>Jônatas Rezende </label>
 
                                 </div>
                                 <div class="col-md-2">
-                                  <img src="luana.jpg" class=" img-thumbnail rounded-circle img-fluid"  >
+                                  <img src="../assets/img/luana.jpg" class=" img-thumbnail rounded-circle img-fluid"  >
                                   <label>Luana Queiros </label>
                                 </div>
                                  </fieldset>
