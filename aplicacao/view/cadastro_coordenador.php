@@ -46,6 +46,7 @@
 
                     <div class="row">
                         <div class="col-md-12">
+
                             <?php if (isset($_GET['salvo'])) {?>
                             <div class='alert alert-success' id='alert-success' name='alert-success' role='alert'>
                                 Salvo com Sucesso!!
@@ -59,6 +60,7 @@
                                 Registro Atualizado !!
                             </div>
                             <?php }?>
+                            
                             <div class="row card card-block sameheight-item">
                                 <div class="title-block">
                                     <h2 class="title"> Cadastro de Coordenador </h2>

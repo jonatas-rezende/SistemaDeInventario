@@ -1,5 +1,7 @@
 <?php 
 
+require_once '../controller/DB.php';
+
 	class Item{
 
 		private $conexao;
@@ -13,7 +15,6 @@
 		private $valorAquisicao;
 		private $vidaUtil;
 		private $descricaoEstado;
-		private $status;
 
 	    public function __get($atributo) {
 	        return $this->$atributo;
@@ -23,8 +24,8 @@
 	        $this->$atributo = $valor;
 	    }
 
-	    public function __construct(Conexao $conexao, Item $item) {
-            $this->conexao = $conexao->conectar();
+	    public function __construct($conexao, $item) {
+            $this->conexao = $conexao;
             $this->item = $item;
         }
 
@@ -35,13 +36,14 @@
                 $sql = 'INSERT INTO itens (id_setor, matricula, modelo, localizacao,
                                            data_aquisicao, valor_aquisicao, vida_util, descricao_estado,
                                            situacao, status) 
-                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
 
                 $situacao = 1; //conforme está sendo cadastrado já entra disponível
                 $status = 1; //conforme está sendo cadastrado já entra ativo
+                $id_setor = 1;
 
                 $stmt = $this->conexao->prepare($sql);
-                $stmt->bindValue(1, $this->item['id_setor']);
+                $stmt->bindValue(1, $id_setor /*$this->item['id_setor']*/);
                 $stmt->bindValue(2, $this->item['matricula']);
                 $stmt->bindValue(3, $this->item['modelo']);
                 $stmt->bindValue(4, $this->item['localizacao']);
@@ -62,11 +64,11 @@
 
             try {
 
-                $sql = 'SELECT s.nome as setor, matricula, modelo, localizacao, data_aquisicao,
+                $sql = 'SELECT i.id_item, s.nome as setor, matricula, modelo, localizacao, data_aquisicao,
                                valor_aquisicao, vida_util, descricao_estado, situacao
                         FROM itens i
                         INNER JOIN setores s ON i.id_setor = s.id_setor
-                        WHERE status <> 0';
+                        WHERE i.status <> 0';
                 $stmt = $this->conexao->prepare($sql);
                 $stmt->execute();
                 return $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -96,6 +98,7 @@
                 $stmt->bindValue(8, $this->item['descricao_estado']);
                 $stmt->bindValue(9, $this->item['situacao']);
                 $stmt->bindValue(10, $this->item['status']);
+                $stmt->bindValue(11, $this->item['id_item']);
                 return $stmt->execute();
 
             } catch (PDOException $e) {
