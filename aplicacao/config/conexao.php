@@ -5,7 +5,7 @@
         private $host = 'localhost';
         private $dbname = 'sistema_inventario';
         private $user = 'root';
-        private $password = '123456789';
+        private $password = '';
 
         public function conectar() {
             try {
