@@ -60,7 +60,7 @@
 
                 $sql = 'SELECT e.id_emprestimo, p.nome as funcionario, data, data_devolucao
                         FROM emprestimos e
-                        INNER JOIN funcionarios f ON e.id_funcionario = f.id_funcionario
+                        INNER JOIN funcionarios f ON f.id_funcionario = f.id_funcionario
                         INNER JOIN pessoas p ON f.id_funcionario = p.id_pessoa
                         WHERE e.status <> 0
                         ORDER BY e.id_emprestimo DESC';

@@ -55,33 +55,37 @@
 
                                 <?php require_once '../controller/EmprestimoController.php';?>
 
-                                <form role="form" class="row" id="formulario" name="formulario" method="POST" action="../controller/EmprestimoController.php">
+                                <form role="form" class="row" id="formulario" name="formulario" method="POST"
+                                    action="../controller/EmprestimoController.php">
 
                                     <div class="form-group col-6">
                                         <label class="control-label">Funcionário:</label>
-                                        <select class="form-control boxed" id="funcionarios" name="funcionarios" autofocus required="required">
+                                        <select class="form-control boxed" id="funcionarios" name="funcionarios"
+                                            autofocus required="required">
                                             <option value="">Selecione</option>
                                             <?php foreach(listarFuncionario() as $funcionarios){?>
-                                                <option value="<?= $funcionarios->id_pessoa?>"><?= $funcionarios->nome?>
-                                                    </option>
+                                            <option value="<?= $funcionarios->id_pessoa?>"><?= $funcionarios->nome?>
+                                            </option>
                                             <?php }?>
                                         </select>
                                     </div>
                                     <div class="form-group col-3">
                                         <label class="control-label">Data de Empréstimo: </label>
-                                        <input type="date" id="dataEmprestimo" name="dataEmprestimo" required="required" class="form-control boxed">
+                                        <input type="date" id="dataEmprestimo" name="dataEmprestimo" required="required"
+                                            class="form-control boxed">
                                     </div>
                                     <div class="form-group col-3">
                                         <label class="control-label">Data de Devolução: </label>
-                                        <input type="date" id="dataDevolucao" name="dataDevolucao" required="required" class="form-control boxed" placeholder="">
+                                        <input type="date" id="dataDevolucao" name="dataDevolucao" required="required"
+                                            class="form-control boxed" placeholder="">
                                     </div>
                                     <div class="col-11">
-                                        <br>   
+                                        <br>
                                     </div>
-                                   
+
                                     <div class="col-11" align="end">
-                                        <input type="submit" id="inserir_emprestimo" name="inserir_emprestimo" class="btn btn-primary"
-                                            value="Inserir Itens">
+                                        <input type="submit" id="inserir_emprestimo" name="inserir_emprestimo"
+                                            class="btn btn-primary" value="Inserir Itens">
                                         <input type="reset" class="btn btn-danger" value="Cancelar" />
                                     </div>
                                     <?php if (listarEmprestimo() != null) {?>
@@ -94,9 +98,10 @@
                                                 </div>
                                                 <section class="example">
                                                     <div class="table-responsive"
-                                                                style="display: block;
+                                                        style="display: block;
                                                           max-height: 400px; overflow-y: auto; -ms-overflow-style: -ms-autohiding-scrollbar;">
-                                                        <table class="table table-striped table-bordered table-hover table-overflow">
+                                                        <table
+                                                            class="table table-striped table-bordered table-hover table-overflow">
                                                             <thead>
                                                                 <tr>
                                                                     <th>Cód. Emprestimo</th>
@@ -143,5 +148,16 @@
         </div>
     </div>
 </body>
+<?php include 'footer.php'; ?>
+<!-- Reference block for JS -->
+<div class="ref" id="ref">
+    <div class="color-primary"></div>
+    <div class="chart">
+        <div class="color-primary"></div>
+        <div class="color-secondary"></div>
+    </div>
+</div>
+<script src="../assets/js/vendor.js"></script>
+<script src="../assets/js/app.js"></script>
 
 </html>
