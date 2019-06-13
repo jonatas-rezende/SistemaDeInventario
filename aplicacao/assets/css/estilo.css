@@ -1,0 +1,47 @@
+fieldset{
+	width: 750px;
+	margin: 10px auto;
+	color: rgb(8, 8, 8);
+	border: 5px solid #215E21#ccc;
+	font-family: Helvetica;
+	padding: 15px;
+}
+
+h1{
+	text-align: center;
+}
+
+p.sub-titulo{
+	font-size: 20px;
+}
+
+.direita{
+	text-align: right;
+}
+
+.center{
+	text-align: center;
+}
+td, th {
+    
+    border: 1px solid #000000;
+   
+  }
+  
+  th{
+    background-color: #90EE90;
+    
+  }
+  td{
+    font-size: 12px;
+  }
+  
+  table{
+    width: 100%;
+    margin-bottom : .5em;
+    table-layout: fixed;
+    text-align: center;
+    border: 3px solid #000000;
+
+  }
+  
