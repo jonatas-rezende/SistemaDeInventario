@@ -122,7 +122,9 @@
                                                                 <td>Completo</td>
                                                                 <td><button type="button" class="btn btn-success">Editar</button>
                                                                     <button type="button" class="btn btn-danger">Excluir</button>
-                                                                    <button type="button" class="btn btn-primary">Comprovante</button>
+                                                                    <a href="comprovantepdf.php" class="btn btn-warning"  target="_blank">
+                                                                Comprovante
+                                                                    </a>
                                                                 </td>
                                                           </tbody>
                                                       </table>

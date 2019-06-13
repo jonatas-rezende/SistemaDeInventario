@@ -65,9 +65,9 @@
                                  --->
                                <div class="col-11" align="end">
 
-                                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+                               <a href="devolucaopdf.php" class="btn btn-success"  target="_blank">
                                    Visualizar Relatório de Devoluções
-                                 </button>
+                                </a>
 
                                  <!-- Modal -->
                                  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -80,7 +80,9 @@
                                          </button>
                                        </div>
                                        <div class="modal-body">
-                                         aqui vai a parada do Relatório para imprimir em .pdf
+                                       
+
+                                           
                                        </div>
                                        <div class="modal-footer">
                                          <button type="button" class="btn btn-primary">Imprimir</button>

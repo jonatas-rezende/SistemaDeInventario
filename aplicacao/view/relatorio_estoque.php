@@ -65,9 +65,9 @@
                                  --->
                                <div class="col-11" align="end">
 
-                                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
-                                   Visualizar Relatório de Estoque
-                                 </button>
+                               <a href="estoquepdf.php" class="btn btn-success"  target="_blank">
+                                                               Visualizar Relátorio de Estoque
+                                                                    </a>
 
                                  <!-- Modal -->
                                  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
