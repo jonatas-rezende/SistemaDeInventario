@@ -128,7 +128,7 @@
                                                                             class="btn_excluir btn btn-danger"
                                                                             data-toggle="modal"
                                                                             data-target="#modal_excluir">Excluir</button>
-                                                                            <a href="termoemprestimo.php" class="btn btn-warning"  target="_blank">
+                                                                            <a href="termoemprestimopdf.php" class="btn btn-warning"  target="_blank">
                                                                 Termo
                                                                     </a>
                                                                     </td>

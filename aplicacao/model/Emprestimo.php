@@ -147,7 +147,7 @@
 
             try {
 
-                $sql = 'SELECT ie.id_emprestimo, i.matricula as matricula, i.modelo as modelo, i.descricao_estado as observacao
+                $sql = 'SELECT ie.id_emprestimo, i.matricula as matricula, i.modelo as modelo, i.observacao as observacao
                     FROM itens_emprestimos ie
                     INNER JOIN itens i ON ie.id_item = i.id_item
                     INNER JOIN emprestimos e ON ie.id_emprestimo = e.id_emprestimo

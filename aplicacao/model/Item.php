@@ -33,9 +33,7 @@ require_once '../controller/DB.php';
 
             try {
 
-                $sql = 'INSERT INTO itens (id_setor, matricula, modelo, localizacao,
-                                           data_aquisicao, valor_aquisicao, vida_util, descricao_estado,
-                                           situacao, status) 
+                $sql = 'INSERT INTO itens (`id_item`, `matricula`, `modelo`, `localizacao`, `data_aquisicao`, `valor_aquisicao`, `vida_util`, `observacao`, `situacao`, `status`) 
                         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
 
                 $situacao = 1; //conforme está sendo cadastrado já entra disponível
@@ -65,9 +63,9 @@ require_once '../controller/DB.php';
             try {
 
                 $sql = 'SELECT i.id_item, s.nome as setor, matricula, modelo, localizacao, data_aquisicao,
-                               valor_aquisicao, vida_util, descricao_estado, situacao
+                               valor_aquisicao, vida_util, situacao
                         FROM itens i
-                        INNER JOIN setores s ON i.id_setor = s.id_setor
+                        INNER JOIN setores s ON s.id_setor = s.id_setor
                         WHERE i.status <> 0';
                 $stmt = $this->conexao->prepare($sql);
                 $stmt->execute();

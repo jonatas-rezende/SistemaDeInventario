@@ -1,10 +1,11 @@
 <?php 
 include('../../vendor/autoload.php');
 require_once('../controller/EmprestimoController.php');
+$data = date ("d-m-Y");
 
 $tabelinha = "
 <h1>Relátorio de Empréstimo</h1>
-<p class='direita'>Sistema de Inventário, Data</p>
+<p class='direita'>Sistema de Inventário, $data</p>
 <table border=2 id='tabela' name='tabela'
     class='table table-striped table-bordered table-hover table-overflow dataTable'>
     <thead>
@@ -12,7 +13,6 @@ $tabelinha = "
             <!--Criar uma função para listar apenas esses campos ai--->
             <!--Usei os mesmos dados para filtrar a tabela--->
             <th>Id</th>
-            <th>Item</th>
             <th>Funcionario</th>
             <th>Data</th>
             <th>Data Devolução</th>
@@ -26,7 +26,6 @@ $tabelinha = "
         <tr class='dif'>
             
             <td>$emprestimos->id_emprestimo</td>
-            <td> $emprestimos->item<td>
             <td>$emprestimos->funcionario</td>
             <td>$emprestimos->data</td>
             <td>$emprestimos->data_devolucao</td>
