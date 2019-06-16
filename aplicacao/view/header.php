@@ -1,4 +1,4 @@
-<?php session_start();?>
+<?php session_start(); require_once '../controller/DB.php'; DB::verificaSessao();?>
 <header class="header">
     <div class="header-block header-block-collapse d-lg-none d-xl-none">
         <button class="collapse-btn" id="sidebar-collapse-btn">
@@ -76,7 +76,7 @@
                         <i class="fa fa-user icon"></i> Perfil </a>
                     <a class="dropdown-item" href="#">
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="login.php">
+                    <a class="dropdown-item" href="../controller/logout.php">
                         <i class="fa fa-power-off icon"></i> Sair </a>
                 </div>
             </li>

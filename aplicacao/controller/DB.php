@@ -7,7 +7,7 @@ class DB {
 				self::$instance = new PDO("mysql:host=127.0.0.1;dbname=sistema_inventario", 'root', "1");
 				self::$instance->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 				self::$instance->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
-			//	verificaSessao();
+				
 			} catch (PDOException $e){
 				echo $e->getMessage();
 			}
@@ -18,13 +18,10 @@ class DB {
 		return self::getinstance()->prepare($sql);
 	}
 
-	static function verificaSessao(){
-		if ((!isset($_SESSION['cpf']) && !isset($_SESSION['senha']))) {
-
-			header('Location: ../index.php');
-
+	public static function verificaSessao(){
+		if ((!isset($_SESSION['dados_usuario']))) {
+			header('Location: ../view/login.php');
 		}
-
 	}
 }
 
