@@ -267,7 +267,7 @@
     $(document).ready(function() {
         $('.editar_setor').on('click', function() {
             var user_id = $(this).parents('tr').data('id');
-
+                console.log(user_id);
             $.ajax({
                 type: 'POST',
                 url: '../controller/SetorController.php',
@@ -303,8 +303,7 @@
             type: 'POST', // falo que a requisicao vai ser post
             url: '../controller/SetorController.php', // passso a localizacao do arquivo
             data: { //array associativo com os dados do post
-                'excluir_registro': 'sim',
-                'id_exclusao': id //
+                'idsetor': id //
             },
             success: function(msg) { //se deu certo, entra aqui passando o get para o true e recebendo o valor para exibir o alerta
          

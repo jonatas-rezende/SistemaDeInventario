@@ -34,7 +34,6 @@
                 $stmt->execute();
 
                 $sql1 = '';    
-
                 $stmt1 = $this->conexao->prepare($sql1);
                 $stmt1->bindValue(1, $this->conexao->lastInsertId());
                 return $stmt1->execute();
@@ -51,7 +50,7 @@
                 $sql = '';
                 $stmt = $this->conexao->prepare($sql);
                 $stmt->execute();
-                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+                return $stmt->fetchAll(PDO::FETCH_OBJ);
 
             } catch (PDOException $e) {
                 echo $e->getMessage();
@@ -68,7 +67,7 @@
                 $stmt->execute();
 
                 $sql1 = '';
-                $stmt1 = $this->conexao->prepare($sql);
+                $stmt1 = $this->conexao->prepare($sql1);
                 $stmt1->bindValue(1, $this->funcionario['id_cargo']);
                 return $stmt1->execute();
 
