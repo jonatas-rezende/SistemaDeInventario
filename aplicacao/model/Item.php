@@ -123,5 +123,10 @@ require_once '../controller/DB.php';
                 echo $e->getMessage();
             }
         }
+
+    public function listarItensPorFuncionario()
+    {
+        # code...
+    }
 	}
  ?>

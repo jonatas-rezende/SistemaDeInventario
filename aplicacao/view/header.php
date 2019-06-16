@@ -1,7 +1,7 @@
 <?php  session_start();
- require_once '../controller/DB.php'; 
- DB::verificaSessao();
-?>
+    if ((!isset($_SESSION['dados_usuario']))) {
+        header('Location: ../view/login.php');
+    }?>
 <header class="header">
     <div class="header-block header-block-collapse d-lg-none d-xl-none">
         <button class="collapse-btn" id="sidebar-collapse-btn">

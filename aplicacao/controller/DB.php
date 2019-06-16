@@ -18,11 +18,7 @@ class DB {
 		return self::getinstance()->prepare($sql);
 	}
 
-	static function verificaSessao(){
-		if ((!isset($_SESSION['dados_usuario']))) {
-			header('Location: ../view/login.php');
-		}
-	}
+	
 }
 
 ?>
