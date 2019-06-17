@@ -5,7 +5,7 @@ class DB {
 		if(!isset(self::$instance))	{
 			try{
 
-				self::$instance = new PDO("mysql:host=127.0.0.1;dbname=sistema_inventario", 'root', "1");
+				self::$instance = new PDO("mysql:host=127.0.0.1;dbname=sistema_inventario", 'root', "");
 				self::$instance->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 				self::$instance->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 			} catch (PDOException $e){
