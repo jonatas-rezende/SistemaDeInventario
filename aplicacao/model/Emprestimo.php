@@ -39,15 +39,8 @@
                 $stmt->execute();
 
 
-                $lastId = $this->conexao->lastInsertId(); //pegar o ultimo ID de cadastro emprestimos
+                $lastId = $this->conexao->lastInsertId(); 
 
-                /*foreach($this->itens_emprestimo as $item) {
-                    $sql1 = 'INSERT INTO itens_emprestimos (id_emprestimo, id_item) VALUES (?, ?)';    
-                    $stmt1 = $this->conexao->prepare($sql1);
-                    $stmt1->bindValue(1, $lastId);
-                    $stmt1->bindValue(2, $item['id_item']);
-                    $stmt1->execute();
-                }*/
 
             } catch (PDOException $e) {
                 echo $e->getMessage();
@@ -60,8 +53,7 @@
 
                 $sql = 'SELECT e.id_emprestimo, p.nome as funcionario, data, data_devolucao
                         FROM emprestimos e
-                        INNER JOIN funcionarios f ON f.id_funcionario = f.id_funcionario
-                        INNER JOIN pessoas p ON f.id_funcionario = p.id_pessoa
+                        INNER JOIN pessoas p ON e.id_funcionario = p.id_pessoa
                         WHERE e.status <> 0
                         ORDER BY e.id_emprestimo DESC';
                 $stmt = $this->conexao->prepare($sql);
@@ -73,38 +65,6 @@
             }
         }
 
-        public function editar() {
-
-            try {
-
-                $sql = '';
-                $stmt = $this->conexao->prepare($sql);
-                $stmt->bindValue(1, $this->funcionario['nome']);
-                $stmt->execute();
-
-                $sql1 = '';
-                $stmt1 = $this->conexao->prepare($sql);
-                $stmt1->bindValue(1, $this->funcionario['id_cargo']);
-                return $stmt1->execute();
-
-            } catch (PDOException $e) {
-                echo $e->getMessage();
-            }
-        }
-        
-        public function deletar() {
-
-            try {
-
-                $sql = '';
-                $stmt = $this->conexao->prepare($sql);
-                $stmt->bindValue(1, $this->funcionario['id_funcionario']);
-                return $stmt->execute();
-
-            } catch (PDOException $e) {
-                echo $e->getMessage();
-            }
-        }
 
         public function listar_ultimo() {
 
@@ -138,6 +98,15 @@
                 $stmt->bindValue(3, $status);
                 $stmt->execute();
 
+                $sql = 'UPDATE itens SET situacao = ? WHERE id_item = ?';
+                $situacao = 0;
+
+                $stmt = $this->conexao->prepare($sql);
+                $stmt->bindValue(1, $situacao);
+                $stmt->bindValue(2, $this->emprestimo['id_item']);
+                $stmt->execute();
+
+
             } catch (PDOException $e) {
                 echo $e->getMessage();
             }
@@ -147,7 +116,7 @@
 
             try {
 
-                $sql = 'SELECT ie.id_emprestimo, i.matricula as matricula, i.modelo as modelo, i.observacao as observacao
+                $sql = 'SELECT ie.id_emprestimo, i.id_item, i.matricula as matricula, i.modelo as modelo, i.observacao as observacao
                     FROM itens_emprestimos ie
                     INNER JOIN itens i ON ie.id_item = i.id_item
                     INNER JOIN emprestimos e ON ie.id_emprestimo = e.id_emprestimo
@@ -161,6 +130,42 @@
                 echo $e->getMessage();
             }
         }
+
+        public function deletar_item() {
+
+            try {
+                $sql = 'DELETE FROM itens_emprestimos  WHERE id_emprestimo = ? AND id_item = ?';
+                $stmt = $this->conexao->prepare($sql);
+                $stmt->bindValue(1, $this->emprestimo['id_emprestimo']);
+                $stmt->bindValue(2, $this->emprestimo['id_item']);
+                $stmt->execute();
+
+                $sql = 'UPDATE itens SET situacao = ? WHERE id_item = ?';
+                $situacao = 1;
+
+                $stmt = $this->conexao->prepare($sql);
+                $stmt->bindValue(1, $situacao);
+                $stmt->bindValue(2, $this->emprestimo['id_item']);
+                $stmt->execute();
+
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+        }
+
+        public function cancelar() {
+
+            try {
+                $sql = 'DELETE FROM emprestimos  WHERE id_emprestimo = ?';
+                $stmt = $this->conexao->prepare($sql);
+                $stmt->bindValue(1, $this->emprestimo['id_emprestimo']);
+                return $stmt->execute();
+
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+        }
+
 
 
 	}

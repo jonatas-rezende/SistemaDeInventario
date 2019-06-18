@@ -3,7 +3,7 @@ include('../../vendor/autoload.php');
 require_once('../controller/ItemController.php');
 $data = date ("d-m-Y");
 $tabelinha = "
-<h1>Relátorio de Empréstimo</h1>
+<h1>Relátorio de Estoque</h1>
 <p class='direita'>Sistema de Inventário, $data</p>
 <table border=2 id='tabela' name='tabela'
     class='table table-striped table-bordered table-hover table-overflow dataTable'>

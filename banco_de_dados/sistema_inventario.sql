@@ -21,7 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `sistema_inventario`
 --
-
+CREATE SCHEMA IF NOT EXISTS `sistema_inventario` DEFAULT CHARACTER SET utf8 ;
+USE `sistema_inventario` ;
 -- --------------------------------------------------------
 
 --
@@ -86,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `coordenadores` (
 --
 
 INSERT INTO `coordenadores` (`id_coordenador`, `id_pessoa`, `status`, `senha`) VALUES
-(1, 1, 2, '202cb962ac59075b964b07152d234b70'),
+(1, 1, 2, 'e4da3b7fbbce2345d7772b0674a318d5'),
 (5, 5, 1, '905669063311d8a17bd6958cd353eedd');
 
 -- --------------------------------------------------------
@@ -278,7 +279,7 @@ CREATE TABLE IF NOT EXISTS `pessoas` (
 --
 
 INSERT INTO `pessoas` (`id_pessoa`, `nome`, `CPF`, `telefone`, `email`, `sexo`, `endereco`, `id_cidade`) VALUES
-(1, 'Luana Queiros Faria', '14121997', '996769272', 'luana@gmail.com', 'F', 'Rua 10', 1),
+(1, 'Luana Queiros Faria', '123456', '996769272', 'luana@gmail.com', 'F', 'Rua 10', 1),
 (2, 'Bob St', '190', '3215987', 'teste@teste.com', 'M', 'bem ali', 1),
 (3, 'Luan', '12345678955', '546', 'teste@teste.com', 'M', 'asdasd', 1),
 (4, 'Pedro ', '123456789', '12345678', 'bob@gmail.com', 'M', 'rua 23', 1),

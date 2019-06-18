@@ -19,8 +19,6 @@ $tabelinha = "
             
            
         </tr>
-    </thead>
-    
 </table>";
 
 $mpdf=new \Mpdf\Mpdf();

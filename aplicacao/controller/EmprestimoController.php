@@ -33,8 +33,43 @@ if (isset($_POST['incluir_item'])) {
 
 if (isset($_POST['finalizar'])) {
 
-    header("Location: ../view/cadastro_emprestimo.php");
+    header("Location: ../view/cadastro_emprestimo.php?salvo=true");
 
+}
+
+
+if (isset($_POST['cancelar'])) {
+    $dados = array(
+        'id_emprestimo' =>$_POST['idEmprestimo'],
+    );
+
+    $oEmprestimo = new Emprestimo(DB::getInstance(), $dados);
+    $oEmprestimo->cancelar();
+    header("Location: ../view/cadastro_emprestimo.php");
+}
+
+
+if(isset($_POST['excluir_registro'])){
+    $dadosItensEmprestimo = array(
+        'id_emprestimo' =>$_POST['id_exclusao'],
+        'id_item' => $_POST['id_item'],
+    );
+
+
+    $oEmprestimo = new Emprestimo(DB::getInstance(), $dadosItensEmprestimo);
+    $oEmprestimo->deletar_item();
+    
+}
+
+if(isset($_POST['cancelar'])){
+    $dados = array(
+        'id_emprestimo' =>$_POST['id_exclusao'],
+    );
+
+
+    $oEmprestimo = new Emprestimo(DB::getInstance(), $dados);
+    $oEmprestimo->cancelar();
+    
 }
 
 
@@ -42,6 +77,7 @@ function listarFuncionario(){
     $oFuncionario = new Funcionario(DB::getInstance(),null);
     return $oFuncionario->listar();
 }
+
 
 function listarItem(){
     $oItem = new Item(DB::getInstance(),null);

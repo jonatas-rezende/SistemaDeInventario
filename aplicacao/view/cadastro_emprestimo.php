@@ -46,6 +46,11 @@
                     <div class="row">
 
                         <div class="col-md-12">
+                            <?php if (isset($_GET['salvo'])) {?>
+                            <div class='alert alert-success' id='alert-success' name='alert-success' role='alert'>
+                                Salvo com Sucesso!!
+                            </div>
+                            <?php }?>
                             <div class="row card card-block sameheight-item">
                                 <div class="title-block">
                                     <h2 class="title"> Realizar Empréstimo </h2>
@@ -86,7 +91,6 @@
                                     <div class="col-11" align="end">
                                         <input type="submit" id="inserir_emprestimo" name="inserir_emprestimo"
                                             class="btn btn-primary" value="Inserir Itens">
-                                        <input type="reset" class="btn btn-danger" value="Cancelar" />
                                     </div>
                                     <?php if (listarEmprestimo() != null) {?>
 
@@ -118,17 +122,7 @@
                                                                     <td><?= $emprestimos->funcionario;?></td>
                                                                     <td><?= $emprestimos->data;?></td>
                                                                     <td><?= $emprestimos->data_devolucao;?></td>
-                                                                    <td><button type="button"
-                                                                            class="editar_coor btn btn-success"
-                                                                            data-toggle="modal"
-                                                                            data-target="#modal_atualizar"
-                                                                            id="editar_coor"
-                                                                            name="editar_coor">Editar</button>
-                                                                        <button type="button" name="btn_excluir"
-                                                                            class="btn_excluir btn btn-danger"
-                                                                            data-toggle="modal"
-                                                                            data-target="#modal_excluir">Excluir</button>
-                                                                            <a href="termoemprestimopdf.php" class="btn btn-warning"  target="_blank">
+                                                                    <td><a href="termoemprestimopdf.php" class="btn btn-warning"  target="_blank">
                                                                 Termo
                                                                     </a>
                                                                     </td>

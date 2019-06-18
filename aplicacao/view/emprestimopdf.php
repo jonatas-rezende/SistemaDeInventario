@@ -5,15 +5,15 @@ $data = date ("d-m-Y");
 
 $tabelinha = "
 <h1>Relátorio de Empréstimo</h1>
-<p class='direita'>Sistema de Inventário, $data</p>
+<p class='center'>Sistema de Inventário, $data</p>
 <table border=2 id='tabela' name='tabela'
     class='table table-striped table-bordered table-hover table-overflow dataTable'>
     <thead>
         <tr>
             <!--Criar uma função para listar apenas esses campos ai--->
             <!--Usei os mesmos dados para filtrar a tabela--->
-            <th>Id</th>
-            <th>Funcionario</th>
+            <th>Código</th>
+            <th>Funcionário</th>
             <th>Data</th>
             <th>Data Devolução</th>
             

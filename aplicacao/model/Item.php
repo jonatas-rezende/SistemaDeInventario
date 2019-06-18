@@ -14,7 +14,7 @@ require_once '../controller/DB.php';
 		private $dataAquisicao;
 		private $valorAquisicao;
 		private $vidaUtil;
-		private $descricaoEstado;
+		private $observacao;
 
 	    public function __get($atributo) {
 	        return $this->$atributo;
@@ -63,7 +63,7 @@ require_once '../controller/DB.php';
                 $sql = 'SELECT id_item, matricula, modelo, localizacao, data_aquisicao,
                                valor_aquisicao, vida_util, IF(situacao=1,"Disponível","Emprestado") as situacao
                         FROM itens
-                        WHERE status <> 0';
+                        WHERE status <> 0 AND situacao <> 0';
                 $stmt = $this->conexao->prepare($sql);
                 $stmt->execute();
                 return $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -124,7 +124,7 @@ require_once '../controller/DB.php';
             try {
 
                 $sql = 'SELECT id_item, matricula, modelo, localizacao, data_aquisicao,
-                               valor_aquisicao, vida_util, IF(situacao=1,"Disponível","Emprestado") as situacao
+                               valor_aquisicao, vida_util, observacao
                         FROM itens
                         WHERE id_item = ?';
                 $stmt = $this->conexao->prepare($sql);
