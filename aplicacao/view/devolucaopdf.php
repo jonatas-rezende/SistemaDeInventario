@@ -19,22 +19,8 @@ $tabelinha = "
             
            
         </tr>
-    </thead>";
-    foreach (listarEmprestimo() as $emprestimos){
-    $tabelinha .="
-    <tbody>
-        <tr>
-            
-            <td>$emprestimos->id_emprestimo</td>
-            <td>$emprestimos->funcionario</td>
-            <td>$emprestimos->data</td>
-            <td>$emprestimos->data_devolucao</td>
-           
-
-        </tr>
-    </tbody>";
-     }
- $tabelinha .="
+    </thead>
+    
 </table>";
 
 $mpdf=new \Mpdf\Mpdf();
