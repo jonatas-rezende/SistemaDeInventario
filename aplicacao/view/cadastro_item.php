@@ -97,8 +97,8 @@
                                  </div>
 
                                  <div class="form-group col-10">
-                                    <label class="control-label">Descrição: </label>
-                                    <input type="text" id="descricao" name="descricao" class="form-control boxed">
+                                    <label class="control-label">Observação: </label>
+                                    <input type="text" id="observacao" name="observacao" class="form-control boxed">
                                  </div>                                 
 
                                  </fieldset>
@@ -237,8 +237,8 @@
                           </div>
 
                           <div class="form-group col-4">
-                              <label class="control-label">Descrição: </label>
-                              <input type="text" id="descricao_modal" required="true" name="descricao_modal" class="form-control boxed">
+                              <label class="control-label">Observação: </label>
+                              <input type="text" id="observacao_modal" required="true" name="observacao_modal" class="form-control boxed">
                           </div>
 
 
@@ -314,7 +314,7 @@ $(".alert-success").fadeTo(2000, 500).slideUp(500, function(){
 $(document).ready(function() {
     $('.editar_coor').on('click', function() {
         var user_id = $(this).parents('tr').data('id');
-
+        console.log(user_id);
         $.ajax({
             type: 'POST',
             url: '../controller/ItemController.php',
@@ -331,7 +331,7 @@ $(document).ready(function() {
                 $('#data_aquisicao_modal').val(data.dados[0].data_aquisicao);
                 $('#valor_modal').val(data.dados[0].valor_aquisicao);
                 $('#vida_util_modal').val(data.dados[0].vida_util);
-                $('#descricao_modal').val(data.dados[0].descricao);
+                $('#observacao_modal').val(data.dados[0].observacao);
 
                 $('#id_item').val(data.dados[0].id_item);
             },

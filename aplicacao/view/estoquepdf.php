@@ -2,7 +2,6 @@
 include('../../vendor/autoload.php');
 require_once('../controller/ItemController.php');
 $data = date ("d-m-Y");
-
 $tabelinha = "
 <h1>Relátorio de Empréstimo</h1>
 <p class='direita'>Sistema de Inventário, $data</p>
@@ -39,12 +38,10 @@ $tabelinha = "
      $tabelinha .="
     </table>";
     
-
 $mpdf=new \Mpdf\Mpdf();
 $mpdf->SetDisplayMode('fullpage');
 $css = file_get_contents("../assets/css/estilo.css");
 $mpdf->WriteHTML($css,1);
 $mpdf->WriteHTML($tabelinha);
 $mpdf->Output();
-
 ?>

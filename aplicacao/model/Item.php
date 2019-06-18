@@ -33,24 +33,22 @@ require_once '../controller/DB.php';
 
             try {
 
-                $sql = 'INSERT INTO itens (`id_item`, `matricula`, `modelo`, `localizacao`, `data_aquisicao`, `valor_aquisicao`, `vida_util`, `observacao`, `situacao`, `status`) 
-                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+                $sql = 'INSERT INTO itens (`matricula`, `modelo`, `localizacao`, `data_aquisicao`, `valor_aquisicao`, `vida_util`, `observacao`, `situacao`, `status`) 
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
 
                 $situacao = 1; //conforme está sendo cadastrado já entra disponível
                 $status = 1; //conforme está sendo cadastrado já entra ativo
-                $id_setor = 1;
 
                 $stmt = $this->conexao->prepare($sql);
-                $stmt->bindValue(1, $id_setor /*$this->item['id_setor']*/);
-                $stmt->bindValue(2, $this->item['matricula']);
-                $stmt->bindValue(3, $this->item['modelo']);
-                $stmt->bindValue(4, $this->item['localizacao']);
-                $stmt->bindValue(5, $this->item['data_aquisicao']);
-                $stmt->bindValue(6, $this->item['valor_aquisicao']);
-                $stmt->bindValue(7, $this->item['vida_util']);
-                $stmt->bindValue(8, $this->item['descricao']);
-                $stmt->bindValue(9, $situacao);
-                $stmt->bindValue(10, $status);
+                $stmt->bindValue(1, $this->item['matricula']);
+                $stmt->bindValue(2, $this->item['modelo']);
+                $stmt->bindValue(3, $this->item['localizacao']);
+                $stmt->bindValue(4, $this->item['data_aquisicao']);
+                $stmt->bindValue(5, $this->item['valor_aquisicao']);
+                $stmt->bindValue(6, $this->item['vida_util']);
+                $stmt->bindValue(7, $this->item['observacao']);
+                $stmt->bindValue(8, $situacao);
+                $stmt->bindValue(9, $status);
                 return $stmt->execute();
 
             } catch (PDOException $e) {
@@ -62,11 +60,10 @@ require_once '../controller/DB.php';
 
             try {
 
-                $sql = 'SELECT i.id_item, s.nome as setor, matricula, modelo, localizacao, data_aquisicao,
-                               valor_aquisicao, vida_util, situacao
-                        FROM itens i
-                        INNER JOIN setores s ON s.id_setor = s.id_setor
-                        WHERE i.status <> 0';
+                $sql = 'SELECT id_item, matricula, modelo, localizacao, data_aquisicao,
+                               valor_aquisicao, vida_util, IF(situacao=1,"Disponível","Emprestado") as situacao
+                        FROM itens
+                        WHERE status <> 0';
                 $stmt = $this->conexao->prepare($sql);
                 $stmt->execute();
                 return $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -81,22 +78,19 @@ require_once '../controller/DB.php';
             try {
 
                 $sql = 'UPDATE itens 
-                        SET id_setor = ?, matricula = ?, modelo = ?, localizacao = ?, 
-                            data_aquisicao = ?, valor_aquisicao = ?, vida_util = ?, descricao_estado = ?, 
-                            situacao = ?, status = ?
+                        SET matricula = ?, modelo = ?, localizacao = ?, data_aquisicao = ?, valor_aquisicao = ?, vida_util = ?, observacao = ?, situacao = ?, status = ?
                         WHERE id_item = ?';
                 $stmt = $this->conexao->prepare($sql);
-                $stmt->bindValue(1, $this->item['id_setor']);
-                $stmt->bindValue(2, $this->item['matricula']);
-                $stmt->bindValue(3, $this->item['modelo']);
-                $stmt->bindValue(4, $this->item['localizacao']);
-                $stmt->bindValue(5, $this->item['data_aquisicao']);
-                $stmt->bindValue(6, $this->item['valor_aquisicao']);
-                $stmt->bindValue(7, $this->item['vida_util']);
-                $stmt->bindValue(8, $this->item['descricao_estado']);
-                $stmt->bindValue(9, $this->item['situacao']);
-                $stmt->bindValue(10, $this->item['status']);
-                $stmt->bindValue(11, $this->item['id_item']);
+                $stmt->bindValue(1, $this->item['matricula']);
+                $stmt->bindValue(2, $this->item['modelo']);
+                $stmt->bindValue(3, $this->item['localizacao']);
+                $stmt->bindValue(4, $this->item['data_aquisicao']);
+                $stmt->bindValue(5, $this->item['valor_aquisicao']);
+                $stmt->bindValue(6, $this->item['vida_util']);
+                $stmt->bindValue(7, $this->item['observacao']);
+                $stmt->bindValue(8, $this->item['situacao']);
+                $stmt->bindValue(9, $this->item['status']);
+                $stmt->bindValue(10, $this->item['id_item']);
                 return $stmt->execute();
 
             } catch (PDOException $e) {
@@ -123,6 +117,42 @@ require_once '../controller/DB.php';
                 echo $e->getMessage();
             }
         }
+
+
+        public function listar_por_id() {
+
+            try {
+
+                $sql = 'SELECT id_item, matricula, modelo, localizacao, data_aquisicao,
+                               valor_aquisicao, vida_util, IF(situacao=1,"Disponível","Emprestado") as situacao
+                        FROM itens
+                        WHERE id_item = ?';
+                $stmt = $this->conexao->prepare($sql);
+                $stmt->bindValue(1, $this->item['id_item']);
+                $stmt->execute();
+                return $stmt->fetchAll(PDO::FETCH_OBJ);
+
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+        }
+
+        public function listar_relatorio() {
+
+            try {
+
+                $sql = 'SELECT matricula, modelo, localizacao, observacao
+                        FROM itens
+                        WHERE status <> 0';
+                $stmt = $this->conexao->prepare($sql);
+                $stmt->execute();
+                return $stmt->fetchAll(PDO::FETCH_OBJ);
+
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+        }
+
 
     public function listarItensPorFuncionario()
     {
